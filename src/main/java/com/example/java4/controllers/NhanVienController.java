@@ -6,82 +6,69 @@ import com.example.java4.repositories.KhachHangRepository;
 import com.example.java4.repositories.NhanVienRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("nhan_vien")
 public class NhanVienController {
-    StoreRequest rem;
     @Autowired
     NhanVienRepository nvRepo;
     public NhanVienController() {
-        this.rem = new StoreRequest();
     }
-    @GetMapping("/create")
-    public String create(Model model) {
-        model.addAttribute("data", rem);
-        return "admin/ql_nhan_vien/Create";
-    }
-
     @GetMapping("/index")
-    public String index(Model model) {
-        model.addAttribute("data",nvRepo.findAll());
-        return "admin/ql_nhan_vien/Index";
+    public ResponseEntity<List<NhanVien>> index() {
+        return ResponseEntity.ok(nvRepo.findAll());
     }
 
-    @GetMapping("/delete/{id}")
-    public String delete(Model model, @PathVariable(value="id")NhanVien nv) {
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable(value="id") NhanVien nv) {
         nvRepo.delete(nv);
-        return "redirect:/nhan_vien/index";
-    }
-
-    @GetMapping("/update/{id}")
-    public String getUpdate(Model model,@PathVariable(value ="id") NhanVien nv) {
-        model.addAttribute("data",nv);
-        return "admin/ql_nhan_vien/Edit";
     }
 
     @PostMapping("/update/{id}")
-    public String doUpdate(
-            @Valid @ModelAttribute("data") StoreRequest req,
+    public NhanVien doUpdate(
+            @RequestBody @Valid StoreRequest newNhanVien,
             BindingResult result,@PathVariable(value="id") NhanVien nv
     ) {
         if (result.hasErrors()) {
-            return "admin/ql_nhan_vien/Edit";
+            System.out.println("error temp: " + result);
+            return null;
         }
         else{
-            nv.setMa(req.getMa());
-            nv.setTen(req.getTen());
-            nv.setTenDangNhap(req.getTenDangNhap());
-            nv.setMatKhau(req.getMatKhau());
-            nv.setTrangThai(req.getTrangThai());
+            nv.setMa(newNhanVien.getMa());
+            nv.setTen(newNhanVien.getTen());
+            nv.setTenDangNhap(newNhanVien.getTenDangNhap());
+            nv.setMatKhau(newNhanVien.getMatKhau());
+            nv.setTrangThai(newNhanVien.getTrangThai());
             nvRepo.save(nv);
-            return "redirect:/nhan_vien/index";
         }
+        return nv;
     }
-    @PostMapping("store")
-    public String create(
-            @Valid @ModelAttribute("data") StoreRequest req,
+    @PostMapping("save")
+    public NhanVien save(
+            @RequestBody @Valid StoreRequest newNhanVien,
             BindingResult result
     ) {
         NhanVien newNV = new NhanVien();
         if (result.hasErrors()) {
-            return "admin/ql_nhan_vien/Create";
+            System.out.println("error temp: "+result);
+            return null;
         }
         else{
-            rem = req;
             newNV.setId(null);
-            newNV.setMa(req.getMa());
-            newNV.setTen(req.getTen());
-            newNV.setTenDangNhap(req.getTenDangNhap());
-            newNV.setMatKhau(req.getMatKhau());
-            newNV.setTrangThai(req.getTrangThai());
+            newNV.setMa(newNV.getMa());
+            newNV.setTen(newNV.getTen());
+            newNV.setTenDangNhap(newNV.getTenDangNhap());
+            newNV.setMatKhau(newNV.getMatKhau());
+            newNV.setTrangThai(newNV.getTrangThai());
             nvRepo.save(newNV);
-            return "redirect:/nhan_vien/index";
         }
+        return newNV;
     }
 }

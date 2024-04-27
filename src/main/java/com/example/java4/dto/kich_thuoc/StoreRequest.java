@@ -17,5 +17,5 @@ public class StoreRequest {
     @NotBlank(message = "Do not empty ten")
     private String ten;
     @NotNull(message = "Do not empty trang thai")
-    private Integer trangThai;
+    private String trangThai;
 }
