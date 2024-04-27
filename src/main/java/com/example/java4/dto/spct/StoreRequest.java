@@ -13,14 +13,14 @@ import org.hibernate.validator.constraints.NotBlank;
 public class StoreRequest {
     private Integer id;
     @NotNull(message = "Do not empty idKichThuoc")
-    private Integer idKichThuoc;
+    private String idKichThuoc;
     @NotNull(message = "Do not empty idMauSac")
-    private Integer idMauSac;
+    private String idMauSac;
     @NotNull(message = "Do not empty idSanPham")
-    private Integer idSanPham;
+    private String idSanPham;
     @NotBlank(message = "Do not empty maSPCT")
     private String maSPCT;
-    private int soLuong;
-    private double donGia;
-    private int trangThai;
+    private String soLuong;
+    private String donGia;
+    private String trangThai;
 }

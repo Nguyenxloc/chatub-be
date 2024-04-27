@@ -1,4 +1,7 @@
-package com.example.java4.entities;
+package com.example.java4.viewModel;
+import com.example.java4.entities.KichThuoc;
+import com.example.java4.entities.MauSac;
+import com.example.java4.entities.SanPham;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

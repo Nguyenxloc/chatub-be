@@ -1,7 +1,5 @@
 package com.example.java4.repositories;
-import com.example.java4.entities.HDCT;
-import com.example.java4.entities.SPCT;
-import com.example.java4.entities.SPCTfull;
+import com.example.java4.viewModel.SPCTfull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

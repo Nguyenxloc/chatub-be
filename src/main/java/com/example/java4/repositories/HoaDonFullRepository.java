@@ -1,8 +1,5 @@
 package com.example.java4.repositories;
-import com.example.java4.entities.HDCT;
-import com.example.java4.entities.HDCTfull;
-import com.example.java4.entities.HoaDon;
-import com.example.java4.entities.HoaDonFull;
+import com.example.java4.viewModel.HoaDonFull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

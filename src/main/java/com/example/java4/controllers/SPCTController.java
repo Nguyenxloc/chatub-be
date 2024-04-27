@@ -3,14 +3,17 @@ package com.example.java4.controllers;
 import com.example.java4.dto.spct.StoreRequest;
 import com.example.java4.entities.*;
 import com.example.java4.repositories.*;
+import com.example.java4.viewModel.SPCTfull;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -35,78 +38,34 @@ public class SPCTController {
         rem = new StoreRequest();
     }
 
-    @GetMapping("/create")
-    public String create(Model model) {
-        model.addAttribute("data", rem);
-        model.addAttribute("dsKichThuoc",ktRepo.findAll());
-        model.addAttribute("dsMauSac", msRepo.findAll());
-        model.addAttribute("dsSanPham",spRepo.findAll());
-        return "admin/ql_spct/Create";
-    }
-
     @GetMapping("/index")
-    public String index(Model model) {
-        model.addAttribute("data",spcTfullRepository.findAll());
-        return "admin/ql_spct/Index";
+    public ResponseEntity<List<SPCTfull>> index(Model model) {
+        return ResponseEntity.ok(spcTfullRepository.findAll());
     }
 
-    @GetMapping("/delete/{id}")
-    public String delete(Model model, @PathVariable(value = "id") SPCT spct) {
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable(value = "id") SPCT spct) {
         spctRepo.delete(spct);
-        return "redirect:/spct/index";
     }
 
-    @GetMapping("/update/{id}")
-    public String getUpdate(Model model, @PathVariable(value = "id") SPCT spct) {
-        model.addAttribute("dsKichThuoc",ktRepo.findAll());
-        model.addAttribute("dsMauSac", msRepo.findAll());
-        model.addAttribute("dsSanPham",spRepo.findAll());
-        model.addAttribute("data",spct);
-        return "admin/ql_spct/Edit";
-    }
-
-    @PostMapping("/update/{id}")
-    public String doUpdate(@Valid @ModelAttribute("data") StoreRequest req, BindingResult result, @PathVariable(value = "id") SPCT spct, Model model) {
-        if (result.hasErrors()) {
-            model.addAttribute("dsKichThuoc",ktRepo.findAll());
-            model.addAttribute("dsMauSac", msRepo.findAll());
-            model.addAttribute("dsSanPham",spRepo.findAll());
-            return "admin/ql_spct/Edit";
-        } else {
-            spct.setMaSPCT(req.getMaSPCT());
-            spct.setSoLuong(req.getSoLuong());
-            spct.setTrangThai(req.getTrangThai());
-            spct.setDonGia(req.getDonGia());
-            spct.setIdMauSac(req.getIdMauSac());
-            spct.setIdSanPham(req.getIdSanPham());
-            spct.setIdKichThuoc(req.getIdKichThuoc());
-            spctRepo.save(spct);
-            return "redirect:/spct/index";
-        }
-    }
-
-    @PostMapping("store")
-    public String Store(
-            @Valid @ModelAttribute("data") StoreRequest req,
-            BindingResult result, Model model
+    @PostMapping("save")
+    public SPCT Store(
+            @RequestParam @Valid StoreRequest newSPCT,
+            BindingResult result
     ) {
-        System.out.println(req.toString());
         SPCT spct = new SPCT();
         if (result.hasErrors()) {
-            model.addAttribute("dsKichThuoc",ktRepo.findAll());
-            model.addAttribute("dsMauSac", msRepo.findAll());
-            model.addAttribute("dsSanPham",spRepo.findAll());
-            return "admin/ql_spct/Create";
+            System.out.println("temp error: "+result);
         } else {
-            spct.setMaSPCT(req.getMaSPCT());
-            spct.setSoLuong(req.getSoLuong());
-            spct.setTrangThai(req.getTrangThai());
-            spct.setDonGia(req.getDonGia());
-            spct.setIdMauSac(req.getIdMauSac());
-            spct.setIdSanPham(req.getIdSanPham());
-            spct.setIdKichThuoc(req.getIdKichThuoc());
-            spctRepo.save(spct);
-            return "redirect:/spct/index";
+            spct.setMaSPCT(newSPCT.getMaSPCT());
+            spct.setSoLuong(Integer.valueOf(newSPCT.getSoLuong()));
+            spct.setTrangThai(Integer.valueOf(newSPCT.getTrangThai()));
+            spct.setDonGia(Double.valueOf(newSPCT.getDonGia()));
+            spct.setIdMauSac(Integer.valueOf(newSPCT.getIdMauSac()));
+            spct.setIdSanPham(Integer.valueOf(newSPCT.getIdSanPham()));
+            spct.setIdKichThuoc(Integer.valueOf(newSPCT.getIdKichThuoc()));
+            spct = spctRepo.save(spct);
         }
+        return  spct;
     }
 }

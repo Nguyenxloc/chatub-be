@@ -11,13 +11,13 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StoreRequest {
-    private String id;
+    private Integer id;
     @NotNull(message = "do not empty this field")
-    private Integer idKH;
+    private String idKH;
     @NotNull(message = "do not empty this field")
-    private Integer idNV;
+    private String idNV;
     @NotNull(message = "do not empty this field")
-    private Date ngayMuaHang;
+    private String ngayMuaHang;
     @NotNull(message = "do not empty this field")
-    private Integer trangThai;
+    private String trangThai;
 }

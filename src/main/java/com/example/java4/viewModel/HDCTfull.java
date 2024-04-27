@@ -1,4 +1,4 @@
-package com.example.java4.entities;
+package com.example.java4.viewModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

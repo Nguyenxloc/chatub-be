@@ -18,10 +18,15 @@ public class StoreRequest {
     @NotNull(message = "do not empty this field")
     private String idSPCT;
     @NotNull(message = "do not empty this field")
-    private int soLuong;
+    private String soLuong;
     @NotNull(message = "do not empty this field")
-    private int donGia;
-    private Timestamp thoiGian;
-    @Column(name="TrangThai")
-    private Integer trangThai;
+    private String donGia;
+    @NotNull(message = "do not empty this field")
+    private String thoiGian;
+    @NotNull(message = "do not empty this field")
+    private String ngayMuaHang;
+    @NotNull(message = "do not empty this field")
+    private String thoiGianMH;
+    @NotNull(message = "do not empty this field")
+    private String trangThai;
 }

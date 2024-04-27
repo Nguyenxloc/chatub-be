@@ -3,6 +3,7 @@ package com.example.java4.controllers;
 import com.example.java4.dto.sale.NewHDCTRequest;
 import com.example.java4.entities.*;
 import com.example.java4.repositories.*;
+import com.example.java4.viewModel.SPCTfull;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,8 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Controller

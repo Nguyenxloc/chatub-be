@@ -23,8 +23,6 @@ import java.util.List;
 @Controller
 @RequestMapping("hdct")
 public class HDCTController {
-    //    @RequestMapping(name="login", method = RequestMethod.POST)
-    StoreRequest rem;
     @Autowired
     HoaDonRepository hdRepo;
     @Autowired
@@ -39,8 +37,8 @@ public class HDCTController {
     HDCTfullRepository hdctFullRepository;
 
     public HDCTController() {
-        rem = new StoreRequest();
     }
+
     public Timestamp StringsToTimeStampt(String date, String time){
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
@@ -66,72 +64,33 @@ public class HDCTController {
         }
     }
 
-    @GetMapping("/create")
-    public String create(Model model) {
-        model.addAttribute("data", rem);
-        model.addAttribute("dsHoaDon", hdFullRepo.findAll());
-        model.addAttribute("dsSPCT", spctFullRepository.findAll());
-        return "admin/ql_hdct/Create";
-    }
-
     @GetMapping("/index")
-    public ResponseEntity<List<HDCT>> getIndex(Model model) {
-        model.addAttribute("data", hdctFullRepository.findAll());
+    public ResponseEntity<List<HDCT>> getIndex() {
         return ResponseEntity.ok(hdctRepository.findAll());
     }
 
-    @GetMapping("/delete/{id}")
-    public String delete(Model model, @PathVariable(value = "id") HDCT hdct) {
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable(value = "id") HDCT hdct) {
         hdctRepository.delete(hdct);
-        return "redirect:/spct/index";
     }
 
-    @GetMapping("/update/{id}")
-    public String getUpdate(Model model, @PathVariable(value = "id") HDCT hdct) {
-        model.addAttribute("dsHoaDon", hdFullRepo.findAll());
-        model.addAttribute("dsSPCT", spctFullRepository.findAll());
-        model.addAttribute("data", hdct);
-        model.addAttribute("ngayMuaHang",TimeStampToStrings(hdct.getThoiGian())[0]);
-        model.addAttribute("thoiGianMH",TimeStampToStrings(hdct.getThoiGian())[1]);
-        return "admin/ql_hdct/Edit";
-    }
-
-    @PostMapping("/update/{id}")
-    public String doUpdate(@Valid @ModelAttribute("data") StoreRequest req, @ModelAttribute("ngayMuaHang") String ngayMuaHang, @ModelAttribute("thoiGianMH") String thoiGianMH, BindingResult result, @PathVariable(value = "id") HDCT hdct, Model model) {
-        if (result.hasErrors()) {
-            return "admin/ql_hdct/Edit";
-        } else {
-            hdct.setIdHoaDon(Integer.parseInt(req.getIdHoaDon()));
-            hdct.setIdSPCT(Integer.parseInt(req.getIdSPCT()));
-            hdct.setSoLuong(req.getSoLuong());
-            hdct.setDonGia(req.getDonGia());
-            hdct.setThoiGian(StringsToTimeStampt(ngayMuaHang,thoiGianMH));
-            hdct.setTrangThai(req.getTrangThai());
-            hdctRepository.save(hdct);
-            return "redirect:/hdct/index";
-        }
-    }
-
-    @PostMapping("/store")
-    public String Store(
-            @Valid @ModelAttribute("data") StoreRequest req, @ModelAttribute("ngayMuaHang") String ngayMuaHang, @ModelAttribute("thoiGianMH") String thoiGianMH,
-            BindingResult result, Model model
+    @PostMapping("/save")
+    public HDCT save(
+            @RequestBody @Valid StoreRequest req, BindingResult result
     ) {
-        SPCT spct = new SPCT();
         HDCT hdct = new HDCT();
         if (result.hasErrors()) {
-            model.addAttribute("dsHoaDon", hdFullRepo.findAll());
-            model.addAttribute("dsSPCT", spctFullRepository.findAll());
-            return "admin/ql_hdct/Create";
+            System.out.println("temp error: " + result);
+            return null;
         } else {
             hdct.setIdHoaDon(Integer.parseInt(req.getIdHoaDon()));
             hdct.setIdSPCT(Integer.parseInt(req.getIdSPCT()));
-            hdct.setSoLuong(req.getSoLuong());
-            hdct.setDonGia(req.getDonGia());
-            hdct.setThoiGian(StringsToTimeStampt(ngayMuaHang,thoiGianMH));
-            hdct.setTrangThai(req.getTrangThai());
-            hdctRepository.save(hdct);
-            return "redirect:/hdct/index";
+            hdct.setSoLuong(Integer.valueOf(req.getSoLuong()));
+            hdct.setDonGia(Integer.valueOf(req.getDonGia()));
+            hdct.setThoiGian(StringsToTimeStampt(req.getNgayMuaHang(),req.getThoiGianMH()));
+            hdct.setTrangThai(Integer.valueOf(req.getTrangThai()));
+            hdct = hdctRepository.save(hdct);
         }
+        return hdct;
     }
 }
