@@ -23,7 +23,6 @@ import java.util.Optional;
 @Controller
 @RequestMapping("sale")
 public class SaleController {
-    Integer idHDState = null;
     @Autowired
     HoaDonFullRepository hdRepo;
     @Autowired
@@ -50,11 +49,11 @@ public class SaleController {
         return hd;
     }
 
-    @GetMapping("/addToCart/{id}")
-    public void addToCart(@PathVariable(value = "id") SPCT spct) {
+    @GetMapping("/addToCart/")
+    public void addToCart (@RequestParam(value = "idHD") HoaDon hd, @RequestParam(value = "idSPCT") SPCT spct) {
         Integer idSPCT = spct.getId();
         spct.setSoLuong(spct.getSoLuong()-1);
-        HDCT hdct = new HDCT(null, idHDState, idSPCT, 1, (int) spctBaseRepo.findById(idSPCT).get().getDonGia(), new Timestamp(System.currentTimeMillis()), 1);
+        HDCT hdct = new HDCT(null, hd.getId(), idSPCT, 1, (int) spctBaseRepo.findById(idSPCT).get().getDonGia(), new Timestamp(System.currentTimeMillis()), 1);
         hdctBaseRepo.save(hdct);
         spctBaseRepo.save(spct);
     }
