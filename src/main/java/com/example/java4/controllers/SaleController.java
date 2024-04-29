@@ -64,7 +64,7 @@ public class SaleController {
         hdBaseRepo.save(hd);
     }
 
-    @GetMapping("/index")
+    @GetMapping("/index/")
     public ResponseEntity<List<SPCTfull>> GetIndex(@RequestParam("page") Optional<Integer> pageParams) {
         int page = pageParams.orElse(0);
         Pageable p = PageRequest.of(page, 5);
