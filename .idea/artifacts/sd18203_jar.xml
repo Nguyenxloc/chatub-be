@@ -1,8 +1,30 @@
+<!DOCTYPE component [
+        <!ELEMENT component (artifact)*>
+        <!ATTLIST component
+                name CDATA #REQUIRED>
+        <!ELEMENT artifact (output-path|root)*>
+        <!ATTLIST artifact
+                type CDATA #REQUIRED
+                name CDATA #REQUIRED>
+        <!ELEMENT output-path (#PCDATA)>
+        <!ELEMENT root (element)*>
+        <!ATTLIST root
+                id CDATA #REQUIRED
+                name CDATA #REQUIRED>
+        <!ELEMENT element (#PCDATA)>
+        <!ATTLIST element
+                id CDATA #REQUIRED
+                name CDATA #IMPLIED
+                path CDATA #IMPLIED
+                path-in-jar CDATA #IMPLIED>
+        ]>
 <component name="ArtifactManager">
   <artifact type="jar" name="sd18203:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/sd18203_jar</output-path>
     <root id="archive" name="sd18203.jar">
+      <element id="manifest" path="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
       <element id="module-output" name="sd18203" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/java/com/example/java4/WebSpringBootApp.java" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-jdbc/3.2.1/spring-boot-starter-jdbc-3.2.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/glassfish/web/jakarta.servlet.jsp.jstl/3.0.1/jakarta.servlet.jsp.jstl-3.0.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.15.3/jackson-core-2.15.3.jar" path-in-jar="/" />

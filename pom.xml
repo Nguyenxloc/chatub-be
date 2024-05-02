@@ -81,12 +81,23 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <excludes>
+                    <exclude>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                    </exclude>
                         <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
+                            <archive>
+                                <manifest>
+                                    <packageName>com.example.java4</packageName>
+                                </manifest>
+                                <manifestEntries>
+                                    <Created-By>nguyenxloc</Created-By>
+                                </manifestEntries>
+                            </archive>
                         </exclude>
-                    </excludes>
+                   </excludes>
                 </configuration>
+
             </plugin>
         </plugins>
     </build>
