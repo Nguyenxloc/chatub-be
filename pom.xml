@@ -79,25 +79,24 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.1.12.RELEASE</version>
                 <configuration>
+                    <mainClass>com.example.java4.WebSpringBootApp</mainClass>
+                    <layout>ZIP</layout>
                     <excludes>
                     <exclude>
                         <groupId>org.projectlombok</groupId>
                         <artifactId>lombok</artifactId>
                     </exclude>
-                        <exclude>
-                            <archive>
-                                <manifest>
-                                    <packageName>com.example.java4</packageName>
-                                </manifest>
-                                <manifestEntries>
-                                    <Created-By>nguyenxloc</Created-By>
-                                </manifestEntries>
-                            </archive>
-                        </exclude>
                    </excludes>
                 </configuration>
-
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
