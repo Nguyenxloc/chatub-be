@@ -1,18 +1,14 @@
 package com.example.java4.controllers;
 
-import com.example.java4.dto.sale.NewHDCTRequest;
 import com.example.java4.entities.*;
 import com.example.java4.repositories.*;
 import com.example.java4.viewModel.SPCTfull;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;

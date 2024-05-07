@@ -1,7 +1,6 @@
 package com.example.java4.controllers;
 
 import com.example.java4.dto.khach_hang.StoreRequest;
-import com.example.java4.entities.HoaDon;
 import com.example.java4.entities.KhachHang;
 import com.example.java4.repositories.KhachHangRepository;
 import jakarta.validation.Valid;

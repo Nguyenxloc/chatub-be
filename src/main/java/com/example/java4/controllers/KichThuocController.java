@@ -1,7 +1,6 @@
 package com.example.java4.controllers;
 
 import com.example.java4.dto.kich_thuoc.StoreRequest;
-import com.example.java4.entities.KhachHang;
 import com.example.java4.entities.KichThuoc;
 import com.example.java4.repositories.KichThuocRepository;
 import jakarta.validation.Valid;
