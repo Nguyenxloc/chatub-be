@@ -79,7 +79,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.1.12.RELEASE</version>
+                <version>3.2.5</version>
                 <configuration>
                     <mainClass>com.example.java4.WebSpringBootApp</mainClass>
                     <layout>ZIP</layout>
