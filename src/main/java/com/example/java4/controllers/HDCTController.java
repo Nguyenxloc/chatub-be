@@ -56,7 +56,6 @@ public class HDCTController {
             return null;
         }
     }
-    @CrossOrigin()
     @GetMapping("/index")
     public ResponseEntity<List<HDCT>> getIndex() {
         return ResponseEntity.ok(hdctRepository.findAll());
