@@ -40,16 +40,16 @@ public class SPCTController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable(value = "id") SPCT spct) {
+    public void delete(@PathVariable(value = "id") ChiTietSP spct) {
         spctRepo.delete(spct);
     }
 
     @PostMapping("save")
-    public SPCT Store(
+    public ChiTietSP Store(
             @RequestParam @Valid StoreRequest newSPCT,
             BindingResult result
     ) {
-        SPCT spct = new SPCT();
+        ChiTietSP spct = new ChiTietSP();
         if (result.hasErrors()) {
             System.out.println("temp error: "+result);
         } else {

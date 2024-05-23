@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -14,13 +16,16 @@ import lombok.Setter;
 @Table(name="MauSac")
 public class MauSac {
     @Id
-    @Column(name="ID")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name="Id")
+    private String id;
     @Column(name="Ma")
     private String ma;
     @Column(name="Ten")
     private String ten;
     @Column(name="TrangThai")
     private Integer trangThai;
+    @Column(name="NgayTao")
+    private Date ngayTao;
+    @Column(name="Indx")
+    private Integer indx;
 }

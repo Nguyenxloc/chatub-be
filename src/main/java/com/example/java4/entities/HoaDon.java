@@ -15,14 +15,25 @@ import java.sql.Date;
 public class HoaDon {
     @Id
     @Column(name="ID")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer id;
-    @Column(name="IdKH")
-    private Integer idKH;
+    private String id;
+    @Column(name="Ma")
+    private String ma;
+    @Column(name="IdPTTT")
+    private String idPTTT;
+    @Column(name="idKM")
+    private String idKM;
     @Column(name="IdNV")
     private Integer idNV;
-    @Column(name="NgayMuaHang")
-    private Date ngayMuaHang;
-    @Column(name = "TrangThai")
-    private Integer trangThai;
+    @Column(name="IdKH")
+    private String idKH;
+    @Column(name="IdShip")
+    private String idShip;
+    @Column(name="NgayTao")
+    private Date ngayTao;
+    @Column(name="NgayThanhToan")
+    private Date ngayThanhToan;
+    @Column(name="TrangThai")
+    private int trangThai;
+    @Column(name="indx")
+    private int indx;
 }

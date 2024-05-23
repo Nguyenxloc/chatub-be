@@ -15,13 +15,16 @@ import lombok.Setter;
 @Table(name = "SanPham")
 public class SanPham {
     @Id
-    @Column(name="ID")
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name="Id")
+    private String id;
     @Column(name="Ma")
     private String ma;
     @Column(name ="Ten")
     private String ten;
     @Column(name ="TrangThai")
     private String trangThai;
+    @Column(name="NgayTao")
+    private String ngayTao;
+    @Column(name="indx")
+    private Integer indx;
 }

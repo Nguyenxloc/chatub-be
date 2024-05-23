@@ -46,7 +46,7 @@ public class SaleController {
     }
 
     @GetMapping("/addToCart/")
-    public void addToCart (@RequestParam(value = "idHD") HoaDon hd, @RequestParam(value = "idSPCT") SPCT spct) {
+    public void addToCart (@RequestParam(value = "idHD") HoaDon hd, @RequestParam(value = "idSPCT") ChiTietSP spct) {
         Integer idSPCT = spct.getId();
         spct.setSoLuong(spct.getSoLuong()-1);
         HDCT hdct = new HDCT(null, hd.getId(), idSPCT, 1, (int) spctBaseRepo.findById(idSPCT).get().getDonGia(), new Timestamp(System.currentTimeMillis()), 1);

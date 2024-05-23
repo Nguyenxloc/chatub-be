@@ -20,7 +20,7 @@ public class HDCT {
     private Integer id;
     @Column(name="IdHoaDon")
     private Integer idHoaDon;
-    @Column(name="IdSPCT")
+    @Column(name="IdChiTietSP")
     private Integer idSPCT;
     @Column(name="SoLuong")
     private int soLuong;
