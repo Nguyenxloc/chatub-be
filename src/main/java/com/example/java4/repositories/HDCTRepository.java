@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.domain.Pageable;
 @Repository
 public interface HDCTRepository
-        extends JpaRepository<HDCT,Integer>
+        extends JpaRepository<HDCT,String>
 {
       public static final int ACTIVE  = 1;
       public static final int INACTIVE =0;

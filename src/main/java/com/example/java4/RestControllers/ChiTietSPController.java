@@ -1,9 +1,8 @@
-package com.example.java4.controllers;
+package com.example.java4.RestControllers;
 
 import com.example.java4.dto.spct.StoreRequest;
 import com.example.java4.entities.*;
 import com.example.java4.repositories.*;
-import com.example.java4.viewModel.SPCTfull;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @Controller
 @RequestMapping("spct")
-public class SPCTController {
+public class ChiTietSPController {
     //    @RequestMapping(name="login", method = RequestMethod.POST)
     StoreRequest rem;
     @Autowired
@@ -26,17 +25,17 @@ public class SPCTController {
     @Autowired
     MauSacRepository mauSacRepo;
     @Autowired
-    SPCTRepository spctRepo;
+    ChiTietSPRepository spctRepo;
     @Autowired
-    SPCTfullRepository spcTfullRepository;
+    ChiTietSPRepository chiTietSPRepository;
 
-    public SPCTController() {
+    public ChiTietSPController() {
         rem = new StoreRequest();
     }
 
     @GetMapping("/index")
-    public ResponseEntity<List<SPCTfull>> index(Model model) {
-        return ResponseEntity.ok(spcTfullRepository.findAll());
+    public ResponseEntity<List<ChiTietSP>> index(Model model) {
+        return ResponseEntity.ok(chiTietSPRepository.findAll());
     }
 
     @DeleteMapping("/delete/{id}")
@@ -53,13 +52,10 @@ public class SPCTController {
         if (result.hasErrors()) {
             System.out.println("temp error: "+result);
         } else {
-            spct.setMaSPCT(newSPCT.getMaSPCT());
             spct.setSoLuong(Integer.valueOf(newSPCT.getSoLuong()));
             spct.setTrangThai(Integer.valueOf(newSPCT.getTrangThai()));
-            spct.setDonGia(Double.valueOf(newSPCT.getDonGia()));
-            spct.setIdMauSac(Integer.valueOf(newSPCT.getIdMauSac()));
-            spct.setIdSanPham(Integer.valueOf(newSPCT.getIdSanPham()));
-            spct.setIdKichThuoc(Integer.valueOf(newSPCT.getIdKichThuoc()));
+            spct.setIdMauSac(newSPCT.getIdMauSac());
+            spct.setIdKichThuoc(newSPCT.getIdKichThuoc());
             spct = spctRepo.save(spct);
         }
         return  spct;

@@ -14,7 +14,7 @@ import java.util.List;
 
 @Repository
 public interface HoaDonRepository
-        extends JpaRepository<HoaDon,Integer>
+        extends JpaRepository<HoaDon,String>
 {
     public static final int ACTIVE  = 1;
     public static final int INACTIVE =0;

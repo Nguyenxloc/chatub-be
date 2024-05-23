@@ -1,4 +1,4 @@
-package com.example.java4.controllers;
+package com.example.java4.RestControllers;
 import com.example.java4.dto.san_pham.StoreRequest;
 import com.example.java4.entities.SanPham;
 import com.example.java4.repositories.SanPhamRepository;

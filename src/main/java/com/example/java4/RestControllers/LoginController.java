@@ -1,4 +1,4 @@
-package com.example.java4.controllers;
+package com.example.java4.RestControllers;
 import com.example.java4.dto.login.LoginRequest;
 import com.example.java4.entities.Account;
 import org.springframework.stereotype.Controller;

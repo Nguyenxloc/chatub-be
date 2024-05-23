@@ -1,4 +1,4 @@
-package com.example.java4.controllers;
+package com.example.java4.RestControllers;
 
 import com.example.java4.dto.kich_thuoc.StoreRequest;
 import com.example.java4.entities.KichThuoc;

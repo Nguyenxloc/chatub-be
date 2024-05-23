@@ -1,4 +1,4 @@
-package com.example.java4.controllers;
+package com.example.java4.RestControllers;
 import com.example.java4.dto.hdct.StoreRequest;
 import com.example.java4.entities.HDCT;
 import com.example.java4.repositories.*;
@@ -19,16 +19,11 @@ public class HDCTController {
     @Autowired
     HoaDonRepository hdRepo;
     @Autowired
-    HoaDonFullRepository hdFullRepo;
+    ChiTietSPfullRepository spctFullRepository;
     @Autowired
-    SPCTfullRepository spctFullRepository;
-    @Autowired
-    SPCTRepository spctRepository;
+    ChiTietSPRepository spctRepository;
     @Autowired
     HDCTRepository hdctRepository;
-    @Autowired
-    HDCTfullRepository hdctFullRepository;
-
     public HDCTController() {
     }
 
@@ -77,10 +72,8 @@ public class HDCTController {
             return null;
         } else {
             hdct.setIdHoaDon(Integer.parseInt(req.getIdHoaDon()));
-            hdct.setIdSPCT(Integer.parseInt(req.getIdSPCT()));
+            hdct.setIdChiTietSP(Integer.parseInt(req.getIdSPCT()));
             hdct.setSoLuong(Integer.valueOf(req.getSoLuong()));
-            hdct.setDonGia(Integer.valueOf(req.getDonGia()));
-            hdct.setThoiGian(StringsToTimeStampt(req.getNgayMuaHang(),req.getThoiGianMH()));
             hdct.setTrangThai(Integer.valueOf(req.getTrangThai()));
             hdct = hdctRepository.save(hdct);
         }
