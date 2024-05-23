@@ -11,5 +11,4 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Account {
     private String email;
-    private String password;
-}
+    private String password;}

@@ -38,6 +38,8 @@ public class KhachHang {
     private String quocGia;
     @Column(name="MatKhau")
     private String matKhau;
+    @Column(name="NgayTao")
+    private  Date ngayTao;
     @Column(name="indx")
     private Integer indx;
     @Column(name ="TrangThai")

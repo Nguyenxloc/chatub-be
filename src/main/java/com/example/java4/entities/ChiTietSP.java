@@ -38,4 +38,6 @@ public class ChiTietSP {
     private BigDecimal giaBan;
     @Column(name="NgayTao")
     private Date ngayTao;
+    @Column(name="TrangThai")
+    private Integer trangThai;
 }

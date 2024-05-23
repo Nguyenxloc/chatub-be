@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Getter
@@ -15,19 +16,16 @@ import java.sql.Timestamp;
 @Table(name="HoaDonChiTiet")
 public class HDCT {
     @Id
-    @Column(name="ID")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="IdHDCT")
     private Integer id;
     @Column(name="IdHoaDon")
     private Integer idHoaDon;
     @Column(name="IdChiTietSP")
-    private Integer idSPCT;
-    @Column(name="SoLuong")
-    private int soLuong;
-    @Column(name="DonGia")
-    private int donGia;
-    @Column(name="ThoiGian")
-    private Timestamp thoiGian;
+    private Integer idChiTietSP;
     @Column(name="TrangThai")
     private Integer trangThai;
+    @Column(name="NgayTao")
+    private Date ngayTao;
+    @Column(name="SoLuong")
+    private Integer soLuong;
 }

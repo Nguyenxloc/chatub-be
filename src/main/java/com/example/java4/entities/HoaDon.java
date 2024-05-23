@@ -14,7 +14,7 @@ import java.sql.Date;
 @Table(name="HoaDon")
 public class HoaDon {
     @Id
-    @Column(name="ID")
+    @Column(name="Id")
     private String id;
     @Column(name="Ma")
     private String ma;

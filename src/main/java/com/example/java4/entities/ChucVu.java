@@ -1,6 +1,9 @@
 package com.example.java4.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,19 +16,19 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name ="KichThuoc")
-public class KichThuoc {
+@Table(name = "chucVu")
+public class ChucVu {
     @Id
     @Column(name="Id")
     private String id;
     @Column(name="Ma")
     private String ma;
-    @Column(name="Ten")
+    @Column(name ="Ten")
     private String ten;
-    @Column(name="TrangThai")
-    private Integer trangThai;
+    @Column(name ="TrangThai")
+    private String trangThai;
     @Column(name="NgayTao")
     private Date ngayTao;
-    @Column(name="Indx")
+    @Column(name="indx")
     private Integer indx;
 }
