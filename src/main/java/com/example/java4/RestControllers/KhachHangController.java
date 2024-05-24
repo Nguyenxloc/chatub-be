@@ -1,6 +1,5 @@
 package com.example.java4.RestControllers;
-
-import com.example.java4.dto.khach_hang.StoreRequest;
+import com.example.java4.Request.KhachHangReq;
 import com.example.java4.entities.KhachHang;
 import com.example.java4.repositories.KhachHangRepository;
 import jakarta.validation.Valid;
@@ -10,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -28,7 +29,7 @@ public class KhachHangController {
     }
 
     @PostMapping("/update/{id}")
-    public KhachHang doUpdate(@Valid @RequestBody StoreRequest newKH,
+    public KhachHang doUpdate(@Valid @RequestBody KhachHangReq newKH,
                            BindingResult result, @PathVariable(value = "id") KhachHang kh) {
         KhachHang value = new KhachHang();
         if (result.hasErrors()) {
@@ -36,10 +37,19 @@ public class KhachHangController {
             return null;
         } else {
             kh.setMa(newKH.getMa());
-            kh.setSdt(newKH.getSdt());
             kh.setTen(newKH.getTen());
-            kh.setTrangThai(newKH.getTrangThai());
-            value=khRepo.save(kh);
+            kh.setTenDem(newKH.getTenDem());
+            kh.setHo(newKH.getHo());
+            kh.setNgaySinh(newKH.getNgaySinh());
+            kh.setSdt(newKH.getSdt());
+            kh.setDiaChi(newKH.getDiaChi());
+            kh.setThanhPho(newKH.getThanhPho());
+            kh.setQuocGia(newKH.getQuocGia());
+            kh.setMatKhau(newKH.getMatKhau());
+            kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
+            kh.setIndx(Integer.valueOf(newKH.getIndx()));
+            kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));
+            value=khRepo.save(kh);////call procedure
         }
         return value;
     }
@@ -52,21 +62,28 @@ public class KhachHangController {
 
     @PostMapping("save")
     public KhachHang save(
-            @RequestBody @Valid StoreRequest req,
+            @RequestBody @Valid KhachHangReq newKH,
             BindingResult result
     ) {
-        KhachHang newKh = new KhachHang();
         if (result.hasErrors()) {
             System.out.println("error temp: "+result);
             return null;
         } else {
-            newKh.setId(null);
-            newKh.setMa(req.getMa());
-            newKh.setTen(req.getTen());
-            newKh.setSdt(req.getSdt());
-            newKh.setTrangThai(req.getTrangThai());
-            khRepo.save(newKh);
+            KhachHang kh = new KhachHang();
+            kh.setMa(newKH.getMa());
+            kh.setTen(newKH.getTen());
+            kh.setTenDem(newKH.getTenDem());
+            kh.setHo(newKH.getHo());
+            kh.setNgaySinh(newKH.getNgaySinh());
+            kh.setSdt(newKH.getSdt());
+            kh.setDiaChi(newKH.getDiaChi());
+            kh.setThanhPho(newKH.getThanhPho());
+            kh.setQuocGia(newKH.getQuocGia());
+            kh.setMatKhau(newKH.getMatKhau());
+            kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
+            kh.setIndx(Integer.valueOf(newKH.getIndx()));
+            kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));
+            return kh;
         }
-        return newKh;
     }
 }
