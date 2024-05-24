@@ -1,9 +1,10 @@
-package com.example.java4.entities;
+package com.example.java4.Request;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,20 +16,14 @@ import java.sql.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "chucVu")
-public class ChucVu {
-    @Id
-    @Column(name="Id")
+public class ChatLieuRq {
     private String id;
-    @Column(name="Ma")
     private String ma;
-    @Column(name ="Ten")
+    @NotEmpty
     private String ten;
-    @Column(name ="TrangThai")
-    private Integer trangThai;
-    @Column(name="NgayTao")
+    @Positive
+    private String trangThai;
+    @Past
     private Date ngayTao;
-    @Column(name="indx")
     private Integer indx;
 }

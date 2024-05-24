@@ -40,7 +40,6 @@ public class NhanVienController {
         else{
             nv.setMa(newNhanVien.getMa());
             nv.setTen(newNhanVien.getTen());
-            nv.setTenDangNhap(newNhanVien.getTenDangNhap());
             nv.setMatKhau(newNhanVien.getMatKhau());
             nv.setTrangThai(newNhanVien.getTrangThai());
             nvRepo.save(nv);
@@ -61,7 +60,6 @@ public class NhanVienController {
             newNV.setId(null);
             newNV.setMa(newNV.getMa());
             newNV.setTen(newNV.getTen());
-            newNV.setTenDangNhap(newNV.getTenDangNhap());
             newNV.setMatKhau(newNV.getMatKhau());
             newNV.setTrangThai(newNV.getTrangThai());
             nvRepo.save(newNV);

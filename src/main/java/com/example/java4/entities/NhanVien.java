@@ -37,7 +37,7 @@ public class NhanVien {
     @Column(name="IdCV")
     private String idCV;
     @Column(name = "TrangThai")
-    private String trangThai;
+    private Integer trangThai;
     @Column(name="NgayTao")
     private  Date ngayTao;
     @Column(name="indx")

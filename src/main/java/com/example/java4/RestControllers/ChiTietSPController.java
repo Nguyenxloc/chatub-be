@@ -1,21 +1,20 @@
 package com.example.java4.RestControllers;
 
-import com.example.java4.dto.spct.StoreRequest;
+import com.example.java4.Request.ChiTietSPRQ;
 import com.example.java4.entities.*;
 import com.example.java4.repositories.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import java.sql.Date;
 import java.util.List;
 @Controller
 @RequestMapping("spct")
 public class ChiTietSPController {
     //    @RequestMapping(name="login", method = RequestMethod.POST)
-    StoreRequest rem;
     @Autowired
     SanPhamRepository spRepo;
     @Autowired
@@ -30,12 +29,34 @@ public class ChiTietSPController {
     ChiTietSPRepository chiTietSPRepository;
 
     public ChiTietSPController() {
-        rem = new StoreRequest();
     }
 
     @GetMapping("/index")
-    public ResponseEntity<List<ChiTietSP>> index(Model model) {
+    public ResponseEntity<List<ChiTietSP>> index() {
         return ResponseEntity.ok(chiTietSPRepository.findAll());
+    }
+
+    @GetMapping("/detail/{id}")
+    public ChiTietSP getDetail(@PathVariable(name="id")ChiTietSPRQ newChiTietSP,BindingResult rs){
+           if(rs.hasErrors()){
+               System.out.println("please input valid data");
+               return null;
+           }
+           else{
+               ChiTietSP chiTietSP = new ChiTietSP();
+               chiTietSP.setId(newChiTietSP.getId());
+               chiTietSP.setIdSp(newChiTietSP.getIdSp());
+               chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
+               chiTietSP.setIdKichThuoc(newChiTietSP.getIdKichThuoc());
+               chiTietSP.setNamBH(Integer.valueOf(newChiTietSP.getNamBH()));
+               chiTietSP.setMoTa(newChiTietSP.getMoTa());
+               chiTietSP.setSoLuongTon(Integer.valueOf(newChiTietSP.getSoLuongTon()));
+               chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaNhap()));
+               chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaBan()));
+               chiTietSP.setNgayTao(Date.valueOf(newChiTietSP.getNgayTao()));
+               chiTietSP.setTrangThai(Integer.valueOf( newChiTietSP.getTrangThai()));
+               return  chiTietSP;
+           }
     }
 
     @DeleteMapping("/delete/{id}")
@@ -45,19 +66,26 @@ public class ChiTietSPController {
 
     @PostMapping("save")
     public ChiTietSP Store(
-            @RequestParam @Valid StoreRequest newSPCT,
+            @RequestBody @Valid ChiTietSPRQ newChiTietSP,
             BindingResult result
     ) {
-        ChiTietSP spct = new ChiTietSP();
         if (result.hasErrors()) {
             System.out.println("temp error: "+result);
+            return null;
         } else {
-            spct.setSoLuong(Integer.valueOf(newSPCT.getSoLuong()));
-            spct.setTrangThai(Integer.valueOf(newSPCT.getTrangThai()));
-            spct.setIdMauSac(newSPCT.getIdMauSac());
-            spct.setIdKichThuoc(newSPCT.getIdKichThuoc());
-            spct = spctRepo.save(spct);
+            ChiTietSP chiTietSP = new ChiTietSP();
+            chiTietSP.setId(newChiTietSP.getId());
+            chiTietSP.setIdSp(newChiTietSP.getIdSp());
+            chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
+            chiTietSP.setIdKichThuoc(newChiTietSP.getIdKichThuoc());
+            chiTietSP.setNamBH(Integer.valueOf(newChiTietSP.getNamBH()));
+            chiTietSP.setMoTa(newChiTietSP.getMoTa());
+            chiTietSP.setSoLuongTon(Integer.valueOf(newChiTietSP.getSoLuongTon()));
+            chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaNhap()));
+            chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaBan()));
+            chiTietSP.setNgayTao(Date.valueOf(newChiTietSP.getNgayTao()));
+            chiTietSP.setTrangThai(Integer.valueOf( newChiTietSP.getTrangThai()));
+            return chiTietSP;
         }
-        return  spct;
     }
 }

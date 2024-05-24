@@ -30,12 +30,12 @@ public class ChiTietSP {
     private int namBH;
     @Column(name="MoTa")
     private String moTa;
-    @Column(name="SoLuong")
-    private Integer soLuong;
+    @Column(name="SoLuongTon")
+    private Integer soLuongTon;
     @Column(name="GiaNhap")
-    private BigDecimal giaNhap;
+    private Long giaNhap;
     @Column(name="GiaBan")
-    private BigDecimal giaBan;
+    private Long giaBan;
     @Column(name="NgayTao")
     private Date ngayTao;
     @Column(name="TrangThai")
