@@ -14,7 +14,7 @@ import java.sql.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("khach_hang")
+@RequestMapping("khach-hang")
 public class KhachHangController {
     //    @RequestMapping(name="login", method = RequestMethod.POST)
     @Autowired

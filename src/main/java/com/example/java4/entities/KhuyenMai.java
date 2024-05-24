@@ -27,8 +27,8 @@ public class KhuyenMai {
     @Column(name="NgayKetThuc")
     private Date ngayKetThuc;
     @ManyToOne
-    @JoinColumn(name="IdHinhThucKM",referencedColumnName = "IdHinhThucKM")
-    private HinhThucKM idHinhThucKM;
+    @JoinColumn(name="IdHinhThucKM",referencedColumnName = "Id")
+    private HinhThucKM hinhThucKM;
     @Column(name="GiaTriGiam")
     private Float giaTriGiam;
     @Column(name="indx")

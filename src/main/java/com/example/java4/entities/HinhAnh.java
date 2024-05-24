@@ -19,7 +19,7 @@ public class HinhAnh {
     @Column(name="Id")
     private String id;
     @ManyToOne
-    @JoinColumn(name="IdChiTietSP", referencedColumnName = "IdChiTietSP")
+    @JoinColumn(name="IdChiTietSP", referencedColumnName = "Id")
     private ChiTietSP chiTietSP;
     @Column(name ="Url")
     private String url;

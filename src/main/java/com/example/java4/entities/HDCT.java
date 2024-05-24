@@ -19,10 +19,10 @@ public class HDCT {
     @Column(name="IdHDCT")
     private String id;
     @ManyToOne
-    @JoinColumn(name="IdHoaDon",referencedColumnName = "IdHoaDon")
+    @JoinColumn(name="IdHoaDon",referencedColumnName = "Id")
     private HoaDon hoaDon;
     @ManyToOne
-    @JoinColumn(name ="IdChiTietSP", referencedColumnName = "IdChiTietSP")
+    @JoinColumn(name ="IdChiTietSP", referencedColumnName = "Id")
     private ChiTietSP chiTietSP;
     @Column(name="TrangThai")
     private Integer trangThai;

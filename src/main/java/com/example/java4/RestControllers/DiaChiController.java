@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
 @Controller
-@RequestMapping("spct")
+@RequestMapping("dia-chi")
 public class DiaChiController {
     //    @RequestMapping(name="login", method = RequestMethod.POST)
     @Autowired

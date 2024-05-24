@@ -19,7 +19,7 @@ public class PTTT {
     @Column(name="Id")
     private String id;
     @ManyToOne
-    @JoinColumn(name="IdHoaDon",referencedColumnName = "IdHoaDon")
+    @JoinColumn(name="IdHoaDon",referencedColumnName = "Id")
     private HoaDon hoaDon;
     @Column(name="ma")
     private String ma;

@@ -19,19 +19,19 @@ public class HoaDon {
     @Column(name="Ma")
     private String ma;
     @ManyToOne
-    @JoinColumn(name="IdPTTT",referencedColumnName = "IdPTTT")
+    @JoinColumn(name="IdPTTT",referencedColumnName = "Id")
     private PTTT pttt;
     @ManyToOne
-    @JoinColumn(name="IdKM",referencedColumnName = "IdKM")
+    @JoinColumn(name="IdKM",referencedColumnName = "Id")
     private KhuyenMai khuyenMai;
     @ManyToOne
-    @JoinColumn(name="IdNV",referencedColumnName ="IdNV")
+    @JoinColumn(name="IdNV",referencedColumnName ="Id")
     private NhanVien nhanVien;
     @ManyToOne
-    @JoinColumn(name="IdKH", referencedColumnName = "IdKH")
+    @JoinColumn(name="IdKH", referencedColumnName = "Id")
     private KhachHang khachHang;
     @ManyToOne
-    @JoinColumn(name="IdShip",referencedColumnName ="IdShip")
+    @JoinColumn(name="IdShip",referencedColumnName ="Id")
     private GiaoHang  giaoHang;
     @Column(name="NgayTao")
     private Date ngayTao;

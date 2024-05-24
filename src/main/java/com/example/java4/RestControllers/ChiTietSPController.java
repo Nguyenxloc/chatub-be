@@ -12,19 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
 @Controller
-@RequestMapping("spct")
+@RequestMapping("chi-tiet-sp")
 public class ChiTietSPController {
     //    @RequestMapping(name="login", method = RequestMethod.POST)
-    @Autowired
-    SanPhamRepository spRepo;
-    @Autowired
-    MauSacRepository msRepo;
-    @Autowired
-    KichThuocRepository ktRepo;
+    KichThuocRepository kichThuocRepo;
     @Autowired
     MauSacRepository mauSacRepo;
-    @Autowired
-    ChiTietSPRepository spctRepo;
     @Autowired
     ChiTietSPRepository chiTietSPRepository;
 
@@ -45,9 +38,8 @@ public class ChiTietSPController {
            else{
                ChiTietSP chiTietSP = new ChiTietSP();
                chiTietSP.setId(newChiTietSP.getId());
-               chiTietSP.setIdSp(newChiTietSP.getIdSp());
-               chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
-               chiTietSP.setIdKichThuoc(newChiTietSP.getIdKichThuoc());
+               chiTietSP.setMauSac(mauSacRepo.findById(newChiTietSP.getIdMauSac()).get());
+               chiTietSP.setKichThuoc(kichThuocRepo.findById(newChiTietSP.getIdKichThuoc()).get());
                chiTietSP.setNamBH(Integer.valueOf(newChiTietSP.getNamBH()));
                chiTietSP.setMoTa(newChiTietSP.getMoTa());
                chiTietSP.setSoLuongTon(Integer.valueOf(newChiTietSP.getSoLuongTon()));
@@ -61,7 +53,7 @@ public class ChiTietSPController {
 
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable(value = "id") ChiTietSP spct) {
-        spctRepo.delete(spct);
+        chiTietSPRepository.delete(spct);
     }
 
     @PostMapping("save")
@@ -75,9 +67,8 @@ public class ChiTietSPController {
         } else {
             ChiTietSP chiTietSP = new ChiTietSP();
             chiTietSP.setId(newChiTietSP.getId());
-            chiTietSP.setIdSp(newChiTietSP.getIdSp());
-            chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
-            chiTietSP.setIdKichThuoc(newChiTietSP.getIdKichThuoc());
+            chiTietSP.setMauSac(mauSacRepo.findById(newChiTietSP.getIdMauSac()).get());
+            chiTietSP.setKichThuoc(kichThuocRepo.findById(newChiTietSP.getIdKichThuoc()).get());
             chiTietSP.setNamBH(Integer.valueOf(newChiTietSP.getNamBH()));
             chiTietSP.setMoTa(newChiTietSP.getMoTa());
             chiTietSP.setSoLuongTon(Integer.valueOf(newChiTietSP.getSoLuongTon()));

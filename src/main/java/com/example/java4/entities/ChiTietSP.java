@@ -19,16 +19,16 @@ public class ChiTietSP {
     @Column(name="Id")
     private String id;
     @ManyToOne
-    @JoinColumn(name="IdSP",referencedColumnName = "IdSp")
+    @JoinColumn(name="IdSP",referencedColumnName = "Id")
     private SanPham sp;
     @ManyToOne
-    @JoinColumn(name="IdNsx",referencedColumnName = "IdNsx")
+    @JoinColumn(name="IdNsx",referencedColumnName = "Id")
     private NSX nsx;
     @ManyToOne
-    @JoinColumn(name="IdMauSac",referencedColumnName = "IdMauSac")
+    @JoinColumn(name="IdMauSac",referencedColumnName = "Id")
     private MauSac mauSac;
     @ManyToOne
-    @JoinColumn(name="IdKichThuoc",referencedColumnName = "IdKichThuoc")
+    @JoinColumn(name="IdKichThuoc",referencedColumnName = "Id")
     private KichThuoc kichThuoc;
     @Column(name="NamBH")
     private int namBH;

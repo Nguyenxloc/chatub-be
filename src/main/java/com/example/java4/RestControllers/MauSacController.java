@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("mau_sac")
+@RequestMapping("mau-sac")
 public class MauSacController {
     @Autowired
     private MauSacRepository msRepo;

@@ -35,7 +35,7 @@ public class NhanVien {
     @Column(name="MatKhau")
     private String matKhau;
     @ManyToOne
-    @JoinColumn(name="IdCV",referencedColumnName ="IdCV")
+    @JoinColumn(name="IdCV",referencedColumnName ="Id")
     private ChucVu chucVu;
     @Column(name = "TrangThai")
     private Integer trangThai;
