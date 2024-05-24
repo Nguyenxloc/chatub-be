@@ -1,6 +1,5 @@
 package com.example.java4.RestControllers;
-
-import com.example.java4.dto.mau_sac.StoreRequest;
+import com.example.java4.Request.MauSacRq;
 import com.example.java4.entities.MauSac;
 import com.example.java4.repositories.MauSacRepository;
 import jakarta.validation.Valid;
@@ -26,7 +25,7 @@ public class MauSacController {
 
     @PostMapping("update/{id}")
     public MauSac doUpdate(
-            @RequestBody @Valid StoreRequest req,
+            @RequestBody @Valid MauSac req,
             BindingResult result, @PathVariable(value = "id") MauSac ms
     ) {
         if (result.hasErrors()){
@@ -49,21 +48,18 @@ public class MauSacController {
 
     @PostMapping("save")
     public MauSac save(
-            @RequestBody @Valid StoreRequest newMauSac,
+            @RequestBody @Valid MauSacRq newMauSac,
             BindingResult result
     ) {
-        MauSac ms = new MauSac();
         if (result.hasErrors()){
-            System.out.println("error temp: "+ result);
+            System.out.println("error temp at mausac: "+ result);
             return null;
         }
         else{
-            ms.setId(null);
-            ms.setTen(newMauSac.getTen());
-            ms.setMa(newMauSac.getMa());
-            ms.setTrangThai(1);
+            MauSac ms = new MauSac();
             msRepo.save(ms);
+            return ms;
         }
-        return ms;
+
     }
 }

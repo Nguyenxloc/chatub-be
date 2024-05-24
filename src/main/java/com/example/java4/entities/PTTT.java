@@ -1,9 +1,6 @@
 package com.example.java4.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +18,10 @@ public class PTTT {
     @Id
     @Column(name="Id")
     private String id;
-    @Column(name="IdHoaDon")
+    @ManyToOne
+    @JoinColumn(name="IdHoaDon",referencedColumnName = "IdHoaDon")
+    private HoaDon hoaDon;
+    @Column(name="ma")
     private String ma;
     @Column(name ="LoaiPhuongThuc")
     private String loaiPhuongThuc;

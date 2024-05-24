@@ -1,5 +1,5 @@
 package com.example.java4.RestControllers;
-import com.example.java4.dto.hdct.StoreRequest;
+import com.example.java4.Request.HDCTReq;
 import com.example.java4.entities.HDCT;
 import com.example.java4.repositories.*;
 import jakarta.validation.Valid;
@@ -64,17 +64,13 @@ public class HDCTController {
 
     @PostMapping("/save")
     public HDCT save(
-            @RequestBody @Valid StoreRequest req, BindingResult result
+            @RequestBody @Valid HDCTReq newHDCT, BindingResult result
     ) {
         HDCT hdct = new HDCT();
         if (result.hasErrors()) {
             System.out.println("temp error: " + result);
             return null;
         } else {
-            hdct.setIdHoaDon(Integer.parseInt(req.getIdHoaDon()));
-            hdct.setIdChiTietSP(Integer.parseInt(req.getIdSPCT()));
-            hdct.setSoLuong(Integer.valueOf(req.getSoLuong()));
-            hdct.setTrangThai(Integer.valueOf(req.getTrangThai()));
             hdct = hdctRepository.save(hdct);
         }
         return hdct;

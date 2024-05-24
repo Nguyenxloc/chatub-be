@@ -1,9 +1,6 @@
 package com.example.java4.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,8 +18,9 @@ public class HinhAnh {
     @Id
     @Column(name="Id")
     private String id;
-    @Column(name="IdChiTietSP")
-    private String loaiPhuongThuc;
+    @ManyToOne
+    @JoinColumn(name="IdChiTietSP", referencedColumnName = "IdChiTietSP")
+    private ChiTietSP chiTietSP;
     @Column(name ="Url")
     private String url;
     @Column(name ="TrangThai")

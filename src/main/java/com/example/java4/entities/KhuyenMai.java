@@ -1,9 +1,6 @@
 package com.example.java4.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,8 +26,9 @@ public class KhuyenMai {
     private Date ngayBatDau;
     @Column(name="NgayKetThuc")
     private Date ngayKetThuc;
-    @Column(name="IdHinhThucKM")
-    private String idHinhThucKM;
+    @ManyToOne
+    @JoinColumn(name="IdHinhThucKM",referencedColumnName = "IdHinhThucKM")
+    private HinhThucKM idHinhThucKM;
     @Column(name="GiaTriGiam")
     private Float giaTriGiam;
     @Column(name="indx")

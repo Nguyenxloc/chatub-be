@@ -34,8 +34,9 @@ public class NhanVien {
     private String sdt;
     @Column(name="MatKhau")
     private String matKhau;
-    @Column(name="IdCV")
-    private String idCV;
+    @ManyToOne
+    @JoinColumn(name="IdCV",referencedColumnName ="IdCV")
+    private ChucVu chucVu;
     @Column(name = "TrangThai")
     private Integer trangThai;
     @Column(name="NgayTao")

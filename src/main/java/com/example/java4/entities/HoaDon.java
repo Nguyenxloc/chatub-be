@@ -18,16 +18,21 @@ public class HoaDon {
     private String id;
     @Column(name="Ma")
     private String ma;
-    @Column(name="IdPTTT")
-    private String idPTTT;
-    @Column(name="idKM")
-    private String idKM;
-    @Column(name="IdNV")
-    private Integer idNV;
-    @Column(name="IdKH")
-    private String idKH;
-    @Column(name="IdShip")
-    private String idShip;
+    @ManyToOne
+    @JoinColumn(name="IdPTTT",referencedColumnName = "IdPTTT")
+    private PTTT pttt;
+    @ManyToOne
+    @JoinColumn(name="IdKM",referencedColumnName = "IdKM")
+    private KhuyenMai khuyenMai;
+    @ManyToOne
+    @JoinColumn(name="IdNV",referencedColumnName ="IdNV")
+    private NhanVien nhanVien;
+    @ManyToOne
+    @JoinColumn(name="IdKH", referencedColumnName = "IdKH")
+    private KhachHang khachHang;
+    @ManyToOne
+    @JoinColumn(name="IdShip",referencedColumnName ="IdShip")
+    private GiaoHang  giaoHang;
     @Column(name="NgayTao")
     private Date ngayTao;
     @Column(name="NgayThanhToan")

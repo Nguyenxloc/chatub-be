@@ -18,14 +18,18 @@ public class ChiTietSP {
     @Id
     @Column(name="Id")
     private String id;
-    @Column(name="IdSP")
-    private String idSp;
-    @Column(name="IdNsx")
-    private String idNsx;
-    @Column(name="IdMauSac")
-    private String idMauSac;
-    @Column(name="IdKichThuoc")
-    private String idKichThuoc;
+    @ManyToOne
+    @JoinColumn(name="IdSP",referencedColumnName = "IdSp")
+    private SanPham sp;
+    @ManyToOne
+    @JoinColumn(name="IdNsx",referencedColumnName = "IdNsx")
+    private NSX nsx;
+    @ManyToOne
+    @JoinColumn(name="IdMauSac",referencedColumnName = "IdMauSac")
+    private MauSac mauSac;
+    @ManyToOne
+    @JoinColumn(name="IdKichThuoc",referencedColumnName = "IdKichThuoc")
+    private KichThuoc kichThuoc;
     @Column(name="NamBH")
     private int namBH;
     @Column(name="MoTa")

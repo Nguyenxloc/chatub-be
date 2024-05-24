@@ -1,6 +1,5 @@
 package com.example.java4.RestControllers;
-
-import com.example.java4.dto.nhan_vien.StoreRequest;
+import com.example.java4.Request.NhanVienRq;
 import com.example.java4.entities.NhanVien;
 import com.example.java4.repositories.NhanVienRepository;
 import jakarta.validation.Valid;
@@ -9,10 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("nhan_vien")
+@RequestMapping("nhan-vien")
 public class NhanVienController {
     @Autowired
     NhanVienRepository nvRepo;
@@ -30,7 +31,7 @@ public class NhanVienController {
 
     @PostMapping("/update/{id}")
     public NhanVien doUpdate(
-            @RequestBody @Valid StoreRequest newNhanVien,
+            @RequestBody @Valid NhanVienRq newNhanVien,
             BindingResult result,@PathVariable(value="id") NhanVien nv
     ) {
         if (result.hasErrors()) {
@@ -38,17 +39,14 @@ public class NhanVienController {
             return null;
         }
         else{
-            nv.setMa(newNhanVien.getMa());
-            nv.setTen(newNhanVien.getTen());
-            nv.setMatKhau(newNhanVien.getMatKhau());
-            nv.setTrangThai(newNhanVien.getTrangThai());
+
             nvRepo.save(nv);
         }
         return nv;
     }
     @PostMapping("save")
     public NhanVien save(
-            @RequestBody @Valid StoreRequest newNhanVien,
+            @RequestBody @Valid NhanVien  newNhanVien,
             BindingResult result
     ) {
         NhanVien newNV = new NhanVien();
@@ -57,11 +55,6 @@ public class NhanVienController {
             return null;
         }
         else{
-            newNV.setId(null);
-            newNV.setMa(newNV.getMa());
-            newNV.setTen(newNV.getTen());
-            newNV.setMatKhau(newNV.getMatKhau());
-            newNV.setTrangThai(newNV.getTrangThai());
             nvRepo.save(newNV);
         }
         return newNV;

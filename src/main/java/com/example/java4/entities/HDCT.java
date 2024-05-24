@@ -17,11 +17,13 @@ import java.sql.Timestamp;
 public class HDCT {
     @Id
     @Column(name="IdHDCT")
-    private Integer id;
-    @Column(name="IdHoaDon")
-    private Integer idHoaDon;
-    @Column(name="IdChiTietSP")
-    private Integer idChiTietSP;
+    private String id;
+    @ManyToOne
+    @JoinColumn(name="IdHoaDon",referencedColumnName = "IdHoaDon")
+    private HoaDon hoaDon;
+    @ManyToOne
+    @JoinColumn(name ="IdChiTietSP", referencedColumnName = "IdChiTietSP")
+    private ChiTietSP chiTietSP;
     @Column(name="TrangThai")
     private Integer trangThai;
     @Column(name="NgayTao")

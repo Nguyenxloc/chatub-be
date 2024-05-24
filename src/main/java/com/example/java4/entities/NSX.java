@@ -1,7 +1,6 @@
 package com.example.java4.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,19 +13,19 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "SanPham")
-public class SanPham {
+@Table(name="nsx")
+public class NSX {
     @Id
     @Column(name="Id")
     private String id;
     @Column(name="Ma")
     private String ma;
-    @Column(name ="Ten")
+    @Column(name="Ten")
     private String ten;
-    @Column(name ="TrangThai")
-    private String trangThai;
+    @Column(name="TrangThai")
+    private Integer trangThai;
     @Column(name="NgayTao")
     private Date ngayTao;
-    @Column(name="indx")
+    @Column(name="Indx")
     private Integer indx;
 }
