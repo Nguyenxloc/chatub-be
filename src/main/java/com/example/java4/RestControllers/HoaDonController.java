@@ -1,5 +1,5 @@
 package com.example.java4.RestControllers;
-import com.example.java4.dto.hoaDon.StoreRequest;
+import com.example.java4.Request.HoaDonReq;
 import com.example.java4.entities.HoaDon;
 import com.example.java4.repositories.*;
 import jakarta.validation.Valid;
@@ -8,14 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import java.sql.Date;
 import java.util.List;
-
 @Controller
-@RequestMapping("hoa_don")
+@RequestMapping("hoa-don")
 public class HoaDonController {
-    StoreRequest rem = new StoreRequest();
     @Autowired
     private HoaDonRepository hdRepo;
     public HoaDonController() {
@@ -27,7 +24,7 @@ public class HoaDonController {
 
     @PostMapping("update/{id}")
     public String doUpdate(
-            @RequestBody  @Valid StoreRequest newHoaDon,
+            @RequestBody  @Valid HoaDonReq newHoaDon,
             BindingResult result, @PathVariable(value = "id") HoaDon hd
     ) {
         if (result.hasErrors()){
@@ -35,11 +32,6 @@ public class HoaDonController {
             return null;
         }
         else{
-            hd.setIdKH(newHoaDon.getIdKH());
-            hd.setIdNV(Integer.valueOf(newHoaDon.getIdNV()));
-            hd.setNgayThanhToan(Date.valueOf(newHoaDon.getNgayMuaHang()));
-            hd.setTrangThai(Integer.valueOf(newHoaDon.getTrangThai()));
-            hdRepo.save(hd);
             return "redirect:/hoa_don/index";
         }
     }
@@ -51,7 +43,7 @@ public class HoaDonController {
 
     @PostMapping("save")
     public HoaDon save(
-            @RequestBody @Valid StoreRequest newHoaDon,
+            @RequestBody @Valid HoaDonReq newHoaDon,
             BindingResult result
     ) {
         HoaDon hd = new HoaDon();
@@ -60,11 +52,6 @@ public class HoaDonController {
             return null;
         }
         else{
-            hd.setId(null);
-            hd.setIdKH(newHoaDon.getIdKH());
-            hd.setIdNV(Integer.valueOf(newHoaDon.getIdNV()));
-            hd.setNgayThanhToan(Date.valueOf(newHoaDon.getNgayMuaHang()));
-            hd.setTrangThai(Integer.valueOf(newHoaDon.getTrangThai()));
             hd = hdRepo.save(hd);
         }
         return hd;

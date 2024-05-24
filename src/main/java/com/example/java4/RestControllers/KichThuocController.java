@@ -1,6 +1,5 @@
 package com.example.java4.RestControllers;
-
-import com.example.java4.dto.kich_thuoc.StoreRequest;
+import com.example.java4.Request.KichThuocReq;
 import com.example.java4.entities.KichThuoc;
 import com.example.java4.repositories.KichThuocRepository;
 import jakarta.validation.Valid;
@@ -14,17 +13,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("kich_thuoc")
+@RequestMapping("kich-thuoc")
 public class KichThuocController {
     //    @RequestMapping(name="login", method = RequestMethod.POST)
-    StoreRequest rem;
-    StoreRequest remUpdate;
     @Autowired
     KichThuocRepository ktRepo;
 
     public KichThuocController() {
-        this.rem = new StoreRequest();
-        this.remUpdate = new StoreRequest();
     }
 
     @GetMapping("/index")
@@ -38,7 +33,7 @@ public class KichThuocController {
     }
 
     @PostMapping("/update/{id}")
-    public KichThuoc doUpdate(@Valid @RequestBody StoreRequest newKichThuoc, BindingResult rs, @PathVariable(value = "id") KichThuoc kt) {
+    public KichThuoc doUpdate(@Valid @RequestBody KichThuocReq newKichThuoc, BindingResult rs, @PathVariable(value = "id") KichThuoc kt) {
         if (rs.hasErrors()) {
             System.out.println("error temp: " + rs);
             return null;
@@ -53,7 +48,7 @@ public class KichThuocController {
 
     @PostMapping("save")
     public KichThuoc store(
-            @RequestBody @Valid @ModelAttribute("data") StoreRequest newKichThuoc,
+            @RequestBody @Valid @ModelAttribute("data") KichThuocReq newKichThuoc,
             BindingResult result
     ) {
         KichThuoc kt = new KichThuoc();
