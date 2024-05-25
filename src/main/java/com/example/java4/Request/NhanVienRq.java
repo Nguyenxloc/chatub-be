@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NhanVienRq {
-    private Integer id;
+    private String id;
     private String ma;
     @NotEmpty
     private String ten;

@@ -11,11 +11,11 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="NhanVien")
+@Table(name="nhanvien")
 public class NhanVien {
     @Id
     @Column(name = "ID")
-    private Integer id;
+    private String id;
     @Column(name ="Ma")
     private String ma;
     @Column(name ="Ten")

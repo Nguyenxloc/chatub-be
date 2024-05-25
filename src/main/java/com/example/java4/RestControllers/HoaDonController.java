@@ -17,11 +17,17 @@ public class HoaDonController {
     private HoaDonRepository hdRepo;
     public HoaDonController() {
     }
+    @CrossOrigin
     @GetMapping("index")
     public ResponseEntity<List<HoaDon>> index() {
         return ResponseEntity.ok(hdRepo.findAll());
     }
 
+    @CrossOrigin
+    @GetMapping(value = "/detail/{id}")
+    public ResponseEntity<HoaDon> getDetail(@PathVariable(value = "id") HoaDon hoaDon){
+             return ResponseEntity.ok(hoaDon);
+    }
     @PostMapping("update/{id}")
     public String doUpdate(
             @RequestBody  @Valid HoaDonReq newHoaDon,

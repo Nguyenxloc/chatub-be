@@ -22,9 +22,6 @@ public class ChiTietSP {
     @JoinColumn(name="IdSP",referencedColumnName = "Id")
     private SanPham sp;
     @ManyToOne
-    @JoinColumn(name="IdNsx",referencedColumnName = "Id")
-    private NSX nsx;
-    @ManyToOne
     @JoinColumn(name="IdMauSac",referencedColumnName = "Id")
     private MauSac mauSac;
     @ManyToOne

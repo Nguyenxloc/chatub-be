@@ -3,6 +3,7 @@ import com.example.java4.Request.NhanVienRq;
 import com.example.java4.entities.NhanVien;
 import com.example.java4.repositories.NhanVienRepository;
 import jakarta.validation.Valid;
+import org.eclipse.tags.shaded.org.apache.regexp.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,9 +20,16 @@ public class NhanVienController {
     NhanVienRepository nvRepo;
     public NhanVienController() {
     }
+    @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<NhanVien>> index() {
         return ResponseEntity.ok(nvRepo.findAll());
+    }
+
+    @CrossOrigin
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<NhanVien> getDetail(@PathVariable("id") NhanVien nhanVien){
+        return  ResponseEntity.ok(nhanVien);
     }
 
     @DeleteMapping("/delete/{id}")

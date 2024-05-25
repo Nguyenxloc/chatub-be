@@ -20,14 +20,18 @@ public class SanPhamController {
     @Autowired
     SanPhamRepository spRepo;
     public SanPhamController() {
-
     }
-
+    @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<SanPham>> index(){
           return ResponseEntity.ok(spRepo.findAll());
     }
 
+    @CrossOrigin
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<SanPham> getDetail(@PathVariable(value = "id") SanPham sanPham){
+         return ResponseEntity.ok(sanPham);
+    }
     @DeleteMapping ("/delete/{id}")
     public void delete(@PathVariable(value ="id") SanPham sp){
         spRepo.delete(sp);

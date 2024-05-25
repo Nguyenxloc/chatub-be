@@ -16,9 +16,16 @@ public class HinhThucKMController {
     HinhThucKMRepository hinhThucKMRepo;
     public HinhThucKMController() {
     }
+    @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<HinhThucKM>> index(){
         return ResponseEntity.ok(hinhThucKMRepo.findAll());
+    }
+
+    @CrossOrigin
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<HinhThucKM> getDetail(@PathVariable(value ="id") HinhThucKM hinhThucKM){
+        return  ResponseEntity.ok(hinhThucKM);
     }
 
     @DeleteMapping ("/delete/{id}")

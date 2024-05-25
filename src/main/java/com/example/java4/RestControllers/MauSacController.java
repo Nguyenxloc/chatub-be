@@ -17,12 +17,17 @@ public class MauSacController {
     private MauSacRepository msRepo;
     public MauSacController() {
     }
-
+    @CrossOrigin
     @GetMapping("index")
     public ResponseEntity<List<MauSac>> index() {
         return ResponseEntity.ok(msRepo.findAll());
     }
 
+    @CrossOrigin
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<MauSac> getDetail(@PathVariable("id") MauSac mauSac){
+        return ResponseEntity.ok(mauSac);
+    }
     @PostMapping("update/{id}")
     public MauSac doUpdate(
             @RequestBody @Valid MauSac req,

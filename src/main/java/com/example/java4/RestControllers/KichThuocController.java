@@ -1,5 +1,6 @@
 package com.example.java4.RestControllers;
 import com.example.java4.Request.KichThuocReq;
+import com.example.java4.entities.KhuyenMai;
 import com.example.java4.entities.KichThuoc;
 import com.example.java4.repositories.KichThuocRepository;
 import jakarta.validation.Valid;
@@ -21,12 +22,17 @@ public class KichThuocController {
 
     public KichThuocController() {
     }
-
+    @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<KichThuoc>> getIndexPage(Model model) {
         return ResponseEntity.ok(ktRepo.findAll());
     }
 
+    @CrossOrigin
+    @GetMapping("detail/{id}")
+    public ResponseEntity<KichThuoc> getDetail(@PathVariable(value = "id") KichThuoc kichThuoc){
+         return  ResponseEntity.ok(kichThuoc);
+    }
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable(value = "id") KichThuoc kt) {
         ktRepo.delete(kt);

@@ -16,9 +16,16 @@ public class KhuyenMaiController {
     KhuyenMaiRepository khuyenMaiRepo;
     public KhuyenMaiController() {
     }
+    @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<KhuyenMai>> index(){
         return ResponseEntity.ok(khuyenMaiRepo.findAll());
+    }
+
+    @CrossOrigin
+    @GetMapping("detail/{id}")
+    public ResponseEntity<KhuyenMai> getDetail(@PathVariable(value = "id") KhuyenMai khuyenMai){
+        return ResponseEntity.ok(khuyenMai);
     }
 
     @DeleteMapping ("/delete/{id}")

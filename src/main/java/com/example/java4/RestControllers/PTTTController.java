@@ -1,7 +1,5 @@
 package com.example.java4.RestControllers;
-import com.example.java4.Request.NSXReq;
 import com.example.java4.Request.PTTTReq;
-import com.example.java4.entities.NSX;
 import com.example.java4.entities.PTTT;
 import com.example.java4.repositories.PTTTRepository;
 import jakarta.validation.Valid;
@@ -19,12 +17,17 @@ public class PTTTController {
 
     public PTTTController() {
     }
-
+    @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<PTTT>> getIndexPage() {
         return ResponseEntity.ok(ptttRepo.findAll());
     }
 
+    @CrossOrigin
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<PTTT> getDetail(@PathVariable(value = "id") PTTT pttt){
+            return  ResponseEntity.ok(pttt);
+    }
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable(value = "id") PTTT pttt) {
         ptttRepo.delete(pttt);

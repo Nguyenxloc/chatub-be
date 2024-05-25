@@ -11,6 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
+
 @Controller
 @RequestMapping("chi-tiet-sp")
 public class ChiTietSPController {
@@ -24,31 +26,16 @@ public class ChiTietSPController {
     public ChiTietSPController() {
     }
 
+    @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<ChiTietSP>> index() {
         return ResponseEntity.ok(chiTietSPRepository.findAll());
     }
 
+    @CrossOrigin
     @GetMapping("/detail/{id}")
-    public ChiTietSP getDetail(@PathVariable(name="id")ChiTietSPRQ newChiTietSP,BindingResult rs){
-           if(rs.hasErrors()){
-               System.out.println("please input valid data");
-               return null;
-           }
-           else{
-               ChiTietSP chiTietSP = new ChiTietSP();
-               chiTietSP.setId(newChiTietSP.getId());
-               chiTietSP.setMauSac(mauSacRepo.findById(newChiTietSP.getIdMauSac()).get());
-               chiTietSP.setKichThuoc(kichThuocRepo.findById(newChiTietSP.getIdKichThuoc()).get());
-               chiTietSP.setNamBH(Integer.valueOf(newChiTietSP.getNamBH()));
-               chiTietSP.setMoTa(newChiTietSP.getMoTa());
-               chiTietSP.setSoLuongTon(Integer.valueOf(newChiTietSP.getSoLuongTon()));
-               chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaNhap()));
-               chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaBan()));
-               chiTietSP.setNgayTao(Date.valueOf(newChiTietSP.getNgayTao()));
-               chiTietSP.setTrangThai(Integer.valueOf( newChiTietSP.getTrangThai()));
-               return  chiTietSP;
-           }
+    public ResponseEntity<ChiTietSP> getDetail(@PathVariable(value ="id") ChiTietSP chiTietSP){
+        return  ResponseEntity.ok(chiTietSP);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -57,6 +44,7 @@ public class ChiTietSPController {
     }
 
     @PostMapping("save")
+
     public ChiTietSP Store(
             @RequestBody @Valid ChiTietSPRQ newChiTietSP,
             BindingResult result

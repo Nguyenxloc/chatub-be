@@ -33,4 +33,6 @@ public class KhuyenMai {
     private Float giaTriGiam;
     @Column(name="indx")
     private Integer indx;
+    @Column(name="TrangThai")
+    private Integer trangThai;
 }

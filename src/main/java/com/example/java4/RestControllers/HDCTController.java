@@ -12,7 +12,6 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 @Controller
 @RequestMapping("hdct")
 public class HDCTController {
@@ -57,6 +56,11 @@ public class HDCTController {
         return ResponseEntity.ok(hdctRepository.findAll());
     }
 
+    @CrossOrigin
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<HDCT> getDetail(@PathVariable(value = "id") HDCT hdct){
+        return ResponseEntity.ok(hdct);
+    }
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable(value = "id") HDCT hdct) {
         hdctRepository.delete(hdct);

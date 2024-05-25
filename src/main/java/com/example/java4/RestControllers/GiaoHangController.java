@@ -20,30 +20,17 @@ public class GiaoHangController {
     public GiaoHangController() {
     }
 
+
+    @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<GiaoHang>> index() {
         return ResponseEntity.ok(giaoHangRepo.findAll());
     }
 
+    @CrossOrigin
     @GetMapping("/detail/{id}")
-    public GiaoHang getDetail(@PathVariable(name="id")GiaoHangRq newGiaoHangRq,BindingResult rs){
-        if(rs.hasErrors()){
-            System.out.println("please input valid data giao hang");
-            return null;
-        }
-        else{
-            GiaoHang giaoHang = new GiaoHang();
-            giaoHang.setId(newGiaoHangRq.getId());
-            giaoHang.setHoTen(newGiaoHangRq.getHoTen());
-            giaoHang.setSdt(newGiaoHangRq.getSdt());
-            giaoHang.setDiaChi(newGiaoHangRq.getDiaChi());
-            giaoHang.setPhuongXa(newGiaoHangRq.getPhuongXa());
-            giaoHang.setQuanHuyen(newGiaoHangRq.getQuanHuyen());
-            giaoHang.setTinhThanh(newGiaoHangRq.getTinhThanh());
-            giaoHang.setTrangThai(Integer.valueOf(newGiaoHangRq.getTrangThai()));
-            giaoHang.setNgayTao(Date.valueOf(newGiaoHangRq.getNgayTao()));
-            return giaoHang;
-        }
+    public ResponseEntity<GiaoHang> getDetail(@PathVariable(name="id")GiaoHang giaoHang){
+         return ResponseEntity.ok(giaoHang);
     }
 
     @DeleteMapping("/delete/{id}")

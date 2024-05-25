@@ -22,12 +22,18 @@ public class KhachHangController {
     public KhachHangController() {
 
     }
-
+    @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<KhachHang>> index(Model model) {
         return ResponseEntity.ok(khRepo.findAll()) ;
     }
 
+
+    @CrossOrigin
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<KhachHang> getDetail(@PathVariable(value = "id") KhachHang khachHang){
+            return ResponseEntity.ok(khachHang);
+    }
     @PostMapping("/update/{id}")
     public KhachHang doUpdate(@Valid @RequestBody KhachHangReq newKH,
                            BindingResult result, @PathVariable(value = "id") KhachHang kh) {

@@ -21,8 +21,6 @@ public class PTTT {
     @ManyToOne
     @JoinColumn(name="IdHoaDon",referencedColumnName = "Id")
     private HoaDon hoaDon;
-    @Column(name="ma")
-    private String ma;
     @Column(name ="LoaiPhuongThuc")
     private String loaiPhuongThuc;
     @Column(name ="TrangThai")

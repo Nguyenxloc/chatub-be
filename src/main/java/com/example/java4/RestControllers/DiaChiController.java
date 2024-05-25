@@ -19,28 +19,17 @@ public class DiaChiController {
     public DiaChiController() {
     }
 
+
+    @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<DiaChi>> index() {
         return ResponseEntity.ok(diaChiRepo.findAll());
     }
 
+    @CrossOrigin
     @GetMapping("/detail/{id}")
-    public DiaChi getDetail(@PathVariable(name="id") DiaChiRq newDiaChi, BindingResult rs){
-        if(rs.hasErrors()){
-            System.out.println("please input valid data");
-            return null;
-        }
-        else{
-            DiaChi diaChi = new DiaChi();
-            diaChi.setId(newDiaChi.getId());
-            diaChi.setIdKH(newDiaChi.getIdKH());
-            diaChi.setIdPhuongXa(newDiaChi.getIdPhuongXa());
-            diaChi.setIdQuanHuyen(newDiaChi.getIdQuanHuyen());
-            diaChi.setIdTinhThanh(newDiaChi.getIdTinhThanh());
-            diaChi.setTrangThai(Integer.valueOf(newDiaChi.getTrangThai()));
-            diaChi.setNgayTao(Date.valueOf(newDiaChi.getNgayTao()));
-            return  diaChi;
-        }
+    public ResponseEntity<DiaChi> getDetail(@PathVariable(name="id") DiaChi diaChi){
+         return ResponseEntity.ok(diaChi);
     }
 
     @DeleteMapping("/delete/{id}")
