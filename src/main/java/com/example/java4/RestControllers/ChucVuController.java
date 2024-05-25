@@ -4,7 +4,6 @@ import com.example.java4.entities.*;
 import com.example.java4.repositories.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.CreatedBy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,7 +17,6 @@ public class ChucVuController {
     //    @RequestMapping(name="login", method = RequestMethod.POST)
     @Autowired
     ChucVuRepository chucVuRepo;
-
     public ChucVuController() {
     }
     @CrossOrigin
@@ -28,7 +26,7 @@ public class ChucVuController {
     }
     @CrossOrigin
     @GetMapping("/detail/{id}")
-    public ResponseEntity<ChucVu> getDetail(@PathVariable(name="id")ChucVu chucVu){
+    public ResponseEntity<ChucVu> getDetail(@PathVariable(name="id") ChucVu chucVu){
              return ResponseEntity.ok(chucVu);
     }
 
@@ -43,7 +41,7 @@ public class ChucVuController {
             BindingResult result
     ) {
         if (result.hasErrors()) {
-            System.out.println("chuc vu acccused failed: "+result);
+            System.out.println("chuc vu accused failed: "+result);
             return null;
         } else {
             ChucVu chucVu = new ChucVu();
@@ -52,7 +50,6 @@ public class ChucVuController {
             chucVu.setTen(newChucVu.getTen());
             chucVu.setTrangThai(Integer.valueOf(newChucVu.getTrangThai()));
             chucVu.setNgayTao(Date.valueOf(newChucVu.getNgayTao()));
-            chucVu.setIndx(Integer.valueOf(newChucVu.getIndx()));
             return chucVu;
         }
     }

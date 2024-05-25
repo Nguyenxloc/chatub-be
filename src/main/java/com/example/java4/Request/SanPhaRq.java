@@ -17,5 +17,4 @@ public class SanPhaRq {
     private String trangThai;
     @NotEmpty
     private String ngayTao;
-    private Integer indx;
 }

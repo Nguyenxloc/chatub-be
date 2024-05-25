@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.sql.Date;
 @Getter
 @Setter
@@ -15,6 +14,7 @@ import java.sql.Date;
 public class NhanVien {
     @Id
     @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @Column(name ="Ma")
     private String ma;
@@ -41,6 +41,4 @@ public class NhanVien {
     private Integer trangThai;
     @Column(name="NgayTao")
     private  Date ngayTao;
-    @Column(name="indx")
-    private Integer indx;
 }

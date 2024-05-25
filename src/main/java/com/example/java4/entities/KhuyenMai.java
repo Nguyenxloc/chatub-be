@@ -17,6 +17,7 @@ import java.sql.Date;
 public class KhuyenMai {
     @Id
     @Column(name="Id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @Column(name="Ma")
     private String ma;
@@ -31,8 +32,6 @@ public class KhuyenMai {
     private HinhThucKM hinhThucKM;
     @Column(name="GiaTriGiam")
     private Float giaTriGiam;
-    @Column(name="indx")
-    private Integer indx;
     @Column(name="TrangThai")
     private Integer trangThai;
 }

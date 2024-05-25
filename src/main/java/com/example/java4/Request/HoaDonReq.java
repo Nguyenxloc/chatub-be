@@ -27,6 +27,4 @@ public class HoaDonReq {
     private String ngayThanhToan;
     @NotEmpty
     private String trangThai;
-    @NotEmpty
-    private String indx;
 }

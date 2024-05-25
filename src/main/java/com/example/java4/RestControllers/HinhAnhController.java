@@ -1,7 +1,6 @@
 package com.example.java4.RestControllers;
 import com.example.java4.Request.HinhAnhReq;
 import com.example.java4.Request.SanPhaRq;
-import com.example.java4.entities.HDCT;
 import com.example.java4.entities.HinhAnh;
 import com.example.java4.entities.SanPham;
 import com.example.java4.repositories.HinhAnhRepository;
@@ -27,8 +26,8 @@ public class HinhAnhController {
 
     @CrossOrigin
     @GetMapping("/detail/{id}")
-    public ResponseEntity<HDCT> getDetail(@PathVariable(value = "id") HDCT hdct){
-            return ResponseEntity.ok(hdct);
+    public ResponseEntity<HinhAnh> getDetail(@PathVariable(value = "id") HinhAnh hinhAnh){
+            return ResponseEntity.ok(hinhAnh);
     }
     @DeleteMapping ("/delete/{id}")
     public void delete(@PathVariable(value ="id") HinhAnh hinhAnh){

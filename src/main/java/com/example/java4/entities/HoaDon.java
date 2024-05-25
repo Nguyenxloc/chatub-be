@@ -1,4 +1,5 @@
 package com.example.java4.entities;
+import com.example.java4.RestControllers.KhachHangController;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +16,7 @@ import java.sql.Date;
 public class HoaDon {
     @Id
     @Column(name="Id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @Column(name="Ma")
     private String ma;
@@ -32,13 +34,11 @@ public class HoaDon {
     private KhachHang khachHang;
     @ManyToOne
     @JoinColumn(name="IdShip",referencedColumnName ="Id")
-    private GiaoHang  giaoHang;
+    private GiaoHang giaoHang;
     @Column(name="NgayTao")
     private Date ngayTao;
     @Column(name="NgayThanhToan")
     private Date ngayThanhToan;
     @Column(name="TrangThai")
     private int trangThai;
-    @Column(name="indx")
-    private int indx;
 }

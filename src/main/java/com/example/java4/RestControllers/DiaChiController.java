@@ -1,6 +1,6 @@
 package com.example.java4.RestControllers;
 import com.example.java4.Request.DiaChiRq;
-import com.example.java4.entities.*;
+import com.example.java4.entities.DiaChi;
 import com.example.java4.repositories.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,6 @@
 package com.example.java4.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +17,7 @@ import java.sql.Date;
 public class ChucVu {
     @Id
     @Column(name="Id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @Column(name="Ma")
     private String ma;
@@ -29,6 +27,4 @@ public class ChucVu {
     private Integer trangThai;
     @Column(name="NgayTao")
     private Date ngayTao;
-    @Column(name="indx")
-    private Integer indx;
 }

@@ -33,7 +33,5 @@ public class KhachHangReq {
     @NotEmpty
     private String ngayTao;
     @NotEmpty
-    private String indx;
-    @NotEmpty
     private String trangThai;
 }

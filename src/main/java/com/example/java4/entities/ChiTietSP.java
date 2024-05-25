@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 
 @Getter
@@ -17,6 +16,7 @@ import java.sql.Date;
 public class ChiTietSP {
     @Id
     @Column(name="Id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @ManyToOne
     @JoinColumn(name="IdSP",referencedColumnName = "Id")

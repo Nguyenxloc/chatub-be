@@ -25,5 +25,4 @@ public class ChatLieuRq {
     private String trangThai;
     @Past
     private Date ngayTao;
-    private Integer indx;
 }

@@ -18,6 +18,4 @@ public class MauSacRq {
     private String trangThai;
     @NotEmpty
     private String ngayTao;
-    @NotEmpty
-    private String indx;
 }

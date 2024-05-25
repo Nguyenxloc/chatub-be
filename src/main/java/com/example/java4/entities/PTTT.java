@@ -17,6 +17,7 @@ import java.sql.Date;
 public class PTTT {
     @Id
     @Column(name="Id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @ManyToOne
     @JoinColumn(name="IdHoaDon",referencedColumnName = "Id")
@@ -27,6 +28,4 @@ public class PTTT {
     private String trangThai;
     @Column(name="NgayTao")
     private Date ngayTao;
-    @Column(name="indx")
-    private Integer indx;
 }

@@ -36,7 +36,7 @@ public class KhachHangController {
     }
     @PostMapping("/update/{id}")
     public KhachHang doUpdate(@Valid @RequestBody KhachHangReq newKH,
-                           BindingResult result, @PathVariable(value = "id") KhachHang kh) {
+                                   BindingResult result, @PathVariable(value = "id") KhachHang kh) {
         KhachHang value = new KhachHang();
         if (result.hasErrors()) {
             System.out.println("temp error: "+result);
@@ -53,7 +53,6 @@ public class KhachHangController {
             kh.setQuocGia(newKH.getQuocGia());
             kh.setMatKhau(newKH.getMatKhau());
             kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
-            kh.setIndx(Integer.valueOf(newKH.getIndx()));
             kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));
             value=khRepo.save(kh);////call procedure
         }
@@ -87,7 +86,6 @@ public class KhachHangController {
             kh.setQuocGia(newKH.getQuocGia());
             kh.setMatKhau(newKH.getMatKhau());
             kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
-            kh.setIndx(Integer.valueOf(newKH.getIndx()));
             kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));
             return kh;
         }

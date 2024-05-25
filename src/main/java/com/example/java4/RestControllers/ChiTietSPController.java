@@ -1,8 +1,10 @@
 package com.example.java4.RestControllers;
 
 import com.example.java4.Request.ChiTietSPRQ;
-import com.example.java4.entities.*;
+import com.example.java4.entities.ChiTietSP;
+import com.example.java4.entitiesNoMap.ChiTietSPNoMap;
 import com.example.java4.repositories.*;
+import com.example.java4.repositoriesNoMap.ChiTietSPfullRepositoryNoMap;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,17 +13,19 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("chi-tiet-sp")
 public class ChiTietSPController {
     //    @RequestMapping(name="login", method = RequestMethod.POST)
+    @Autowired
     KichThuocRepository kichThuocRepo;
     @Autowired
     MauSacRepository mauSacRepo;
     @Autowired
     ChiTietSPRepository chiTietSPRepository;
+    @Autowired
+    ChiTietSPfullRepositoryNoMap chiTietSPfullRepositoryNoMap;
 
     public ChiTietSPController() {
     }
@@ -44,8 +48,7 @@ public class ChiTietSPController {
     }
 
     @PostMapping("save")
-
-    public ChiTietSP Store(
+    public ChiTietSPNoMap Store(
             @RequestBody @Valid ChiTietSPRQ newChiTietSP,
             BindingResult result
     ) {
@@ -53,10 +56,9 @@ public class ChiTietSPController {
             System.out.println("temp error: "+result);
             return null;
         } else {
-            ChiTietSP chiTietSP = new ChiTietSP();
-            chiTietSP.setId(newChiTietSP.getId());
-            chiTietSP.setMauSac(mauSacRepo.findById(newChiTietSP.getIdMauSac()).get());
-            chiTietSP.setKichThuoc(kichThuocRepo.findById(newChiTietSP.getIdKichThuoc()).get());
+            ChiTietSPNoMap chiTietSP = new ChiTietSPNoMap();
+            chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
+            chiTietSP.setIdKichThuoc(newChiTietSP.getIdKichThuoc());
             chiTietSP.setNamBH(Integer.valueOf(newChiTietSP.getNamBH()));
             chiTietSP.setMoTa(newChiTietSP.getMoTa());
             chiTietSP.setSoLuongTon(Integer.valueOf(newChiTietSP.getSoLuongTon()));
@@ -64,6 +66,7 @@ public class ChiTietSPController {
             chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaBan()));
             chiTietSP.setNgayTao(Date.valueOf(newChiTietSP.getNgayTao()));
             chiTietSP.setTrangThai(Integer.valueOf( newChiTietSP.getTrangThai()));
+            chiTietSPfullRepositoryNoMap.save(chiTietSP);
             return chiTietSP;
         }
     }

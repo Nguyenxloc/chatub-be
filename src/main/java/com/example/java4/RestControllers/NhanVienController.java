@@ -3,14 +3,12 @@ import com.example.java4.Request.NhanVienRq;
 import com.example.java4.entities.NhanVien;
 import com.example.java4.repositories.NhanVienRepository;
 import jakarta.validation.Valid;
-import org.eclipse.tags.shaded.org.apache.regexp.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -54,7 +52,7 @@ public class NhanVienController {
     }
     @PostMapping("save")
     public NhanVien save(
-            @RequestBody @Valid NhanVien  newNhanVien,
+            @RequestBody @Valid NhanVien newNhanVien,
             BindingResult result
     ) {
         NhanVien newNV = new NhanVien();

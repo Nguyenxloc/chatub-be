@@ -17,5 +17,4 @@ public class KichThuocReq {
     private String trangThai;
     @NotEmpty
     private String ngayTao;
-    private String indx;
 }

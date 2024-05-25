@@ -17,6 +17,7 @@ import java.sql.Date;
 public class HinhAnh {
     @Id
     @Column(name="Id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @ManyToOne
     @JoinColumn(name="IdChiTietSP", referencedColumnName = "Id")

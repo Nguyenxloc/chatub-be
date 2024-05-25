@@ -14,10 +14,8 @@ public class ChucVuRq {
     private String ma;
     @NotEmpty
     private String ten;
-    @Column(name ="TrangThai")
+    @NotEmpty
     private String trangThai;
-    @Column(name="NgayTao")
+    @NotEmpty
     private String ngayTao;
-    @Column(name="indx")
-    private String indx;
 }

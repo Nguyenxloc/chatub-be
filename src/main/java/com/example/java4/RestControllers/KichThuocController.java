@@ -1,6 +1,5 @@
 package com.example.java4.RestControllers;
 import com.example.java4.Request.KichThuocReq;
-import com.example.java4.entities.KhuyenMai;
 import com.example.java4.entities.KichThuoc;
 import com.example.java4.repositories.KichThuocRepository;
 import jakarta.validation.Valid;

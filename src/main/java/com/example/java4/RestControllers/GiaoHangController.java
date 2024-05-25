@@ -29,7 +29,7 @@ public class GiaoHangController {
 
     @CrossOrigin
     @GetMapping("/detail/{id}")
-    public ResponseEntity<GiaoHang> getDetail(@PathVariable(name="id")GiaoHang giaoHang){
+    public ResponseEntity<GiaoHang> getDetail(@PathVariable(name="id") GiaoHang giaoHang){
          return ResponseEntity.ok(giaoHang);
     }
 
