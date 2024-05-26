@@ -5,6 +5,7 @@ import com.example.java4.entitiesNoMap.PTTTNoMap;
 import com.example.java4.repositories.PTTTRepository;
 import com.example.java4.repositoriesNoMap.PTTTRepoNoMap;
 import jakarta.validation.Valid;
+import org.eclipse.tags.shaded.org.apache.regexp.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -51,20 +52,21 @@ public class PTTTController {
     }
 
     @PostMapping("save")
-    public PTTTNoMap store(
+    public ResponseEntity<Boolean> store(
             @RequestBody @Valid PTTTReq newPTTT,
             BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("error temp: " + result);
-            return null;
+            return ResponseEntity.ok(false);
         } else {
             PTTTNoMap pttt = new PTTTNoMap();
             pttt.setIdHoaDon(newPTTT.getIdHoaDon());
-            pttt.setIdLoaiPhuongThuc(newPTTT.getIdLoaiPhuongThuc());
+            pttt.setLoaiPhuongThuc(newPTTT.getLoaiPhuongThuc());
             pttt.setTrangThai(Integer.valueOf(newPTTT.getTrangThai()));
             pttt.setNgayTao(Date.valueOf(newPTTT.getNgayTao()));
-            return ptttRepoNoMap.save(pttt);
+            ptttRepoNoMap.save(pttt);
+            return ResponseEntity.ok(true);
         }
     }
 }

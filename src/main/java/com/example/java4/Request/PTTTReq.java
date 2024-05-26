@@ -13,7 +13,7 @@ public class PTTTReq {
     @NotEmpty
     private String idHoaDon;
     @NotEmpty
-    private String idLoaiPhuongThuc;
+    private String LoaiPhuongThuc;
     @NotEmpty
     private String trangThai;
     @NotEmpty

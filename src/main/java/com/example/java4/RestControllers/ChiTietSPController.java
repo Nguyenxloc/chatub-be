@@ -48,13 +48,13 @@ public class ChiTietSPController {
     }
 
     @PostMapping("save")
-    public ChiTietSPNoMap Store(
+    public ResponseEntity<Boolean> Store(
             @RequestBody @Valid ChiTietSPRQ newChiTietSP,
             BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("temp error: "+result);
-            return null;
+            return ResponseEntity.ok(false);
         } else {
             ChiTietSPNoMap chiTietSP = new ChiTietSPNoMap();
             chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
@@ -67,7 +67,7 @@ public class ChiTietSPController {
             chiTietSP.setNgayTao(Date.valueOf(newChiTietSP.getNgayTao()));
             chiTietSP.setTrangThai(Integer.valueOf( newChiTietSP.getTrangThai()));
             chiTietSPRepoNoMap.save(chiTietSP);
-            return chiTietSP;
+            return ResponseEntity.ok(true);
         }
     }
 }

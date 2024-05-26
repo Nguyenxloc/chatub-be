@@ -39,13 +39,13 @@ public class GiaoHangController {
     }
 
     @PostMapping("save")
-    public GiaoHang Store(
+    public ResponseEntity<Boolean> Store(
             @RequestBody @Valid GiaoHangRq newGiaoHangRq,
             BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("temp error at giaoHang: "+result);
-            return null;
+            return ResponseEntity.ok(false);
         } else {
             GiaoHang giaoHang= new GiaoHang();
             giaoHang.setId(newGiaoHangRq.getId());
@@ -58,7 +58,7 @@ public class GiaoHangController {
             giaoHang.setTrangThai(Integer.valueOf(newGiaoHangRq.getTrangThai()));
             giaoHang.setNgayTao(Date.valueOf(newGiaoHangRq.getNgayTao()));
             giaoHangRepo.save(giaoHang);
-            return giaoHang;
+            return ResponseEntity.ok(true);
         }
     }
 }

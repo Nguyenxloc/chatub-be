@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import java.sql.Date;
 import java.util.List;
 @Controller
@@ -52,21 +51,21 @@ public class KichThuocController {
     }
 
     @PostMapping("save")
-    public KichThuoc store(
-            @RequestBody @Valid @ModelAttribute("data") KichThuocReq newKichThuoc,
+    public ResponseEntity<Boolean> store(
+            @RequestBody @Valid KichThuocReq newKichThuoc,
             BindingResult result
     ) {
-        KichThuoc kt = new KichThuoc();
         if (result.hasErrors()) {
             System.out.println("error temp: " + result);
-            return null;
+            return ResponseEntity.ok(false);
         } else {
+            KichThuoc kt = new KichThuoc();
             kt.setMa(newKichThuoc.getMa());
             kt.setTen(newKichThuoc.getTen());
             kt.setTrangThai(Integer.valueOf(newKichThuoc.getTrangThai()));
             kt.setNgayTao(Date.valueOf(newKichThuoc.getNgayTao()));
             ktRepo.save(kt);
+            return ResponseEntity.ok(true);
         }
-        return kt;
     }
 }

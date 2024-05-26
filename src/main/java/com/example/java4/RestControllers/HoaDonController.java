@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import java.sql.Date;
 import java.util.List;
 @Controller
@@ -53,13 +52,13 @@ public class HoaDonController {
     }
 
     @PostMapping("save")
-    public HoaDonNoMap save(
+    public ResponseEntity<Boolean> save(
             @RequestBody @Valid HoaDonReq newHoaDon,
             BindingResult result
     ) {
         if (result.hasErrors()){
             System.out.println("temp error: "+ result);
-            return null;
+            return ResponseEntity.ok(false);
         }
         else{
             //conduct ma by select count
@@ -73,7 +72,7 @@ public class HoaDonController {
             hd.setNgayTao(Date.valueOf(newHoaDon.getNgayTao()));
             hd.setNgayThanhToan(Date.valueOf(newHoaDon.getNgayThanhToan()));
             hd.setTrangThai(Integer.valueOf(newHoaDon.getTrangThai()));
-            return hoaDonRepoNoMap.save(hd);
+            return ResponseEntity.ok(true);
         }
     }
 }

@@ -5,6 +5,7 @@ import com.example.java4.entitiesNoMap.HDCTNoMap;
 import com.example.java4.repositories.*;
 import com.example.java4.repositoriesNoMap.HDCTRepoNoMap;
 import jakarta.validation.Valid;
+import org.eclipse.tags.shaded.org.apache.xpath.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -72,12 +73,12 @@ public class HDCTController {
     }
 
     @PostMapping("/save")
-    public HDCTNoMap save(
+    public ResponseEntity<Boolean> save(
             @RequestBody @Valid HDCTReq newHDCT, BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("temp error: " + result);
-            return null;
+            return ResponseEntity.ok(false);
         } else {
             HDCTNoMap hdct = new HDCTNoMap();
             hdct.setIdHoaDon(newHDCT.getIdHoaDon());
@@ -85,7 +86,7 @@ public class HDCTController {
             hdct.setTrangThai(Integer.valueOf(newHDCT.getTrangThai()));
             hdct.setNgayTao(Date.valueOf(newHDCT.getNgayTao()));
             hdct.setSoLuong(Integer.valueOf(newHDCT.getSoLuong()));
-            return hdctRepoNoMap.save(hdct);
+            return ResponseEntity.ok(true);
         }
     }
 }

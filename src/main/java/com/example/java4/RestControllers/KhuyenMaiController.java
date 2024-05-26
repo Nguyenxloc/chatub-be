@@ -52,13 +52,13 @@ public class KhuyenMaiController {
     }
 
     @PostMapping("save")
-    public KhuyenMaiNoMap save(
+    public ResponseEntity<Boolean> save(
             @RequestBody @Valid KhuyenMaiReq newKhuyenMai,
             BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("error temp: " + result);
-            return null;
+            return ResponseEntity.ok(false);
         }
         else{
             KhuyenMaiNoMap khuyenMai = new KhuyenMaiNoMap();
@@ -70,7 +70,7 @@ public class KhuyenMaiController {
             khuyenMai.setGiaTriGiam(Float.valueOf(newKhuyenMai.getGiaTriGiam()));
             khuyenMai.setTrangThai(Integer.valueOf(newKhuyenMai.getTrangThai()));
             //call procedure
-            return khuyenMai;
+            return ResponseEntity.ok(true);
         }
     }
 }

@@ -35,12 +35,12 @@ public class KhachHangController {
             return ResponseEntity.ok(khachHang);
     }
     @PostMapping("/update/{id}")
-    public KhachHang doUpdate(@Valid @RequestBody KhachHangReq newKH,
+    public ResponseEntity<Boolean> doUpdate(@Valid @RequestBody KhachHangReq newKH,
                                    BindingResult result, @PathVariable(value = "id") KhachHang kh) {
         KhachHang value = new KhachHang();
         if (result.hasErrors()) {
             System.out.println("temp error: "+result);
-            return null;
+            return ResponseEntity.ok(false);
         } else {
             //conduct ma
             kh.setMa(newKH.getMa());
@@ -56,8 +56,8 @@ public class KhachHangController {
             kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
             kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));
             value=khRepo.save(kh);
+            return ResponseEntity.ok(true);
         }
-        return value;
     }
 
     @GetMapping("/delete/{id}")
@@ -67,13 +67,13 @@ public class KhachHangController {
     }
 
     @PostMapping("save")
-    public KhachHang save(
+    public ResponseEntity<Boolean> save(
             @RequestBody @Valid KhachHangReq newKH,
             BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("error temp: "+result);
-            return null;
+            return ResponseEntity.ok(false);
         } else {
             KhachHang kh = new KhachHang();
             kh.setMa(newKH.getMa());
@@ -88,7 +88,8 @@ public class KhachHangController {
             kh.setMatKhau(newKH.getMatKhau());
             kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
             kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));
-            return kh;
+            khRepo.save(kh);
+            return ResponseEntity.ok(true);
         }
     }
 }

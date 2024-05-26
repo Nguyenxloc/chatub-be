@@ -23,8 +23,8 @@ public class DiaChiRq{
     private String idQuanHuyen;
     @NotEmpty
     private String idTinhThanh;
-    @Positive
+    @NotEmpty
     private String trangThai;
-    @Past
+    @NotEmpty
     private String NgayTao;
 }

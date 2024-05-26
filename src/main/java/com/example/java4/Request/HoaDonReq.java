@@ -13,13 +13,9 @@ public class HoaDonReq {
     private String ma;
     @NotEmpty
     private String  IdPTTT;
-    @NotEmpty
     private String IdKhuyenMai;
-    @NotEmpty
     private String IdNhanVien;
-    @NotEmpty
     private String IdKhachHang;
-    @NotEmpty
     private String IdGiaoHang;
     @NotEmpty
     private String ngayTao;

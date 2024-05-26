@@ -56,13 +56,13 @@ public class NhanVienController {
         return nv;
     }
     @PostMapping("save")
-    public NhanVienNoMap save(
+    public ResponseEntity<Boolean> save(
             @RequestBody @Valid NhanVienRq newNhanVien,
             BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("error temp: "+result);
-            return null;
+            return ResponseEntity.ok(false);
         }
         else{
             NhanVienNoMap newNV = new NhanVienNoMap();
@@ -78,7 +78,7 @@ public class NhanVienController {
             newNV.setIdChucVu(newNhanVien.getIdCV());
             newNV.setTrangThai(Integer.valueOf(newNhanVien.getTrangThai()));
             newNV.setNgayTao(Date.valueOf(newNhanVien.getNgayTao()));
-            return nhanVienRepoNoMap.save(newNV);
+            return ResponseEntity.ok(true);
         }
     }
 }

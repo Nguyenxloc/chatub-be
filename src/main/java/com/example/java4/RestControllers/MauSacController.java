@@ -54,13 +54,13 @@ public class MauSacController {
     }
 
     @PostMapping("save")
-    public MauSac save(
+    public ResponseEntity<Boolean> save(
             @RequestBody @Valid MauSacRq newMauSac,
             BindingResult result
     ) {
         if (result.hasErrors()){
             System.out.println("error temp at mausac: "+ result);
-            return null;
+            return ResponseEntity.ok(false);
         }
         else{
             MauSac ms = new MauSac();
@@ -70,7 +70,7 @@ public class MauSacController {
             ms.setTrangThai(Integer.valueOf(newMauSac.getTrangThai()));
             ms.setNgayTao(Date.valueOf(newMauSac.getNgayTao()));
             msRepo.save(ms);
-            return ms;
+            return ResponseEntity.ok(true);
         }
     }
 }

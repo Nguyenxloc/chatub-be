@@ -15,8 +15,6 @@ public class ChiTietSPRQ {
     @NotEmpty
     private String idSp;
     @NotEmpty
-    private String idNsx;
-    @NotEmpty
     private String idMauSac;
     @NotEmpty
     private String idKichThuoc;
@@ -30,7 +28,7 @@ public class ChiTietSPRQ {
     private String giaNhap;
     @Positive
     private String giaBan;
-    @Past
+    @NotEmpty
     private String ngayTao;
     @NotEmpty
     private String  trangThai;

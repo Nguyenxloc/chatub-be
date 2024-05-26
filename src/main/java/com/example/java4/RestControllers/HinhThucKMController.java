@@ -48,13 +48,13 @@ public class HinhThucKMController {
     }
 
     @PostMapping("save")
-    public HinhThucKM save(
+    public ResponseEntity<Boolean> save(
             @RequestBody @Valid HinhThucKMReq newHinhThucKM,
             BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("error temp: " + result);
-            return null;
+            return ResponseEntity.ok(false);
         }
         else{
             HinhThucKM hinhThucKM = new HinhThucKM();
@@ -62,7 +62,7 @@ public class HinhThucKMController {
             hinhThucKM.setHeSo(Float.valueOf(newHinhThucKM.getHeSo()));
             hinhThucKM.setTrangThai(Integer.valueOf(newHinhThucKM.getTrangThai()));
             hinhThucKM.setNgayTao(Date.valueOf(newHinhThucKM.getNgayTao()));
-            return hinhThucKMRepo.save(hinhThucKM);
+            return ResponseEntity.ok(true);
         }
     }
 }

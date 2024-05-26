@@ -36,13 +36,13 @@ public class ChucVuController {
     }
 
     @PostMapping("save")
-    public ChucVu Store(
+    public ResponseEntity<Boolean> Store(
             @RequestBody @Valid ChucVuRq newChucVu,
             BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("chuc vu accused failed: "+result);
-            return null;
+            return ResponseEntity.ok(false);
         } else {
             ChucVu chucVu = new ChucVu();
             chucVu.setId(newChucVu.getId());
@@ -51,7 +51,7 @@ public class ChucVuController {
             chucVu.setTrangThai(Integer.valueOf(newChucVu.getTrangThai()));
             chucVu.setNgayTao(Date.valueOf(newChucVu.getNgayTao()));
             chucVuRepo.save(chucVu);
-            return chucVu;
+            return ResponseEntity.ok(true);
         }
     }
 }

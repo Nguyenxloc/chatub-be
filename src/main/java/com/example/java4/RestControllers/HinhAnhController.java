@@ -53,13 +53,13 @@ public class HinhAnhController {
     }
 
     @PostMapping("save")
-    public HinhAnhNoMap save(
+    public ResponseEntity<Boolean> save(
             @RequestBody @Valid HinhAnhReq newHinhAnh,
             BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("error temp: " + result);
-            return null;
+            return ResponseEntity.ok(false);
         }
         else{
             HinhAnhNoMap hinhAnh = new HinhAnhNoMap();
@@ -67,7 +67,8 @@ public class HinhAnhController {
             hinhAnh.setUrl(newHinhAnh.getUrl());
             hinhAnh.setTrangThai(Integer.valueOf(newHinhAnh.getTrangThai()));
             hinhAnh.setNgayTao(Date.valueOf(newHinhAnh.getNgayTao()));
-            return hinhAnhRepoNoMap.save(hinhAnh);
+            hinhAnhRepoNoMap.save(hinhAnh);
+            return ResponseEntity.ok(true);
         }
     }
 }

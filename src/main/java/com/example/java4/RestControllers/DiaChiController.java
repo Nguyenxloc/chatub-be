@@ -39,13 +39,13 @@ public class DiaChiController {
     }
 
     @PostMapping("save")
-    public DiaChi Store(
+    public ResponseEntity<Boolean> Store(
             @RequestBody @Valid DiaChiRq newDiaChi,
             BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("temp error: "+result);
-            return null;
+            return ResponseEntity.ok(false);
         } else {
             DiaChi diaChi = new DiaChi();
             diaChi.setId(newDiaChi.getId());
@@ -56,7 +56,7 @@ public class DiaChiController {
             diaChi.setTrangThai(Integer.valueOf(newDiaChi.getTrangThai()));
             diaChi.setNgayTao(Date.valueOf(newDiaChi.getNgayTao()));
             diaChiRepo.save(diaChi);
-            return diaChi;
+            return ResponseEntity.ok(true);
         }
     }
 }

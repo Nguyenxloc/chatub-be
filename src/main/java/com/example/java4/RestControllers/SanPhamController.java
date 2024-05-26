@@ -50,21 +50,22 @@ public class SanPhamController {
     }
 
     @PostMapping("save")
-    public SanPham save(
+    public ResponseEntity<Boolean> save(
             @RequestBody @Valid SanPhaRq newSanPham,
             BindingResult result
     ) {
-        SanPham sp = new SanPham();
         if (result.hasErrors()) {
             System.out.println("error temp: " + result);
-            return null;
+            return ResponseEntity.ok(false);
         }
         else{
+            SanPham sp = new SanPham();
             sp.setTen(newSanPham.getTen());
             sp.setMa(newSanPham.getMa());
             sp.setTrangThai(newSanPham.getTrangThai());
             sp.setNgayTao(Date.valueOf(newSanPham.getNgayTao()));
-            return spRepo.save(sp);
+            spRepo.save(sp);
+            return ResponseEntity.ok(true);
         }
     }
 }
