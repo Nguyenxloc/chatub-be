@@ -8,10 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import java.sql.Date;
 import java.util.List;
-
 @Controller
 @RequestMapping("san-pham")
 public class SanPhamController {
@@ -66,8 +64,7 @@ public class SanPhamController {
             sp.setMa(newSanPham.getMa());
             sp.setTrangThai(newSanPham.getTrangThai());
             sp.setNgayTao(Date.valueOf(newSanPham.getNgayTao()));
-            spRepo.save(sp);
+            return spRepo.save(sp);
         }
-        return sp;
     }
 }

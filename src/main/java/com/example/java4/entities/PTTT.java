@@ -25,7 +25,7 @@ public class PTTT {
     @Column(name ="LoaiPhuongThuc")
     private String loaiPhuongThuc;
     @Column(name ="TrangThai")
-    private String trangThai;
+    private Integer trangThai;
     @Column(name="NgayTao")
     private Date ngayTao;
 }

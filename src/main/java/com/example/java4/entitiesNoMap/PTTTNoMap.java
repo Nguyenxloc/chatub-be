@@ -22,9 +22,9 @@ public class PTTTNoMap {
     @Column(name="IdHoaDon")
     private String idHoaDon;
     @Column(name ="LoaiPhuongThuc")
-    private String loaiPhuongThuc;
+    private String idLoaiPhuongThuc;
     @Column(name ="TrangThai")
-    private String trangThai;
+    private Integer trangThai;
     @Column(name="NgayTao")
     private Date ngayTao;
 }

@@ -1,20 +1,25 @@
 package com.example.java4.RestControllers;
 import com.example.java4.Request.PTTTReq;
 import com.example.java4.entities.PTTT;
+import com.example.java4.entitiesNoMap.PTTTNoMap;
 import com.example.java4.repositories.PTTTRepository;
+import com.example.java4.repositoriesNoMap.PTTTRepoNoMap;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Date;
 import java.util.List;
 @Controller
 @RequestMapping("pttt")
 public class PTTTController {
     @Autowired
     PTTTRepository ptttRepo;
-
+    @Autowired
+    PTTTRepoNoMap ptttRepoNoMap;
     public PTTTController() {
     }
     @CrossOrigin
@@ -46,17 +51,20 @@ public class PTTTController {
     }
 
     @PostMapping("save")
-    public PTTT store(
-            @RequestBody @Valid PTTT newPTTT,
+    public PTTTNoMap store(
+            @RequestBody @Valid PTTTReq newPTTT,
             BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("error temp: " + result);
             return null;
         } else {
-            PTTT pttt = new PTTT();
-            //call procedure
-            return pttt;
+            PTTTNoMap pttt = new PTTTNoMap();
+            pttt.setIdHoaDon(newPTTT.getIdHoaDon());
+            pttt.setIdLoaiPhuongThuc(newPTTT.getIdLoaiPhuongThuc());
+            pttt.setTrangThai(Integer.valueOf(newPTTT.getTrangThai()));
+            pttt.setNgayTao(Date.valueOf(newPTTT.getNgayTao()));
+            return ptttRepoNoMap.save(pttt);
         }
     }
 }
