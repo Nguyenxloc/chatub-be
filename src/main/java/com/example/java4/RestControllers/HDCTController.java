@@ -56,6 +56,7 @@ public class HDCTController {
             return null;
         }
     }
+
     @CrossOrigin()
     @GetMapping("/index")
     public ResponseEntity<List<HDCT>> getIndex() {
@@ -67,11 +68,26 @@ public class HDCTController {
     public ResponseEntity<HDCT> getDetail(@PathVariable(value = "id") HDCT hdct){
         return ResponseEntity.ok(hdct);
     }
-    @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable(value = "id") HDCT hdct) {
-        hdctRepository.delete(hdct);
+
+    @CrossOrigin
+    @PostMapping("/update/{id}")
+    public ResponseEntity<Boolean> doUpdate(@PathVariable(name="id") HDCTNoMap hdct,
+                                            @RequestBody @Valid HDCTReq newHDCT,
+                                            BindingResult rs){
+        if(rs.hasErrors()){
+            System.out.println("update hdct error: " + rs);
+            return  ResponseEntity.ok(false);
+        }
+        else{
+            hdct.setIdChiTietSP(newHDCT.getIdChiTietSP());
+            hdct.setTrangThai(Integer.valueOf(newHDCT.getTrangThai()));
+            hdct.setNgayTao(Date.valueOf(newHDCT.getNgayTao()));
+            hdct.setSoLuong(Integer.valueOf(newHDCT.getSoLuong()));
+            return ResponseEntity.ok(true);
+        }
     }
 
+    @CrossOrigin
     @PostMapping("/save")
     public ResponseEntity<Boolean> save(
             @RequestBody @Valid HDCTReq newHDCT, BindingResult result
@@ -86,6 +102,7 @@ public class HDCTController {
             hdct.setTrangThai(Integer.valueOf(newHDCT.getTrangThai()));
             hdct.setNgayTao(Date.valueOf(newHDCT.getNgayTao()));
             hdct.setSoLuong(Integer.valueOf(newHDCT.getSoLuong()));
+            hdctRepoNoMap.save(hdct);
             return ResponseEntity.ok(true);
         }
     }

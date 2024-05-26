@@ -35,26 +35,32 @@ public class NhanVienController {
         return  ResponseEntity.ok(nhanVien);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable(value="id") NhanVien nv) {
-        nvRepo.delete(nv);
-    }
-
     @PostMapping("/update/{id}")
-    public NhanVien doUpdate(
+    public ResponseEntity<Boolean> doUpdate(
             @RequestBody @Valid NhanVienRq newNhanVien,
-            BindingResult result,@PathVariable(value="id") NhanVien nv
+            BindingResult result,@PathVariable(value="id") NhanVienNoMap nv
     ) {
         if (result.hasErrors()) {
             System.out.println("error temp: " + result);
-            return null;
+            return ResponseEntity.ok(false);
         }
         else{
-
-            nvRepo.save(nv);
+            nv.setTen(newNhanVien.getTen());
+            nv.setTenDem(newNhanVien.getTenDem());
+            nv.setHo(newNhanVien.getHo());
+            nv.setGioiTinh(newNhanVien.getGioiTinh());
+            nv.setNgaySinh(Date.valueOf(newNhanVien.getNgaySinh()));
+            nv.setDiaChi(newNhanVien.getDiaChi());
+            nv.setSdt(newNhanVien.getSdt());
+            nv.setMatKhau(newNhanVien.getMatKhau());
+            nv.setIdChucVu(newNhanVien.getIdCV());
+            nv.setTrangThai(Integer.valueOf(newNhanVien.getTrangThai()));
+            nv.setNgayTao(Date.valueOf(newNhanVien.getNgayTao()));
+            nhanVienRepoNoMap.save(nv);
+            return ResponseEntity.ok(true);
         }
-        return nv;
     }
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
             @RequestBody @Valid NhanVienRq newNhanVien,
@@ -65,19 +71,20 @@ public class NhanVienController {
             return ResponseEntity.ok(false);
         }
         else{
-            NhanVienNoMap newNV = new NhanVienNoMap();
-            newNV.setMa(newNhanVien.getMa());
-            newNV.setTen(newNhanVien.getTen());
-            newNV.setTenDem(newNhanVien.getTenDem());
-            newNV.setHo(newNhanVien.getHo());
-            newNV.setGioiTinh(newNhanVien.getGioiTinh());
-            newNV.setNgaySinh(Date.valueOf(newNhanVien.getNgaySinh()));
-            newNV.setDiaChi(newNhanVien.getDiaChi());
-            newNV.setSdt(newNhanVien.getSdt());
-            newNV.setMatKhau(newNhanVien.getMatKhau());
-            newNV.setIdChucVu(newNhanVien.getIdCV());
-            newNV.setTrangThai(Integer.valueOf(newNhanVien.getTrangThai()));
-            newNV.setNgayTao(Date.valueOf(newNhanVien.getNgayTao()));
+            NhanVienNoMap nv = new NhanVienNoMap();
+            nv.setMa(newNhanVien.getMa());
+            nv.setTen(newNhanVien.getTen());
+            nv.setTenDem(newNhanVien.getTenDem());
+            nv.setHo(newNhanVien.getHo());
+            nv.setGioiTinh(newNhanVien.getGioiTinh());
+            nv.setNgaySinh(Date.valueOf(newNhanVien.getNgaySinh()));
+            nv.setDiaChi(newNhanVien.getDiaChi());
+            nv.setSdt(newNhanVien.getSdt());
+            nv.setMatKhau(newNhanVien.getMatKhau());
+            nv.setIdChucVu(newNhanVien.getIdCV());
+            nv.setTrangThai(Integer.valueOf(newNhanVien.getTrangThai()));
+            nv.setNgayTao(Date.valueOf(newNhanVien.getNgayTao()));
+            nhanVienRepoNoMap.save(nv);
             return ResponseEntity.ok(true);
         }
     }

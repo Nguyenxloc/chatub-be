@@ -35,23 +35,24 @@ public class HinhAnhController {
     public ResponseEntity<HinhAnh> getDetail(@PathVariable(value = "id") HinhAnh hinhAnh){
             return ResponseEntity.ok(hinhAnh);
     }
-    @DeleteMapping ("/delete/{id}")
-    public void delete(@PathVariable(value ="id") HinhAnh hinhAnh){
-        hinhAnhRepo.delete(hinhAnh);
-    }
 
     @PostMapping ("/update/{id}")
-    public HinhAnh doUpdate(@RequestBody @Valid HinhAnhReq newHinhAnh, BindingResult result, @PathVariable(value ="id") HinhAnh hinhAnh){
+    public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid HinhAnhReq newHinhAnh, BindingResult result,
+                            @PathVariable(value ="id") HinhAnhNoMap hinhAnh){
         if (result.hasErrors()) {
             System.out.println("error temp:" + result);
-            return null;
+            return ResponseEntity.ok(false);
         }
         else{
-            //call procedure
-            return hinhAnh;
+            hinhAnh.setUrl(newHinhAnh.getUrl());
+            hinhAnh.setTrangThai(Integer.valueOf(newHinhAnh.getTrangThai()));
+            hinhAnh.setNgayTao(Date.valueOf(newHinhAnh.getNgayTao()));
+            hinhAnhRepoNoMap.save(hinhAnh);
+            return ResponseEntity.ok(true);
         }
     }
 
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
             @RequestBody @Valid HinhAnhReq newHinhAnh,

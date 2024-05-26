@@ -33,11 +33,30 @@ public class GiaoHangController {
          return ResponseEntity.ok(giaoHang);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable(value = "id") GiaoHang giaoHang) {
-         giaoHangRepo.delete(giaoHang);
+    @CrossOrigin
+    @PostMapping("/update/{id}")
+    public ResponseEntity<Boolean> doUpdate(@PathVariable(name="id") GiaoHang giaoHang,
+                                            @RequestBody @Valid GiaoHangRq newGiaoHangRq,
+                                            BindingResult rs){
+        if(rs.hasErrors()){
+            System.out.println("update error: " + rs);
+            return  ResponseEntity.ok(false);
+        }
+        else{
+            giaoHang.setHoTen(newGiaoHangRq.getHoTen());
+            giaoHang.setSdt(newGiaoHangRq.getSdt());
+            giaoHang.setDiaChi(newGiaoHangRq.getDiaChi());
+            giaoHang.setPhuongXa(newGiaoHangRq.getPhuongXa());
+            giaoHang.setQuanHuyen(newGiaoHangRq.getQuanHuyen());
+            giaoHang.setTinhThanh(newGiaoHangRq.getTinhThanh());
+            giaoHang.setTrangThai(Integer.valueOf(newGiaoHangRq.getTrangThai()));
+            giaoHang.setNgayTao(Date.valueOf(newGiaoHangRq.getNgayTao()));
+            giaoHangRepo.save(giaoHang);
+            return ResponseEntity.ok(true);
+        }
     }
 
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> Store(
             @RequestBody @Valid GiaoHangRq newGiaoHangRq,

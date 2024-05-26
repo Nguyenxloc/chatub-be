@@ -37,35 +37,24 @@ public class KhachHangController {
     @PostMapping("/update/{id}")
     public ResponseEntity<Boolean> doUpdate(@Valid @RequestBody KhachHangReq newKH,
                                    BindingResult result, @PathVariable(value = "id") KhachHang kh) {
-        KhachHang value = new KhachHang();
         if (result.hasErrors()) {
             System.out.println("temp error: "+result);
             return ResponseEntity.ok(false);
         } else {
             //conduct ma
-            kh.setMa(newKH.getMa());
             kh.setTen(newKH.getTen());
             kh.setTenDem(newKH.getTenDem());
             kh.setHo(newKH.getHo());
             kh.setNgaySinh(newKH.getNgaySinh());
             kh.setSdt(newKH.getSdt());
-            kh.setDiaChi(newKH.getDiaChi());
-            kh.setThanhPho(newKH.getThanhPho());
-            kh.setQuocGia(newKH.getQuocGia());
             kh.setMatKhau(newKH.getMatKhau());
             kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
             kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));
-            value=khRepo.save(kh);
             return ResponseEntity.ok(true);
         }
     }
 
-    @GetMapping("/delete/{id}")
-    public void delete(Model model, @PathVariable(value = "id") KhachHang kh) {
-        khRepo.delete(kh);
-        System.out.println("delete succesfully !");
-    }
-
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
             @RequestBody @Valid KhachHangReq newKH,
@@ -82,9 +71,6 @@ public class KhachHangController {
             kh.setHo(newKH.getHo());
             kh.setNgaySinh(newKH.getNgaySinh());
             kh.setSdt(newKH.getSdt());
-            kh.setDiaChi(newKH.getDiaChi());
-            kh.setThanhPho(newKH.getThanhPho());
-            kh.setQuocGia(newKH.getQuocGia());
             kh.setMatKhau(newKH.getMatKhau());
             kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
             kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));

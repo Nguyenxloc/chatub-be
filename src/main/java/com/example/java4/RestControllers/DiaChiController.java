@@ -20,7 +20,6 @@ public class DiaChiController {
     public DiaChiController() {
     }
 
-
     @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<DiaChi>> index() {
@@ -33,11 +32,29 @@ public class DiaChiController {
          return ResponseEntity.ok(diaChi);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable(value = "id") DiaChi diaChi) {
-        diaChiRepo.delete(diaChi);
+
+    @CrossOrigin
+    @PostMapping("/update/{id}")
+    public ResponseEntity<Boolean> doUpdate(@PathVariable(name="id") DiaChi diaChi,
+                                            @RequestBody @Valid DiaChiRq newDiaChi,
+                                            BindingResult rs){
+        if(rs.hasErrors()){
+            System.out.println("update error: " + rs);
+            return  ResponseEntity.ok(false);
+        }
+        else{
+            diaChi.setIdKH(newDiaChi.getIdKH());
+            diaChi.setIdPhuongXa(newDiaChi.getIdPhuongXa());
+            diaChi.setIdQuanHuyen(newDiaChi.getIdQuanHuyen());
+            diaChi.setIdTinhThanh(newDiaChi.getIdTinhThanh());
+            diaChi.setTrangThai(Integer.valueOf(newDiaChi.getTrangThai()));
+            diaChi.setNgayTao(Date.valueOf(newDiaChi.getNgayTao()));
+            diaChiRepo.save(diaChi);
+            return ResponseEntity.ok(true);
+        }
     }
 
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> Store(
             @RequestBody @Valid DiaChiRq newDiaChi,

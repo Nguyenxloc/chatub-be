@@ -31,12 +31,6 @@ public class KhachHangNoMap {
     private String ngaySinh;
     @Column(name="Sdt")
     private String sdt;
-    @Column(name="DiaChi")
-    private String idDiaChi;
-    @Column(name="ThanhPho")
-    private String thanhPho;
-    @Column(name="QuocGia")
-    private String quocGia;
     @Column(name="MatKhau")
     private String matKhau;
     @Column(name="NgayTao")

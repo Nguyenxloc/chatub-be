@@ -31,23 +31,20 @@ public class KichThuocController {
     public ResponseEntity<KichThuoc> getDetail(@PathVariable(value = "id") KichThuoc kichThuoc){
          return  ResponseEntity.ok(kichThuoc);
     }
-    @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable(value = "id") KichThuoc kt) {
-        ktRepo.delete(kt);
-    }
 
     @PostMapping("/update/{id}")
-    public KichThuoc doUpdate(@Valid @RequestBody KichThuocReq newKichThuoc, BindingResult rs, @PathVariable(value = "id") KichThuoc kt) {
+    public ResponseEntity<Boolean> doUpdate(@Valid @RequestBody KichThuocReq newKichThuoc, BindingResult rs,
+                                            @PathVariable(value = "id") KichThuoc kt) {
         if (rs.hasErrors()) {
-            System.out.println("error temp: " + rs);
+            System.out.println("error at kich thuoc: " + rs);
             return null;
         } else {
-            kt.setMa(newKichThuoc.getMa());
             kt.setTen(newKichThuoc.getTen());
             kt.setTrangThai(Integer.valueOf(newKichThuoc.getTrangThai()));
+            kt.setNgayTao(Date.valueOf(newKichThuoc.getNgayTao()));
             ktRepo.save(kt);
+            return  ResponseEntity.ok(true);
         }
-        return kt;
     }
 
     @PostMapping("save")

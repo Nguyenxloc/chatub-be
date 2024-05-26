@@ -31,12 +31,6 @@ public class KhachHang {
     private String ngaySinh;
     @Column(name="Sdt")
     private String sdt;
-    @Column(name="DiaChi")
-    private String diaChi;
-    @Column(name="ThanhPho")
-    private String thanhPho;
-    @Column(name="QuocGia")
-    private String quocGia;
     @Column(name="MatKhau")
     private String matKhau;
     @Column(name="NgayTao")

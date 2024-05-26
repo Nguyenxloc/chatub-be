@@ -23,12 +23,6 @@ public class KhachHangReq {
     @NotEmpty
     private String sdt;
     @NotEmpty
-    private String diaChi;
-    @NotEmpty
-    private String thanhPho;
-    @NotEmpty
-    private String quocGia;
-    @NotEmpty
     private String matKhau;
     @NotEmpty
     private String ngayTao;

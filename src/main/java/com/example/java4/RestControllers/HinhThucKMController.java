@@ -30,20 +30,19 @@ public class HinhThucKMController {
         return  ResponseEntity.ok(hinhThucKM);
     }
 
-    @DeleteMapping ("/delete/{id}")
-    public void delete(@PathVariable(value ="id") HinhThucKM hinhThucKM){
-        hinhThucKMRepo.delete(hinhThucKM);
-    }
-
     @PostMapping ("/update/{id}")
-    public HinhThucKM doUpdate(@RequestBody @Valid HinhThucKMReq newHinhThucKM, BindingResult result, @PathVariable(value ="id") HinhThucKM hinhThucKM){
+    public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid HinhThucKMReq newHinhThucKM, BindingResult result,
+                                            @PathVariable(value ="id") HinhThucKM hinhThucKM){
         if (result.hasErrors()) {
             System.out.println("error temp:" + result);
-            return null;
+            return  ResponseEntity.ok(false);
         }
         else{
-            //call procedure
-            return hinhThucKM;
+            hinhThucKM.setLoaiPhuongThuc(newHinhThucKM.getLoaiPhuongThuc());
+            hinhThucKM.setHeSo(Float.valueOf(newHinhThucKM.getHeSo()));
+            hinhThucKM.setTrangThai(Integer.valueOf(newHinhThucKM.getTrangThai()));
+            hinhThucKM.setNgayTao(Date.valueOf(newHinhThucKM.getNgayTao()));
+            return  ResponseEntity.ok(true);
         }
     }
 

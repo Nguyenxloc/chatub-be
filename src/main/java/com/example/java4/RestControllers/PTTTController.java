@@ -34,20 +34,20 @@ public class PTTTController {
     public ResponseEntity<PTTT> getDetail(@PathVariable(value = "id") PTTT pttt){
             return  ResponseEntity.ok(pttt);
     }
-    @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable(value = "id") PTTT pttt) {
-        ptttRepo.delete(pttt);
-    }
 
     @PostMapping("/update/{id}")
-    public PTTT doUpdate(@Valid @RequestBody PTTTReq newPttt, BindingResult rs, @PathVariable(value = "id") PTTT pttt) {
+    public ResponseEntity<Boolean> doUpdate(@Valid @RequestBody PTTTReq newPTTT, BindingResult rs,
+                         @PathVariable(value = "id") PTTTNoMap pttt) {
         if (rs.hasErrors()) {
             System.out.println("error temp: " + rs);
-            return null;
+            return ResponseEntity.ok(false);
         } else {
-            //call insert procedure
-            ptttRepo.save(pttt);
-            return pttt;
+            pttt.setIdHoaDon(newPTTT.getIdHoaDon());
+            pttt.setLoaiPhuongThuc(newPTTT.getLoaiPhuongThuc());
+            pttt.setTrangThai(Integer.valueOf(newPTTT.getTrangThai()));
+            pttt.setNgayTao(Date.valueOf(newPTTT.getNgayTao()));
+            ptttRepoNoMap.save(pttt);
+            return ResponseEntity.ok(true);
         }
     }
 

@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -38,25 +39,46 @@ public class ChiTietSPController {
 
     @CrossOrigin
     @GetMapping("/detail/{id}")
-    public ResponseEntity<ChiTietSP> getDetail(@PathVariable(value ="id") ChiTietSP chiTietSP){
-        return  ResponseEntity.ok(chiTietSP);
+    public ResponseEntity<ChiTietSP> getDetail(@PathVariable(value = "id") ChiTietSP chiTietSP) {
+        return ResponseEntity.ok(chiTietSP);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable(value = "id") ChiTietSP spct) {
-        chiTietSPRepository.delete(spct);
+    @CrossOrigin
+    @PostMapping("/update/{id}")
+    public ResponseEntity<Boolean> doUpdate(@PathVariable(value = "id") ChiTietSPNoMap chiTietSP,
+                                            @RequestBody @Valid ChiTietSPRQ newChiTietSP,
+                                            BindingResult rs) {
+          if(rs.hasErrors()){
+              System.out.println("update error: "+rs);
+              return ResponseEntity.ok(false);
+          } else{
+              chiTietSP.setIdSp(newChiTietSP.getIdSp());
+              chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
+              chiTietSP.setIdKichThuoc(newChiTietSP.getIdKichThuoc());
+              chiTietSP.setNamBH(Integer.valueOf(newChiTietSP.getNamBH()));
+              chiTietSP.setMoTa(newChiTietSP.getMoTa());
+              chiTietSP.setSoLuongTon(Integer.valueOf(newChiTietSP.getSoLuongTon()));
+              chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaNhap()));
+              chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaBan()));
+              chiTietSP.setNgayTao(Date.valueOf(newChiTietSP.getNgayTao()));
+              chiTietSP.setTrangThai(Integer.valueOf(newChiTietSP.getTrangThai()));
+              chiTietSPRepoNoMap.save(chiTietSP);
+              return  ResponseEntity.ok(true);
+          }
     }
 
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> Store(
             @RequestBody @Valid ChiTietSPRQ newChiTietSP,
             BindingResult result
     ) {
         if (result.hasErrors()) {
-            System.out.println("temp error: "+result);
+            System.out.println("temp error: " + result);
             return ResponseEntity.ok(false);
         } else {
             ChiTietSPNoMap chiTietSP = new ChiTietSPNoMap();
+            chiTietSP.setIdSp(newChiTietSP.getIdSp());
             chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
             chiTietSP.setIdKichThuoc(newChiTietSP.getIdKichThuoc());
             chiTietSP.setNamBH(Integer.valueOf(newChiTietSP.getNamBH()));
@@ -65,7 +87,7 @@ public class ChiTietSPController {
             chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaNhap()));
             chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaBan()));
             chiTietSP.setNgayTao(Date.valueOf(newChiTietSP.getNgayTao()));
-            chiTietSP.setTrangThai(Integer.valueOf( newChiTietSP.getTrangThai()));
+            chiTietSP.setTrangThai(Integer.valueOf(newChiTietSP.getTrangThai()));
             chiTietSPRepoNoMap.save(chiTietSP);
             return ResponseEntity.ok(true);
         }

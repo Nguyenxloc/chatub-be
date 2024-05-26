@@ -33,24 +33,26 @@ public class KhuyenMaiController {
     public ResponseEntity<KhuyenMai> getDetail(@PathVariable(value = "id") KhuyenMai khuyenMai){
         return ResponseEntity.ok(khuyenMai);
     }
-
-    @DeleteMapping ("/delete/{id}")
-    public void delete(@PathVariable(value ="id") KhuyenMai khuyenMai){
-        khuyenMaiRepo.delete(khuyenMai);
-    }
-
+    @CrossOrigin
     @PostMapping ("/update/{id}")
-    public KhuyenMai doUpdate(@RequestBody @Valid KhuyenMaiReq newKhuyenMai, BindingResult result, @PathVariable(value ="id") KhuyenMai khuyenMai){
+    public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid KhuyenMaiReq newKhuyenMai, BindingResult result,
+                              @PathVariable(value ="id") KhuyenMaiNoMap khuyenMai){
         if (result.hasErrors()) {
-            System.out.println("error temp:" + result);
-            return null;
+            System.out.println("error at khuyen mai "+result);
+            return ResponseEntity.ok(false);
         }
         else{
-            //call procedure
-            return khuyenMai;
+            khuyenMai.setTen(newKhuyenMai.getTen());
+            khuyenMai.setNgayBatDau(Date.valueOf(newKhuyenMai.getNgayBatDau()));
+            khuyenMai.setNgayKetThuc(Date.valueOf(newKhuyenMai.getNgayKetThuc()));
+            khuyenMai.setIdHinhThucKM(newKhuyenMai.getIdHinhThucKM());
+            khuyenMai.setGiaTriGiam(Float.valueOf(newKhuyenMai.getGiaTriGiam()));
+            khuyenMai.setTrangThai(Integer.valueOf(newKhuyenMai.getTrangThai()));
+            return ResponseEntity.ok(true);
         }
     }
 
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
             @RequestBody @Valid KhuyenMaiReq newKhuyenMai,

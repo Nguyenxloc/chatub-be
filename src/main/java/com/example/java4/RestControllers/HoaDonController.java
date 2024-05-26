@@ -33,22 +33,26 @@ public class HoaDonController {
              return ResponseEntity.ok(hoaDon);
     }
     @PostMapping("update/{id}")
-    public String doUpdate(
+    public ResponseEntity<Boolean> doUpdate(
             @RequestBody  @Valid HoaDonReq newHoaDon,
-            BindingResult result, @PathVariable(value = "id") HoaDon hd
+            BindingResult result, @PathVariable(value = "id") HoaDonNoMap hd
     ) {
         if (result.hasErrors()){
             System.out.println("tempt error: "+result);
-            return null;
+            return ResponseEntity.ok(false);
         }
         else{
-            return "redirect:/hoa_don/index";
+            hd.setMa(newHoaDon.getMa());
+            hd.setIdPttt(newHoaDon.getIdPTTT());
+            hd.setIdKhuyenMai(newHoaDon.getIdKhuyenMai());
+            hd.setIdNhanVien(newHoaDon.getIdNhanVien());
+            hd.setIdKhachHang(newHoaDon.getIdKhachHang());
+            hd.setIdGiaoHang(newHoaDon.getIdGiaoHang());
+            hd.setNgayTao(Date.valueOf(newHoaDon.getNgayTao()));
+            hd.setNgayThanhToan(Date.valueOf(newHoaDon.getNgayThanhToan()));
+            hd.setTrangThai(Integer.valueOf(newHoaDon.getTrangThai()));
+            return  ResponseEntity.ok(true);
         }
-    }
-
-    @GetMapping("delete/{id}")
-    public void delete(@PathVariable(value = "id") HoaDon hd) {
-        hdRepo.delete(hd);
     }
 
     @PostMapping("save")

@@ -29,26 +29,24 @@ public class SanPhamController {
     public ResponseEntity<SanPham> getDetail(@PathVariable(value = "id") SanPham sanPham){
          return ResponseEntity.ok(sanPham);
     }
-    @DeleteMapping ("/delete/{id}")
-    public void delete(@PathVariable(value ="id") SanPham sp){
-        spRepo.delete(sp);
-    }
 
     @PostMapping ("/update/{id}")
-    public SanPham doUpdate(@RequestBody @Valid SanPhaRq newSanPham, BindingResult result, @PathVariable(value ="id") SanPham sp){
+    public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid SanPhaRq newSanPham, BindingResult result,
+                                            @PathVariable(value ="id") SanPham sp){
         if (result.hasErrors()) {
             System.out.println("error temp:" + result);
-            return null;
+            return ResponseEntity.ok(false);
         }
         else{
             sp.setTen(newSanPham.getTen());
             sp.setMa(newSanPham.getMa());
             sp.setTrangThai(newSanPham.getTrangThai());
             sp.setNgayTao(Date.valueOf(newSanPham.getNgayTao()));
+            spRepo.save(sp);
+            return ResponseEntity.ok(true);
         }
-        return sp;
     }
-
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
             @RequestBody @Valid SanPhaRq newSanPham,

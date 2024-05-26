@@ -31,28 +31,24 @@ public class MauSacController {
         return ResponseEntity.ok(mauSac);
     }
     @PostMapping("update/{id}")
-    public MauSac doUpdate(
-            @RequestBody @Valid MauSac req,
+    public ResponseEntity<Boolean> doUpdate(
+            @RequestBody @Valid MauSacRq newMauSac,
             BindingResult result, @PathVariable(value = "id") MauSac ms
     ) {
         if (result.hasErrors()){
             System.out.println("Error temp: " + result);
-            return null;
+            return ResponseEntity.ok(false);
         }
         else{
-            ms.setTen(req.getTen());
-            ms.setMa(req.getMa());
-            ms.setTrangThai(req.getTrangThai());
+            ms.setTen(newMauSac.getTen());
+            ms.setTrangThai(Integer.valueOf(newMauSac.getTrangThai()));
+            ms.setNgayTao(Date.valueOf(newMauSac.getNgayTao()));
             msRepo.save(ms);
+            return  ResponseEntity.ok(true);
         }
-        return ms;
     }
 
-    @GetMapping("delete/{id}")
-    public void delete(@PathVariable(value = "id") MauSac ms) {
-        msRepo.delete(ms);
-    }
-
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
             @RequestBody @Valid MauSacRq newMauSac,
