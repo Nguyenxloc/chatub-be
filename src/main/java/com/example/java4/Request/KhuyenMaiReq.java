@@ -21,4 +21,6 @@ public class KhuyenMaiReq {
     private String idHinhThucKM;
     @NotEmpty
     private String giaTriGiam;
+    @NotEmpty
+    private String trangThai;
 }

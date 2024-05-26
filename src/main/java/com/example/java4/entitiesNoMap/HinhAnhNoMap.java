@@ -19,12 +19,12 @@ public class HinhAnhNoMap {
     @Column(name="Id")
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    @JoinColumn(name="IdChiTietSP")
+    @Column(name="IdChiTietSP")
     private String idChiTietSP;
     @Column(name ="Url")
     private String url;
     @Column(name ="TrangThai")
-    private String trangThai;
+    private Integer trangThai;
     @Column(name="NgayTao")
     private Date ngayTao;
 }

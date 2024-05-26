@@ -10,8 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
-
 @Controller
 @RequestMapping("kich-thuoc")
 public class KichThuocController {
@@ -64,6 +64,7 @@ public class KichThuocController {
             kt.setMa(newKichThuoc.getMa());
             kt.setTen(newKichThuoc.getTen());
             kt.setTrangThai(Integer.valueOf(newKichThuoc.getTrangThai()));
+            kt.setNgayTao(Date.valueOf(newKichThuoc.getNgayTao()));
             ktRepo.save(kt);
         }
         return kt;

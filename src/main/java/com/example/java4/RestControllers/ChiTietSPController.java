@@ -4,7 +4,7 @@ import com.example.java4.Request.ChiTietSPRQ;
 import com.example.java4.entities.ChiTietSP;
 import com.example.java4.entitiesNoMap.ChiTietSPNoMap;
 import com.example.java4.repositories.*;
-import com.example.java4.repositoriesNoMap.ChiTietSPfullRepositoryNoMap;
+import com.example.java4.repositoriesNoMap.ChiTietSPRepoNoMap;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +25,7 @@ public class ChiTietSPController {
     @Autowired
     ChiTietSPRepository chiTietSPRepository;
     @Autowired
-    ChiTietSPfullRepositoryNoMap chiTietSPfullRepositoryNoMap;
+    ChiTietSPRepoNoMap chiTietSPRepoNoMap;
 
     public ChiTietSPController() {
     }
@@ -66,7 +66,7 @@ public class ChiTietSPController {
             chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaBan()));
             chiTietSP.setNgayTao(Date.valueOf(newChiTietSP.getNgayTao()));
             chiTietSP.setTrangThai(Integer.valueOf( newChiTietSP.getTrangThai()));
-            chiTietSPfullRepositoryNoMap.save(chiTietSP);
+            chiTietSPRepoNoMap.save(chiTietSP);
             return chiTietSP;
         }
     }

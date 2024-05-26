@@ -32,7 +32,7 @@ public class KhachHangNoMap {
     @Column(name="Sdt")
     private String sdt;
     @Column(name="DiaChi")
-    private String diaChi;
+    private String idDiaChi;
     @Column(name="ThanhPho")
     private String thanhPho;
     @Column(name="QuocGia")

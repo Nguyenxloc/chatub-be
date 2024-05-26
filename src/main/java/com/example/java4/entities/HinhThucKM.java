@@ -27,7 +27,7 @@ public class HinhThucKM {
     @Column(name ="HeSo")
     private Float heSo;
     @Column(name ="TrangThai")
-    private String trangThai;
+    private Integer trangThai;
     @Column(name="NgayTao")
     private Date ngayTao;
 }

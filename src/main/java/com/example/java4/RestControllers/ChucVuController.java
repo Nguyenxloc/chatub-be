@@ -50,6 +50,7 @@ public class ChucVuController {
             chucVu.setTen(newChucVu.getTen());
             chucVu.setTrangThai(Integer.valueOf(newChucVu.getTrangThai()));
             chucVu.setNgayTao(Date.valueOf(newChucVu.getNgayTao()));
+            chucVuRepo.save(chucVu);
             return chucVu;
         }
     }

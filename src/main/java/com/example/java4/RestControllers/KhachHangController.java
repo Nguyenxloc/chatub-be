@@ -42,6 +42,7 @@ public class KhachHangController {
             System.out.println("temp error: "+result);
             return null;
         } else {
+            //conduct ma
             kh.setMa(newKH.getMa());
             kh.setTen(newKH.getTen());
             kh.setTenDem(newKH.getTenDem());
@@ -54,7 +55,7 @@ public class KhachHangController {
             kh.setMatKhau(newKH.getMatKhau());
             kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
             kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));
-            value=khRepo.save(kh);////call procedure
+            value=khRepo.save(kh);
         }
         return value;
     }

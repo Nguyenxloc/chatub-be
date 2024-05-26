@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -62,9 +64,13 @@ public class MauSacController {
         }
         else{
             MauSac ms = new MauSac();
+            //conduct ma
+            ms.setMa(newMauSac.getMa());
+            ms.setTen(newMauSac.getTen());
+            ms.setTrangThai(Integer.valueOf(newMauSac.getTrangThai()));
+            ms.setNgayTao(Date.valueOf(newMauSac.getNgayTao()));
             msRepo.save(ms);
             return ms;
         }
-
     }
 }

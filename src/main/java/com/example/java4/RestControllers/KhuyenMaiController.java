@@ -1,19 +1,25 @@
 package com.example.java4.RestControllers;
 import com.example.java4.Request.KhuyenMaiReq;
 import com.example.java4.entities.KhuyenMai;
+import com.example.java4.entitiesNoMap.KhuyenMaiNoMap;
 import com.example.java4.repositories.KhuyenMaiRepository;
+import com.example.java4.repositoriesNoMap.KhuyenMaiRepoNoMap;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Date;
 import java.util.List;
 @Controller
 @RequestMapping("khuyen-mai")
 public class KhuyenMaiController {
     @Autowired
     KhuyenMaiRepository khuyenMaiRepo;
+    @Autowired
+    KhuyenMaiRepoNoMap khuyenMaiRepoNoMap;
     public KhuyenMaiController() {
     }
     @CrossOrigin
@@ -46,7 +52,7 @@ public class KhuyenMaiController {
     }
 
     @PostMapping("save")
-    public KhuyenMai save(
+    public KhuyenMaiNoMap save(
             @RequestBody @Valid KhuyenMaiReq newKhuyenMai,
             BindingResult result
     ) {
@@ -55,7 +61,14 @@ public class KhuyenMaiController {
             return null;
         }
         else{
-            KhuyenMai khuyenMai = new KhuyenMai();
+            KhuyenMaiNoMap khuyenMai = new KhuyenMaiNoMap();
+            khuyenMai.setMa(newKhuyenMai.getMa());
+            khuyenMai.setTen(newKhuyenMai.getTen());
+            khuyenMai.setNgayBatDau(Date.valueOf(newKhuyenMai.getNgayBatDau()));
+            khuyenMai.setNgayKetThuc(Date.valueOf(newKhuyenMai.getNgayKetThuc()));
+            khuyenMai.setIdHinhThucKM(newKhuyenMai.getIdHinhThucKM());
+            khuyenMai.setGiaTriGiam(Float.valueOf(newKhuyenMai.getGiaTriGiam()));
+            khuyenMai.setTrangThai(Integer.valueOf(newKhuyenMai.getTrangThai()));
             //call procedure
             return khuyenMai;
         }

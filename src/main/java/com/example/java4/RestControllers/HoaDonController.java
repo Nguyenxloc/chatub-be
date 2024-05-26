@@ -1,7 +1,9 @@
 package com.example.java4.RestControllers;
 import com.example.java4.Request.HoaDonReq;
 import com.example.java4.entities.HoaDon;
+import com.example.java4.entitiesNoMap.HoaDonNoMap;
 import com.example.java4.repositories.*;
+import com.example.java4.repositoriesNoMap.HoaDonRepoNoMap;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,12 +11,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 @Controller
 @RequestMapping("hoa-don")
 public class HoaDonController {
     @Autowired
     private HoaDonRepository hdRepo;
+    @Autowired
+    private HoaDonRepoNoMap hoaDonRepoNoMap;
     public HoaDonController() {
     }
     @CrossOrigin
@@ -48,18 +53,27 @@ public class HoaDonController {
     }
 
     @PostMapping("save")
-    public HoaDon save(
+    public HoaDonNoMap save(
             @RequestBody @Valid HoaDonReq newHoaDon,
             BindingResult result
     ) {
-        HoaDon hd = new HoaDon();
         if (result.hasErrors()){
             System.out.println("temp error: "+ result);
             return null;
         }
         else{
-            hd = hdRepo.save(hd);
+            //conduct ma by select count
+            HoaDonNoMap hd = new HoaDonNoMap();
+            hd.setMa(newHoaDon.getMa());
+            hd.setIdPttt(newHoaDon.getIdPTTT());
+            hd.setIdKhuyenMai(newHoaDon.getIdKhuyenMai());
+            hd.setIdNhanVien(newHoaDon.getIdNhanVien());
+            hd.setIdKhachHang(newHoaDon.getIdKhachHang());
+            hd.setIdGiaoHang(newHoaDon.getIdGiaoHang());
+            hd.setNgayTao(Date.valueOf(newHoaDon.getNgayTao()));
+            hd.setNgayThanhToan(Date.valueOf(newHoaDon.getNgayThanhToan()));
+            hd.setTrangThai(Integer.valueOf(newHoaDon.getTrangThai()));
+            return hoaDonRepoNoMap.save(hd);
         }
-        return hd;
     }
 }

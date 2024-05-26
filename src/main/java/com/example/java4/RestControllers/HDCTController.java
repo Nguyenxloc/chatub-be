@@ -1,16 +1,19 @@
 package com.example.java4.RestControllers;
 import com.example.java4.Request.HDCTReq;
 import com.example.java4.entities.HDCT;
+import com.example.java4.entitiesNoMap.HDCTNoMap;
 import com.example.java4.repositories.*;
+import com.example.java4.repositoriesNoMap.HDCTRepoNoMap;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 @Controller
 @RequestMapping("hdct")
@@ -23,13 +26,15 @@ public class HDCTController {
     ChiTietSPRepository spctRepository;
     @Autowired
     HDCTRepository hdctRepository;
+    @Autowired
+    HDCTRepoNoMap hdctRepoNoMap;
     public HDCTController() {
     }
 
     public Timestamp StringsToTimeStampt(String date, String time){
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-            Date parsedDate = dateFormat.parse(date +" "+time+":00.000");
+            java.util.Date parsedDate = dateFormat.parse(date +" "+time+":00.000");
             Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
             System.out.println("timestamp:"+timestamp);
             return timestamp;
@@ -67,16 +72,20 @@ public class HDCTController {
     }
 
     @PostMapping("/save")
-    public HDCT save(
+    public HDCTNoMap save(
             @RequestBody @Valid HDCTReq newHDCT, BindingResult result
     ) {
-        HDCT hdct = new HDCT();
         if (result.hasErrors()) {
             System.out.println("temp error: " + result);
             return null;
         } else {
-            hdct = hdctRepository.save(hdct);
+            HDCTNoMap hdct = new HDCTNoMap();
+            hdct.setIdHoaDon(newHDCT.getIdHoaDon());
+            hdct.setIdChiTietSP(newHDCT.getIdChiTietSP());
+            hdct.setTrangThai(Integer.valueOf(newHDCT.getTrangThai()));
+            hdct.setNgayTao(Date.valueOf(newHDCT.getNgayTao()));
+            hdct.setSoLuong(Integer.valueOf(newHDCT.getSoLuong()));
+            return hdctRepoNoMap.save(hdct);
         }
-        return hdct;
     }
 }

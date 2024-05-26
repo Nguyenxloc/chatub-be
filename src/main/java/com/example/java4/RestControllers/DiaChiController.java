@@ -2,6 +2,7 @@ package com.example.java4.RestControllers;
 import com.example.java4.Request.DiaChiRq;
 import com.example.java4.entities.DiaChi;
 import com.example.java4.repositories.*;
+import com.example.java4.repositoriesNoMap.DiaChiRepoNoMap;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -54,6 +55,7 @@ public class DiaChiController {
             diaChi.setIdTinhThanh(newDiaChi.getIdTinhThanh());
             diaChi.setTrangThai(Integer.valueOf(newDiaChi.getTrangThai()));
             diaChi.setNgayTao(Date.valueOf(newDiaChi.getNgayTao()));
+            diaChiRepo.save(diaChi);
             return diaChi;
         }
     }

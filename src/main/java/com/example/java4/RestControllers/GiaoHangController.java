@@ -57,6 +57,7 @@ public class GiaoHangController {
             giaoHang.setTinhThanh(newGiaoHangRq.getTinhThanh());
             giaoHang.setTrangThai(Integer.valueOf(newGiaoHangRq.getTrangThai()));
             giaoHang.setNgayTao(Date.valueOf(newGiaoHangRq.getNgayTao()));
+            giaoHangRepo.save(giaoHang);
             return giaoHang;
         }
     }

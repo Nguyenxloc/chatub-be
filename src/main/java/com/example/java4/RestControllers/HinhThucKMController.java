@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Date;
 import java.util.List;
 @Controller
 @RequestMapping("hinh-thuc-km")
@@ -56,8 +58,11 @@ public class HinhThucKMController {
         }
         else{
             HinhThucKM hinhThucKM = new HinhThucKM();
-            //call procedure
-            return hinhThucKM;
+            hinhThucKM.setLoaiPhuongThuc(newHinhThucKM.getLoaiPhuongThuc());
+            hinhThucKM.setHeSo(Float.valueOf(newHinhThucKM.getHeSo()));
+            hinhThucKM.setTrangThai(Integer.valueOf(newHinhThucKM.getTrangThai()));
+            hinhThucKM.setNgayTao(Date.valueOf(newHinhThucKM.getNgayTao()));
+            return hinhThucKMRepo.save(hinhThucKM);
         }
     }
 }

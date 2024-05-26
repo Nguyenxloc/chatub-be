@@ -14,11 +14,11 @@ import java.sql.Date;
 public class HinhAnhReq {
     private String id;
     @NotEmpty
-    private ChiTietSP chiTietSP;
+    private String idChiTietSP;
     @NotEmpty
     private String url;
     @NotEmpty
     private String trangThai;
     @NotEmpty
-    private Date ngayTao;
+    private String ngayTao;
 }
