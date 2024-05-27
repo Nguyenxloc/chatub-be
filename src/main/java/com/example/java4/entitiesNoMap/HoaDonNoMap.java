@@ -14,13 +14,13 @@ import java.sql.Date;
 @Table(name="HoaDon")
 public class HoaDonNoMap {
     @Id
-    @Column(name="Id")
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @Column(name="Ma")
     private String ma;
-    @Column(name="IdPTTT")
-    private String idPttt;
+    @Column(name="pttt")
+    private String pttt;
     @Column(name="IdKM")
     private String idKhuyenMai;
     @Column(name="IdNV")

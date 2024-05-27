@@ -1,11 +1,11 @@
 package com.example.java4.RestControllers;
-import com.example.java4.Request.HDCTReq;
+import com.example.java4.requestStore.HDCTStore;
 import com.example.java4.entities.HDCT;
 import com.example.java4.entitiesNoMap.HDCTNoMap;
 import com.example.java4.repositories.*;
 import com.example.java4.repositoriesNoMap.HDCTRepoNoMap;
+import com.example.java4.requestUpdate.HDCTUpdate;
 import jakarta.validation.Valid;
-import org.eclipse.tags.shaded.org.apache.xpath.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -72,7 +72,7 @@ public class HDCTController {
     @CrossOrigin
     @PostMapping("/update/{id}")
     public ResponseEntity<Boolean> doUpdate(@PathVariable(name="id") HDCTNoMap hdct,
-                                            @RequestBody @Valid HDCTReq newHDCT,
+                                            @RequestBody @Valid HDCTUpdate newHDCT,
                                             BindingResult rs){
         if(rs.hasErrors()){
             System.out.println("update hdct error: " + rs);
@@ -83,6 +83,7 @@ public class HDCTController {
             hdct.setTrangThai(Integer.valueOf(newHDCT.getTrangThai()));
             hdct.setNgayTao(Date.valueOf(newHDCT.getNgayTao()));
             hdct.setSoLuong(Integer.valueOf(newHDCT.getSoLuong()));
+            hdctRepoNoMap.save(hdct);
             return ResponseEntity.ok(true);
         }
     }
@@ -90,7 +91,7 @@ public class HDCTController {
     @CrossOrigin
     @PostMapping("/save")
     public ResponseEntity<Boolean> save(
-            @RequestBody @Valid HDCTReq newHDCT, BindingResult result
+            @RequestBody @Valid HDCTStore newHDCT, BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("temp error: " + result);

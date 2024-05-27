@@ -1,17 +1,12 @@
-package com.example.java4.Request;
+package com.example.java4.requestUpdate;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Date;
 @Getter
 @Setter
-public class ChucVuRq {
-    private String id;
-    private String ma;
+public class ChucVuUpdate {
     @NotEmpty
     private String ten;
     @NotEmpty

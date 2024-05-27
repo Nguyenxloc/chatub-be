@@ -1,7 +1,8 @@
 package com.example.java4.RestControllers;
-import com.example.java4.Request.SanPhaRq;
+import com.example.java4.requestStore.SanPhaStore;
 import com.example.java4.entities.SanPham;
 import com.example.java4.repositories.SanPhamRepository;
+import com.example.java4.requestUpdate.SanPhaUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class SanPhamController {
     }
 
     @PostMapping ("/update/{id}")
-    public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid SanPhaRq newSanPham, BindingResult result,
+    public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid SanPhaUpdate newSanPham, BindingResult result,
                                             @PathVariable(value ="id") SanPham sp){
         if (result.hasErrors()) {
             System.out.println("error temp:" + result);
@@ -39,7 +40,6 @@ public class SanPhamController {
         }
         else{
             sp.setTen(newSanPham.getTen());
-            sp.setMa(newSanPham.getMa());
             sp.setTrangThai(newSanPham.getTrangThai());
             sp.setNgayTao(Date.valueOf(newSanPham.getNgayTao()));
             spRepo.save(sp);
@@ -49,7 +49,7 @@ public class SanPhamController {
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
-            @RequestBody @Valid SanPhaRq newSanPham,
+            @RequestBody @Valid SanPhaStore newSanPham,
             BindingResult result
     ) {
         if (result.hasErrors()) {

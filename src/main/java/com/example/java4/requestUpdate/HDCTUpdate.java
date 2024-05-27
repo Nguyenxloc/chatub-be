@@ -1,24 +1,22 @@
-package com.example.java4.Request;
-import com.example.java4.entities.ChiTietSP;
+package com.example.java4.requestUpdate;
+
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class HinhAnhReq {
-    private String id;
+@NoArgsConstructor
+public class HDCTUpdate {
     @NotEmpty
-    private String idChiTietSP;
-    @NotEmpty
-    private String url;
+    private String  idChiTietSP;
     @NotEmpty
     private String trangThai;
     @NotEmpty
     private String ngayTao;
+    @NotEmpty
+    private String soLuong;
 }

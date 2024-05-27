@@ -1,7 +1,8 @@
 package com.example.java4.RestControllers;
-import com.example.java4.Request.KhachHangReq;
+import com.example.java4.requestStore.KhachHangStore;
 import com.example.java4.entities.KhachHang;
 import com.example.java4.repositories.KhachHangRepository;
+import com.example.java4.requestUpdate.KhachHangUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,13 +36,12 @@ public class KhachHangController {
             return ResponseEntity.ok(khachHang);
     }
     @PostMapping("/update/{id}")
-    public ResponseEntity<Boolean> doUpdate(@Valid @RequestBody KhachHangReq newKH,
+    public ResponseEntity<Boolean> doUpdate(@Valid @RequestBody KhachHangUpdate newKH,
                                    BindingResult result, @PathVariable(value = "id") KhachHang kh) {
         if (result.hasErrors()) {
             System.out.println("temp error: "+result);
             return ResponseEntity.ok(false);
         } else {
-            //conduct ma
             kh.setTen(newKH.getTen());
             kh.setTenDem(newKH.getTenDem());
             kh.setHo(newKH.getHo());
@@ -50,6 +50,7 @@ public class KhachHangController {
             kh.setMatKhau(newKH.getMatKhau());
             kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
             kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));
+            khRepo.save(kh);
             return ResponseEntity.ok(true);
         }
     }
@@ -57,13 +58,14 @@ public class KhachHangController {
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
-            @RequestBody @Valid KhachHangReq newKH,
+            @RequestBody @Valid KhachHangStore newKH,
             BindingResult result
     ) {
         if (result.hasErrors()) {
             System.out.println("error temp: "+result);
             return ResponseEntity.ok(false);
         } else {
+            //conduct ma
             KhachHang kh = new KhachHang();
             kh.setMa(newKH.getMa());
             kh.setTen(newKH.getTen());

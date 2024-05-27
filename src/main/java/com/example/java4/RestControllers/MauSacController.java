@@ -1,7 +1,8 @@
 package com.example.java4.RestControllers;
-import com.example.java4.Request.MauSacRq;
+import com.example.java4.requestStore.MauSacStore;
 import com.example.java4.entities.MauSac;
 import com.example.java4.repositories.MauSacRepository;
+import com.example.java4.requestUpdate.MauSacUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +33,7 @@ public class MauSacController {
     }
     @PostMapping("update/{id}")
     public ResponseEntity<Boolean> doUpdate(
-            @RequestBody @Valid MauSacRq newMauSac,
+            @RequestBody @Valid MauSacUpdate newMauSac,
             BindingResult result, @PathVariable(value = "id") MauSac ms
     ) {
         if (result.hasErrors()){
@@ -51,7 +52,7 @@ public class MauSacController {
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
-            @RequestBody @Valid MauSacRq newMauSac,
+            @RequestBody @Valid MauSacStore newMauSac,
             BindingResult result
     ) {
         if (result.hasErrors()){

@@ -20,9 +20,8 @@ public class HoaDon {
     private String id;
     @Column(name="Ma")
     private String ma;
-    @ManyToOne
-    @JoinColumn(name="IdPTTT",referencedColumnName = "Id")
-    private PTTT pttt;
+    @Column(name="pttt")
+    private String pttt;
     @ManyToOne
     @JoinColumn(name="IdKM",referencedColumnName = "Id")
     private KhuyenMai khuyenMai;

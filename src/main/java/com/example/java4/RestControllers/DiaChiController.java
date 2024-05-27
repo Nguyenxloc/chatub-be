@@ -1,8 +1,8 @@
 package com.example.java4.RestControllers;
-import com.example.java4.Request.DiaChiRq;
+import com.example.java4.requestStore.DiaChiStore;
 import com.example.java4.entities.DiaChi;
 import com.example.java4.repositories.*;
-import com.example.java4.repositoriesNoMap.DiaChiRepoNoMap;
+import com.example.java4.requestUpdate.DiaChiUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,14 +36,14 @@ public class DiaChiController {
     @CrossOrigin
     @PostMapping("/update/{id}")
     public ResponseEntity<Boolean> doUpdate(@PathVariable(name="id") DiaChi diaChi,
-                                            @RequestBody @Valid DiaChiRq newDiaChi,
+                                            @RequestBody @Valid DiaChiUpdate newDiaChi,
                                             BindingResult rs){
         if(rs.hasErrors()){
             System.out.println("update error: " + rs);
             return  ResponseEntity.ok(false);
         }
         else{
-            diaChi.setIdKH(newDiaChi.getIdKH());
+            diaChi.setDiaChi(newDiaChi.getDiaChi());
             diaChi.setIdPhuongXa(newDiaChi.getIdPhuongXa());
             diaChi.setIdQuanHuyen(newDiaChi.getIdQuanHuyen());
             diaChi.setIdTinhThanh(newDiaChi.getIdTinhThanh());
@@ -57,8 +57,9 @@ public class DiaChiController {
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> Store(
-            @RequestBody @Valid DiaChiRq newDiaChi,
+            @RequestBody @Valid DiaChiStore newDiaChi,
             BindingResult result
+
     ) {
         if (result.hasErrors()) {
             System.out.println("temp error: "+result);

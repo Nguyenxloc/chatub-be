@@ -1,9 +1,10 @@
 package com.example.java4.RestControllers;
-import com.example.java4.Request.KhuyenMaiReq;
+import com.example.java4.requestStore.KhuyenMaiStore;
 import com.example.java4.entities.KhuyenMai;
 import com.example.java4.entitiesNoMap.KhuyenMaiNoMap;
 import com.example.java4.repositories.KhuyenMaiRepository;
 import com.example.java4.repositoriesNoMap.KhuyenMaiRepoNoMap;
+import com.example.java4.requestUpdate.KhuyenMaiUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,8 +36,8 @@ public class KhuyenMaiController {
     }
     @CrossOrigin
     @PostMapping ("/update/{id}")
-    public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid KhuyenMaiReq newKhuyenMai, BindingResult result,
-                              @PathVariable(value ="id") KhuyenMaiNoMap khuyenMai){
+    public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid KhuyenMaiUpdate newKhuyenMai, BindingResult result,
+                                            @PathVariable(value ="id") KhuyenMaiNoMap khuyenMai){
         if (result.hasErrors()) {
             System.out.println("error at khuyen mai "+result);
             return ResponseEntity.ok(false);
@@ -48,6 +49,7 @@ public class KhuyenMaiController {
             khuyenMai.setIdHinhThucKM(newKhuyenMai.getIdHinhThucKM());
             khuyenMai.setGiaTriGiam(Float.valueOf(newKhuyenMai.getGiaTriGiam()));
             khuyenMai.setTrangThai(Integer.valueOf(newKhuyenMai.getTrangThai()));
+            khuyenMaiRepoNoMap.save(khuyenMai);
             return ResponseEntity.ok(true);
         }
     }
@@ -55,7 +57,7 @@ public class KhuyenMaiController {
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
-            @RequestBody @Valid KhuyenMaiReq newKhuyenMai,
+            @RequestBody @Valid KhuyenMaiStore newKhuyenMai,
             BindingResult result
     ) {
         if (result.hasErrors()) {
@@ -71,6 +73,7 @@ public class KhuyenMaiController {
             khuyenMai.setIdHinhThucKM(newKhuyenMai.getIdHinhThucKM());
             khuyenMai.setGiaTriGiam(Float.valueOf(newKhuyenMai.getGiaTriGiam()));
             khuyenMai.setTrangThai(Integer.valueOf(newKhuyenMai.getTrangThai()));
+            khuyenMaiRepoNoMap.save(khuyenMai);
             //call procedure
             return ResponseEntity.ok(true);
         }

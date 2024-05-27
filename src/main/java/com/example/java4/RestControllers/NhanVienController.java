@@ -1,9 +1,10 @@
 package com.example.java4.RestControllers;
-import com.example.java4.Request.NhanVienRq;
+import com.example.java4.requestStore.NhanVienStore;
 import com.example.java4.entities.NhanVien;
 import com.example.java4.entitiesNoMap.NhanVienNoMap;
 import com.example.java4.repositories.NhanVienRepository;
 import com.example.java4.repositoriesNoMap.NhanVienRepoNoMap;
+import com.example.java4.requestUpdate.NhanVienUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +38,7 @@ public class NhanVienController {
 
     @PostMapping("/update/{id}")
     public ResponseEntity<Boolean> doUpdate(
-            @RequestBody @Valid NhanVienRq newNhanVien,
+            @RequestBody @Valid NhanVienUpdate newNhanVien,
             BindingResult result,@PathVariable(value="id") NhanVienNoMap nv
     ) {
         if (result.hasErrors()) {
@@ -63,7 +64,7 @@ public class NhanVienController {
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
-            @RequestBody @Valid NhanVienRq newNhanVien,
+            @RequestBody @Valid NhanVienStore newNhanVien,
             BindingResult result
     ) {
         if (result.hasErrors()) {

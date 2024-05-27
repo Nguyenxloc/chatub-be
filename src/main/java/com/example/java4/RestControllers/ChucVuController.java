@@ -1,9 +1,8 @@
 package com.example.java4.RestControllers;
-import com.example.java4.Request.ChucVuRq;
+import com.example.java4.requestStore.ChucVuStore;
 import com.example.java4.entities.*;
 import com.example.java4.repositories.*;
 import jakarta.validation.Valid;
-import org.eclipse.tags.shaded.org.apache.regexp.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -33,11 +32,11 @@ public class ChucVuController {
     @CrossOrigin
     @PostMapping("/update/{id}")
     public ResponseEntity<Boolean> doUpdate(@PathVariable(name="id") ChucVu chucVu,
-                                            @RequestBody @Valid ChucVuRq newChucVu,
+                                            @RequestBody @Valid ChucVuStore newChucVu,
                                             BindingResult rs){
                if(rs.hasErrors()){
                    System.out.println("update error: " + rs);
-                   return  ResponseEntity.ok(true);
+                   return  ResponseEntity.ok(false);
                }
                else{
                    chucVu.setTen(newChucVu.getTen());
@@ -50,7 +49,7 @@ public class ChucVuController {
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> Store(
-            @RequestBody @Valid ChucVuRq newChucVu,
+            @RequestBody @Valid ChucVuStore newChucVu,
             BindingResult result
     ) {
         if (result.hasErrors()) {

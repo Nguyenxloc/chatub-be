@@ -1,8 +1,9 @@
 package com.example.java4.RestControllers;
 
-import com.example.java4.Request.GiaoHangRq;
+import com.example.java4.requestStore.GiaoHangStore;
 import com.example.java4.entities.*;
 import com.example.java4.repositories.*;
+import com.example.java4.requestUpdate.GiaoHangUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,21 +37,21 @@ public class GiaoHangController {
     @CrossOrigin
     @PostMapping("/update/{id}")
     public ResponseEntity<Boolean> doUpdate(@PathVariable(name="id") GiaoHang giaoHang,
-                                            @RequestBody @Valid GiaoHangRq newGiaoHangRq,
+                                            @RequestBody @Valid GiaoHangUpdate newGiaoHang,
                                             BindingResult rs){
         if(rs.hasErrors()){
             System.out.println("update error: " + rs);
             return  ResponseEntity.ok(false);
         }
         else{
-            giaoHang.setHoTen(newGiaoHangRq.getHoTen());
-            giaoHang.setSdt(newGiaoHangRq.getSdt());
-            giaoHang.setDiaChi(newGiaoHangRq.getDiaChi());
-            giaoHang.setPhuongXa(newGiaoHangRq.getPhuongXa());
-            giaoHang.setQuanHuyen(newGiaoHangRq.getQuanHuyen());
-            giaoHang.setTinhThanh(newGiaoHangRq.getTinhThanh());
-            giaoHang.setTrangThai(Integer.valueOf(newGiaoHangRq.getTrangThai()));
-            giaoHang.setNgayTao(Date.valueOf(newGiaoHangRq.getNgayTao()));
+            giaoHang.setHoTen(newGiaoHang.getHoTen());
+            giaoHang.setSdt(newGiaoHang.getSdt());
+            giaoHang.setDiaChi(newGiaoHang.getDiaChi());
+            giaoHang.setPhuongXa(newGiaoHang.getPhuongXa());
+            giaoHang.setQuanHuyen(newGiaoHang.getQuanHuyen());
+            giaoHang.setTinhThanh(newGiaoHang.getTinhThanh());
+            giaoHang.setTrangThai(Integer.valueOf(newGiaoHang.getTrangThai()));
+            giaoHang.setNgayTao(Date.valueOf(newGiaoHang.getNgayTao()));
             giaoHangRepo.save(giaoHang);
             return ResponseEntity.ok(true);
         }
@@ -59,7 +60,7 @@ public class GiaoHangController {
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> Store(
-            @RequestBody @Valid GiaoHangRq newGiaoHangRq,
+            @RequestBody @Valid GiaoHangStore newGiaoHangStore,
             BindingResult result
     ) {
         if (result.hasErrors()) {
@@ -67,15 +68,15 @@ public class GiaoHangController {
             return ResponseEntity.ok(false);
         } else {
             GiaoHang giaoHang= new GiaoHang();
-            giaoHang.setId(newGiaoHangRq.getId());
-            giaoHang.setHoTen(newGiaoHangRq.getHoTen());
-            giaoHang.setSdt(newGiaoHangRq.getSdt());
-            giaoHang.setDiaChi(newGiaoHangRq.getDiaChi());
-            giaoHang.setPhuongXa(newGiaoHangRq.getPhuongXa());
-            giaoHang.setQuanHuyen(newGiaoHangRq.getQuanHuyen());
-            giaoHang.setTinhThanh(newGiaoHangRq.getTinhThanh());
-            giaoHang.setTrangThai(Integer.valueOf(newGiaoHangRq.getTrangThai()));
-            giaoHang.setNgayTao(Date.valueOf(newGiaoHangRq.getNgayTao()));
+            giaoHang.setId(newGiaoHangStore.getId());
+            giaoHang.setHoTen(newGiaoHangStore.getHoTen());
+            giaoHang.setSdt(newGiaoHangStore.getSdt());
+            giaoHang.setDiaChi(newGiaoHangStore.getDiaChi());
+            giaoHang.setPhuongXa(newGiaoHangStore.getPhuongXa());
+            giaoHang.setQuanHuyen(newGiaoHangStore.getQuanHuyen());
+            giaoHang.setTinhThanh(newGiaoHangStore.getTinhThanh());
+            giaoHang.setTrangThai(Integer.valueOf(newGiaoHangStore.getTrangThai()));
+            giaoHang.setNgayTao(Date.valueOf(newGiaoHangStore.getNgayTao()));
             giaoHangRepo.save(giaoHang);
             return ResponseEntity.ok(true);
         }

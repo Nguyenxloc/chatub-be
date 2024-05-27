@@ -1,11 +1,10 @@
 package com.example.java4.RestControllers;
-import com.example.java4.Request.HinhAnhReq;
-import com.example.java4.Request.SanPhaRq;
+import com.example.java4.requestStore.HinhAnhStore;
 import com.example.java4.entities.HinhAnh;
-import com.example.java4.entities.SanPham;
 import com.example.java4.entitiesNoMap.HinhAnhNoMap;
 import com.example.java4.repositories.HinhAnhRepository;
 import com.example.java4.repositoriesNoMap.HinhAnhRepoNoMap;
+import com.example.java4.requestUpdate.HinhAnhUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,8 +36,8 @@ public class HinhAnhController {
     }
 
     @PostMapping ("/update/{id}")
-    public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid HinhAnhReq newHinhAnh, BindingResult result,
-                            @PathVariable(value ="id") HinhAnhNoMap hinhAnh){
+    public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid HinhAnhUpdate newHinhAnh, BindingResult result,
+                                            @PathVariable(value ="id") HinhAnhNoMap hinhAnh){
         if (result.hasErrors()) {
             System.out.println("error temp:" + result);
             return ResponseEntity.ok(false);
@@ -55,7 +54,7 @@ public class HinhAnhController {
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
-            @RequestBody @Valid HinhAnhReq newHinhAnh,
+            @RequestBody @Valid HinhAnhStore newHinhAnh,
             BindingResult result
     ) {
         if (result.hasErrors()) {

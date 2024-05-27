@@ -1,7 +1,8 @@
 package com.example.java4.RestControllers;
-import com.example.java4.Request.HinhThucKMReq;
+import com.example.java4.requestStore.HinhThucKMStore;
 import com.example.java4.entities.HinhThucKM;
 import com.example.java4.repositories.HinhThucKMRepository;
+import com.example.java4.requestUpdate.HinhThucKMUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class HinhThucKMController {
     }
 
     @PostMapping ("/update/{id}")
-    public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid HinhThucKMReq newHinhThucKM, BindingResult result,
+    public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid HinhThucKMUpdate newHinhThucKM, BindingResult result,
                                             @PathVariable(value ="id") HinhThucKM hinhThucKM){
         if (result.hasErrors()) {
             System.out.println("error temp:" + result);
@@ -42,13 +43,14 @@ public class HinhThucKMController {
             hinhThucKM.setHeSo(Float.valueOf(newHinhThucKM.getHeSo()));
             hinhThucKM.setTrangThai(Integer.valueOf(newHinhThucKM.getTrangThai()));
             hinhThucKM.setNgayTao(Date.valueOf(newHinhThucKM.getNgayTao()));
+            hinhThucKMRepo.save(hinhThucKM);
             return  ResponseEntity.ok(true);
         }
     }
 
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
-            @RequestBody @Valid HinhThucKMReq newHinhThucKM,
+            @RequestBody @Valid HinhThucKMStore newHinhThucKM,
             BindingResult result
     ) {
         if (result.hasErrors()) {
@@ -61,6 +63,7 @@ public class HinhThucKMController {
             hinhThucKM.setHeSo(Float.valueOf(newHinhThucKM.getHeSo()));
             hinhThucKM.setTrangThai(Integer.valueOf(newHinhThucKM.getTrangThai()));
             hinhThucKM.setNgayTao(Date.valueOf(newHinhThucKM.getNgayTao()));
+            hinhThucKMRepo.save(hinhThucKM);
             return ResponseEntity.ok(true);
         }
     }

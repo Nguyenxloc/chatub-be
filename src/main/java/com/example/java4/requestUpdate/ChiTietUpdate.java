@@ -1,6 +1,5 @@
-package com.example.java4.Request;
+package com.example.java4.requestUpdate;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,10 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ChiTietSPRQ {
-    private String id;
-    @NotEmpty
-    private String idSp;
+public class ChiTietUpdate {
     @NotEmpty
     private String idMauSac;
     @NotEmpty

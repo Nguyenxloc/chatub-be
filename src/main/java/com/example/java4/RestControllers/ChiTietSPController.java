@@ -1,10 +1,11 @@
 package com.example.java4.RestControllers;
 
-import com.example.java4.Request.ChiTietSPRQ;
+import com.example.java4.requestStore.ChiTietStore;
 import com.example.java4.entities.ChiTietSP;
 import com.example.java4.entitiesNoMap.ChiTietSPNoMap;
 import com.example.java4.repositories.*;
 import com.example.java4.repositoriesNoMap.ChiTietSPRepoNoMap;
+import com.example.java4.requestUpdate.ChiTietUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -46,19 +47,18 @@ public class ChiTietSPController {
     @CrossOrigin
     @PostMapping("/update/{id}")
     public ResponseEntity<Boolean> doUpdate(@PathVariable(value = "id") ChiTietSPNoMap chiTietSP,
-                                            @RequestBody @Valid ChiTietSPRQ newChiTietSP,
+                                            @RequestBody @Valid ChiTietUpdate newChiTietSP,
                                             BindingResult rs) {
           if(rs.hasErrors()){
               System.out.println("update error: "+rs);
               return ResponseEntity.ok(false);
           } else{
-              chiTietSP.setIdSp(newChiTietSP.getIdSp());
               chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
               chiTietSP.setIdKichThuoc(newChiTietSP.getIdKichThuoc());
               chiTietSP.setNamBH(Integer.valueOf(newChiTietSP.getNamBH()));
               chiTietSP.setMoTa(newChiTietSP.getMoTa());
               chiTietSP.setSoLuongTon(Integer.valueOf(newChiTietSP.getSoLuongTon()));
-              chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaNhap()));
+              chiTietSP.setGiaNhap(Long.valueOf(newChiTietSP.getGiaNhap()));
               chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaBan()));
               chiTietSP.setNgayTao(Date.valueOf(newChiTietSP.getNgayTao()));
               chiTietSP.setTrangThai(Integer.valueOf(newChiTietSP.getTrangThai()));
@@ -70,7 +70,7 @@ public class ChiTietSPController {
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> Store(
-            @RequestBody @Valid ChiTietSPRQ newChiTietSP,
+            @RequestBody @Valid ChiTietStore newChiTietSP,
             BindingResult result
     ) {
         if (result.hasErrors()) {

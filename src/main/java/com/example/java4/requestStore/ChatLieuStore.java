@@ -1,25 +1,26 @@
-package com.example.java4.Request;
+package com.example.java4.requestStore;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class HDCTReq {
+public class ChatLieuStore {
     private String id;
+    private String ma;
     @NotEmpty
-    private String idHoaDon;
-    @NotEmpty
-    private String  idChiTietSP;
-    @NotEmpty
+    private String ten;
+    @Positive
     private String trangThai;
-    @NotEmpty
-    private String ngayTao;
-    @NotEmpty
-    private String soLuong;
+    @Past
+    private Date ngayTao;
 }

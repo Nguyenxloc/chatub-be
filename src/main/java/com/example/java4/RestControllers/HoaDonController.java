@@ -1,9 +1,10 @@
 package com.example.java4.RestControllers;
-import com.example.java4.Request.HoaDonReq;
+import com.example.java4.requestStore.HoaDonStore;
 import com.example.java4.entities.HoaDon;
 import com.example.java4.entitiesNoMap.HoaDonNoMap;
 import com.example.java4.repositories.*;
 import com.example.java4.repositoriesNoMap.HoaDonRepoNoMap;
+import com.example.java4.requestUpdate.HoaDonUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class HoaDonController {
     }
     @PostMapping("update/{id}")
     public ResponseEntity<Boolean> doUpdate(
-            @RequestBody  @Valid HoaDonReq newHoaDon,
+            @RequestBody  @Valid HoaDonUpdate newHoaDon,
             BindingResult result, @PathVariable(value = "id") HoaDonNoMap hd
     ) {
         if (result.hasErrors()){
@@ -42,8 +43,7 @@ public class HoaDonController {
             return ResponseEntity.ok(false);
         }
         else{
-            hd.setMa(newHoaDon.getMa());
-            hd.setIdPttt(newHoaDon.getIdPTTT());
+            hd.setPttt(newHoaDon.getPttt());
             hd.setIdKhuyenMai(newHoaDon.getIdKhuyenMai());
             hd.setIdNhanVien(newHoaDon.getIdNhanVien());
             hd.setIdKhachHang(newHoaDon.getIdKhachHang());
@@ -51,13 +51,14 @@ public class HoaDonController {
             hd.setNgayTao(Date.valueOf(newHoaDon.getNgayTao()));
             hd.setNgayThanhToan(Date.valueOf(newHoaDon.getNgayThanhToan()));
             hd.setTrangThai(Integer.valueOf(newHoaDon.getTrangThai()));
+            hoaDonRepoNoMap.save(hd);
             return  ResponseEntity.ok(true);
         }
     }
 
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
-            @RequestBody @Valid HoaDonReq newHoaDon,
+            @RequestBody @Valid HoaDonStore newHoaDon,
             BindingResult result
     ) {
         if (result.hasErrors()){
@@ -68,7 +69,7 @@ public class HoaDonController {
             //conduct ma by select count
             HoaDonNoMap hd = new HoaDonNoMap();
             hd.setMa(newHoaDon.getMa());
-            hd.setIdPttt(newHoaDon.getIdPTTT());
+            hd.setPttt(newHoaDon.getPttt());
             hd.setIdKhuyenMai(newHoaDon.getIdKhuyenMai());
             hd.setIdNhanVien(newHoaDon.getIdNhanVien());
             hd.setIdKhachHang(newHoaDon.getIdKhachHang());
@@ -76,6 +77,7 @@ public class HoaDonController {
             hd.setNgayTao(Date.valueOf(newHoaDon.getNgayTao()));
             hd.setNgayThanhToan(Date.valueOf(newHoaDon.getNgayThanhToan()));
             hd.setTrangThai(Integer.valueOf(newHoaDon.getTrangThai()));
+            hoaDonRepoNoMap.save(hd);
             return ResponseEntity.ok(true);
         }
     }

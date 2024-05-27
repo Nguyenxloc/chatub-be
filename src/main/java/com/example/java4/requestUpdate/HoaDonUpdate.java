@@ -1,4 +1,4 @@
-package com.example.java4.Request;
+package com.example.java4.requestUpdate;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,15 +8,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class HoaDonReq {
-    private String id;
-    private String ma;
+public class HoaDonUpdate {
     @NotEmpty
-    private String  IdPTTT;
-    private String IdKhuyenMai;
-    private String IdNhanVien;
-    private String IdKhachHang;
-    private String IdGiaoHang;
+    private String pttt;
+    private String idKhuyenMai;
+    private String idNhanVien;
+    private String idKhachHang;
+    private String idGiaoHang;
     @NotEmpty
     private String ngayTao;
     @NotEmpty

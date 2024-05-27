@@ -1,7 +1,8 @@
 package com.example.java4.RestControllers;
-import com.example.java4.Request.KichThuocReq;
+import com.example.java4.requestStore.KichThuocStore;
 import com.example.java4.entities.KichThuoc;
 import com.example.java4.repositories.KichThuocRepository;
+import com.example.java4.requestUpdate.KichThuocUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +34,7 @@ public class KichThuocController {
     }
 
     @PostMapping("/update/{id}")
-    public ResponseEntity<Boolean> doUpdate(@Valid @RequestBody KichThuocReq newKichThuoc, BindingResult rs,
+    public ResponseEntity<Boolean> doUpdate(@Valid @RequestBody KichThuocUpdate newKichThuoc, BindingResult rs,
                                             @PathVariable(value = "id") KichThuoc kt) {
         if (rs.hasErrors()) {
             System.out.println("error at kich thuoc: " + rs);
@@ -49,7 +50,7 @@ public class KichThuocController {
 
     @PostMapping("save")
     public ResponseEntity<Boolean> store(
-            @RequestBody @Valid KichThuocReq newKichThuoc,
+            @RequestBody @Valid KichThuocStore newKichThuoc,
             BindingResult result
     ) {
         if (result.hasErrors()) {

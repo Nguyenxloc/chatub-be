@@ -1,4 +1,4 @@
-package com.example.java4.Request;
+package com.example.java4.requestUpdate;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,13 +8,17 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class KichThuocReq {
-    private String id;
-    private String ma;
+public class KhuyenMaiUpdate {
     @NotEmpty
     private String ten;
     @NotEmpty
-    private String trangThai;
+    private String ngayBatDau;
     @NotEmpty
-    private String ngayTao;
+    private String ngayKetThuc;
+    @NotEmpty
+    private String idHinhThucKM;
+    @NotEmpty
+    private String giaTriGiam;
+    @NotEmpty
+    private String trangThai;
 }

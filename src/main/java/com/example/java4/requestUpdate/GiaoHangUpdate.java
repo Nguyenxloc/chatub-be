@@ -1,20 +1,16 @@
-package com.example.java4.Request;
+package com.example.java4.requestUpdate;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GiaoHangRq {
-    private String id;
+public class GiaoHangUpdate {
     @NotEmpty
     private String hoTen;
     @NotEmpty
