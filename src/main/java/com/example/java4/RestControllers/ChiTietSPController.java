@@ -67,11 +67,26 @@ public class ChiTietSPController {
           }
     }
 
+
+    @CrossOrigin
+    @PostMapping("/enable-status/{id}")
+    public ResponseEntity<Integer> enableStatus(@PathVariable(value = "id") String id) {
+            return ResponseEntity.ok(chiTietSPRepository.enableStt(id));
+    }
+
+
+    @CrossOrigin
+    @PostMapping("/disable-status/{id}")
+    public ResponseEntity<Integer> disableStatus(@PathVariable(value = "id") String id) {
+        return ResponseEntity.ok(chiTietSPRepository.enableStt(id));
+    }
+
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> Store(
             @RequestBody @Valid ChiTietStore newChiTietSP,
             BindingResult result
+
     ) {
         if (result.hasErrors()) {
             System.out.println("temp error: " + result);

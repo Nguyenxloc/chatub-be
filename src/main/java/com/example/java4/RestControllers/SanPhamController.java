@@ -46,6 +46,7 @@ public class SanPhamController {
             return ResponseEntity.ok(true);
         }
     }
+
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
