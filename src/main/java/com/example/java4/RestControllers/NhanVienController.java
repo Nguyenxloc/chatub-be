@@ -61,6 +61,20 @@ public class NhanVienController {
             return ResponseEntity.ok(true);
         }
     }
+
+    @CrossOrigin
+    @PostMapping("/enable-status/{id}")
+    public ResponseEntity<Integer> enableStatus(@PathVariable(value = "id") String id) {
+        return ResponseEntity.ok(nvRepo.enableStt(id));
+    }
+
+
+    @CrossOrigin
+    @PostMapping("/disable-status/{id}")
+    public ResponseEntity<Integer> disableStatus(@PathVariable(value = "id") String id) {
+        return ResponseEntity.ok(nvRepo.enableStt(id));
+    }
+
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(

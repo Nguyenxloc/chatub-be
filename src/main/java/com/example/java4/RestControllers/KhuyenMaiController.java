@@ -55,6 +55,19 @@ public class KhuyenMaiController {
     }
 
     @CrossOrigin
+    @PostMapping("/enable-status/{id}")
+    public ResponseEntity<Integer> enableStatus(@PathVariable(value = "id") String id) {
+        return ResponseEntity.ok(khuyenMaiRepo.enableStt(id));
+    }
+
+
+    @CrossOrigin
+    @PostMapping("/disable-status/{id}")
+    public ResponseEntity<Integer> disableStatus(@PathVariable(value = "id") String id) {
+        return ResponseEntity.ok(khuyenMaiRepo.enableStt(id));
+    }
+
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
             @RequestBody @Valid KhuyenMaiStore newKhuyenMai,

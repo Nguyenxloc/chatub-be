@@ -48,6 +48,19 @@ public class KichThuocController {
         }
     }
 
+    @CrossOrigin
+    @PostMapping("/enable-status/{id}")
+    public ResponseEntity<Integer> enableStatus(@PathVariable(value = "id") String id) {
+        return ResponseEntity.ok(ktRepo.enableStt(id));
+    }
+
+
+    @CrossOrigin
+    @PostMapping("/disable-status/{id}")
+    public ResponseEntity<Integer> disableStatus(@PathVariable(value = "id") String id) {
+        return ResponseEntity.ok(ktRepo.enableStt(id));
+    }
+
     @PostMapping("save")
     public ResponseEntity<Boolean> store(
             @RequestBody @Valid KichThuocStore newKichThuoc,

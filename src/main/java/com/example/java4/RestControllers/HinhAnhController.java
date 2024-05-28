@@ -52,6 +52,20 @@ public class HinhAnhController {
     }
 
     @CrossOrigin
+    @PostMapping("/enable-status/{id}")
+    public ResponseEntity<Integer> enableStatus(@PathVariable(value = "id") String id) {
+        return ResponseEntity.ok(hinhAnhRepo.enableStt(id));
+    }
+
+
+    @CrossOrigin
+    @PostMapping("/disable-status/{id}")
+    public ResponseEntity<Integer> disableStatus(@PathVariable(value = "id") String id) {
+        return ResponseEntity.ok(hinhAnhRepo.enableStt(id));
+    }
+
+
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
             @RequestBody @Valid HinhAnhStore newHinhAnh,

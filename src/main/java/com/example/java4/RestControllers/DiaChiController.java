@@ -55,6 +55,18 @@ public class DiaChiController {
     }
 
     @CrossOrigin
+    @PostMapping("/enable-status/{id}")
+    public ResponseEntity<Integer> enableStatus(@PathVariable(value = "id") String id) {
+        return ResponseEntity.ok(diaChiRepo.enableStt(id));
+    }
+
+    @CrossOrigin
+    @PostMapping("/disable-status/{id}")
+    public ResponseEntity<Integer> disableStatus(@PathVariable(value = "id") String id) {
+        return ResponseEntity.ok(diaChiRepo.enableStt(id));
+    }
+
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> Store(
             @RequestBody @Valid DiaChiStore newDiaChi,
