@@ -1,5 +1,7 @@
 package com.example.java4.RestControllers;
 
+import com.example.java4.entitiesNoMap.GiaoHangNoMap;
+import com.example.java4.repositoriesNoMap.GiaoHangRepoNoMap;
 import com.example.java4.requestStore.GiaoHangStore;
 import com.example.java4.entities.*;
 import com.example.java4.repositories.*;
@@ -18,10 +20,10 @@ public class GiaoHangController {
     //    @RequestMapping(name="login", method = RequestMethod.POST)
     @Autowired
     GiaohangRepository giaoHangRepo;
+    @Autowired
+    GiaoHangRepoNoMap giaoHangRepoNoMap;
     public GiaoHangController() {
     }
-
-
     @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<GiaoHang>> index() {
@@ -36,7 +38,7 @@ public class GiaoHangController {
 
     @CrossOrigin
     @PostMapping("/update/{id}")
-    public ResponseEntity<Boolean> doUpdate(@PathVariable(name="id") GiaoHang giaoHang,
+    public ResponseEntity<Boolean> doUpdate(@PathVariable(name="id") GiaoHangNoMap giaoHang,
                                             @RequestBody @Valid GiaoHangUpdate newGiaoHang,
                                             BindingResult rs){
         if(rs.hasErrors()){
@@ -47,12 +49,12 @@ public class GiaoHangController {
             giaoHang.setHoTen(newGiaoHang.getHoTen());
             giaoHang.setSdt(newGiaoHang.getSdt());
             giaoHang.setDiaChi(newGiaoHang.getDiaChi());
-            giaoHang.setPhuongXa(newGiaoHang.getPhuongXa());
-            giaoHang.setQuanHuyen(newGiaoHang.getQuanHuyen());
-            giaoHang.setTinhThanh(newGiaoHang.getTinhThanh());
+            giaoHang.setIdPhuongXa(newGiaoHang.getPhuongXa());
+            giaoHang.setIdQuanHuyen(newGiaoHang.getQuanHuyen());
+            giaoHang.setIdTinhThanh(newGiaoHang.getTinhThanh());
             giaoHang.setTrangThai(Integer.valueOf(newGiaoHang.getTrangThai()));
             giaoHang.setNgayTao(Date.valueOf(newGiaoHang.getNgayTao()));
-            giaoHangRepo.save(giaoHang);
+            giaoHangRepoNoMap.save(giaoHang);
             return ResponseEntity.ok(true);
         }
     }
@@ -79,17 +81,17 @@ public class GiaoHangController {
             System.out.println("temp error at giaoHang: "+result);
             return ResponseEntity.ok(false);
         } else {
-            GiaoHang giaoHang= new GiaoHang();
+            GiaoHangNoMap giaoHang= new GiaoHangNoMap();
             giaoHang.setId(newGiaoHangStore.getId());
             giaoHang.setHoTen(newGiaoHangStore.getHoTen());
             giaoHang.setSdt(newGiaoHangStore.getSdt());
             giaoHang.setDiaChi(newGiaoHangStore.getDiaChi());
-            giaoHang.setPhuongXa(newGiaoHangStore.getPhuongXa());
-            giaoHang.setQuanHuyen(newGiaoHangStore.getQuanHuyen());
-            giaoHang.setTinhThanh(newGiaoHangStore.getTinhThanh());
+            giaoHang.setIdPhuongXa(newGiaoHangStore.getPhuongXa());
+            giaoHang.setIdQuanHuyen(newGiaoHangStore.getQuanHuyen());
+            giaoHang.setIdTinhThanh(newGiaoHangStore.getTinhThanh());
             giaoHang.setTrangThai(Integer.valueOf(newGiaoHangStore.getTrangThai()));
             giaoHang.setNgayTao(Date.valueOf(newGiaoHangStore.getNgayTao()));
-            giaoHangRepo.save(giaoHang);
+            giaoHangRepoNoMap.save(giaoHang);
             return ResponseEntity.ok(true);
         }
     }

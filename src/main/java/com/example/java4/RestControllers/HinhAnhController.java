@@ -43,7 +43,9 @@ public class HinhAnhController {
             return ResponseEntity.ok(false);
         }
         else{
-            hinhAnh.setUrl(newHinhAnh.getUrl());
+            hinhAnh.setHinh1(newHinhAnh.getHinh1());
+            hinhAnh.setHinh2(newHinhAnh.getHinh2());
+            hinhAnh.setHinh3(newHinhAnh.getHinh3());
             hinhAnh.setTrangThai(Integer.valueOf(newHinhAnh.getTrangThai()));
             hinhAnh.setNgayTao(Date.valueOf(newHinhAnh.getNgayTao()));
             hinhAnhRepoNoMap.save(hinhAnh);
@@ -57,13 +59,11 @@ public class HinhAnhController {
         return ResponseEntity.ok(hinhAnhRepo.enableStt(id));
     }
 
-
     @CrossOrigin
     @PostMapping("/disable-status/{id}")
     public ResponseEntity<Integer> disableStatus(@PathVariable(value = "id") String id) {
         return ResponseEntity.ok(hinhAnhRepo.enableStt(id));
     }
-
 
     @CrossOrigin
     @PostMapping("save")
@@ -78,7 +78,9 @@ public class HinhAnhController {
         else{
             HinhAnhNoMap hinhAnh = new HinhAnhNoMap();
             hinhAnh.setIdChiTietSP(newHinhAnh.getIdChiTietSP());
-            hinhAnh.setUrl(newHinhAnh.getUrl());
+            hinhAnh.setHinh1(newHinhAnh.getHinh1());
+            hinhAnh.setHinh2(newHinhAnh.getHinh2());
+            hinhAnh.setHinh3(newHinhAnh.getHinh3());
             hinhAnh.setTrangThai(Integer.valueOf(newHinhAnh.getTrangThai()));
             hinhAnh.setNgayTao(Date.valueOf(newHinhAnh.getNgayTao()));
             hinhAnhRepoNoMap.save(hinhAnh);

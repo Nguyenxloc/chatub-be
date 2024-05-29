@@ -11,7 +11,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class HinhAnhUpdate {
     @NotEmpty
-    private String url;
+    private String hinh1;
+    @NotEmpty
+    private String hinh2;
+    @NotEmpty
+    private String hinh3;
     @NotEmpty
     private String trangThai;
     @NotEmpty

@@ -14,7 +14,11 @@ public class HinhAnhStore {
     @NotEmpty
     private String idChiTietSP;
     @NotEmpty
-    private String url;
+    private String hinh1;
+    @NotEmpty
+    private String hinh2;
+    @NotEmpty
+    private String hinh3;
     @NotEmpty
     private String trangThai;
     @NotEmpty

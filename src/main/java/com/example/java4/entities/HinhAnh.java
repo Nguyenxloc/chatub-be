@@ -22,10 +22,14 @@ public class HinhAnh {
     @ManyToOne
     @JoinColumn(name="IdChiTietSP", referencedColumnName = "Id")
     private ChiTietSP chiTietSP;
-    @Column(name ="Url")
-    private String url;
+    @Column(name ="hinh1")
+    private String hinh1;
+    @Column(name ="hinh2")
+    private String hinh2;
+    @Column(name ="hinh3")
+    private String hinh3;
     @Column(name ="TrangThai")
-    private String trangThai;
+    private Integer trangThai;
     @Column(name="NgayTao")
     private Date ngayTao;
 }
