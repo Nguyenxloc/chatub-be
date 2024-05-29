@@ -1,5 +1,5 @@
-package com.example.java4.entities;
-import com.example.java4.RestControllers.KhachHangController;
+package com.example.java4.entitiesLv2;
+import com.example.java4.entitiesLv1.KhachHang;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

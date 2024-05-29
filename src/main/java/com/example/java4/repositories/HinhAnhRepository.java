@@ -1,5 +1,5 @@
 package com.example.java4.repositories;
-import com.example.java4.entities.HinhAnh;
+import com.example.java4.entitiesLv2.HinhAnh;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,31 +1,24 @@
-package com.example.java4.entities;
+package com.example.java4.entitiesLv1;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.sql.Date;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "SanPham")
-public class SanPham {
+@Table(name="quanhuyen")
+public class QuanHuyen {
     @Id
     @Column(name="Id")
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    @Column(name="Ma")
-    private String ma;
-    @Column(name ="Ten")
+    @Column(name="Ten")
     private String ten;
-    @Column(name ="TrangThai")
+    @Column(name="TrangThai")
     private Integer trangThai;
-    @Column(name="NgayTao")
-    private Date ngayTao;
 }

@@ -1,6 +1,6 @@
 package com.example.java4.RestControllers;
 import com.example.java4.requestStore.HinhThucKMStore;
-import com.example.java4.entities.HinhThucKM;
+import com.example.java4.entitiesLv1.HinhThucKM;
 import com.example.java4.repositories.HinhThucKMRepository;
 import com.example.java4.requestUpdate.HinhThucKMUpdate;
 import jakarta.validation.Valid;
@@ -61,6 +61,7 @@ public class HinhThucKMController {
         return ResponseEntity.ok(hinhThucKMRepo.enableStt(id));
     }
 
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
             @RequestBody @Valid HinhThucKMStore newHinhThucKM,

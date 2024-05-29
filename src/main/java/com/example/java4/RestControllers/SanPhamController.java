@@ -1,6 +1,6 @@
 package com.example.java4.RestControllers;
 import com.example.java4.requestStore.SanPhaStore;
-import com.example.java4.entities.SanPham;
+import com.example.java4.entitiesLv1.SanPham;
 import com.example.java4.repositories.SanPhamRepository;
 import com.example.java4.requestUpdate.SanPhaUpdate;
 import jakarta.validation.Valid;

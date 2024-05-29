@@ -1,6 +1,8 @@
 package com.example.java4.RestControllers;
+import com.example.java4.entitiesNoMap.DiaChiNoMap;
+import com.example.java4.repositoriesNoMap.DiaChiRepoNoMap;
 import com.example.java4.requestStore.DiaChiStore;
-import com.example.java4.entities.DiaChi;
+import com.example.java4.entitiesLv2.DiaChi;
 import com.example.java4.repositories.*;
 import com.example.java4.requestUpdate.DiaChiUpdate;
 import jakarta.validation.Valid;
@@ -17,6 +19,8 @@ public class DiaChiController {
     //    @RequestMapping(name="login", method = RequestMethod.POST)
     @Autowired
     DiaChiRepository  diaChiRepo;
+    @Autowired
+    DiaChiRepoNoMap diaChiNoMap;
     public DiaChiController() {
     }
 
@@ -32,10 +36,9 @@ public class DiaChiController {
          return ResponseEntity.ok(diaChi);
     }
 
-
     @CrossOrigin
     @PostMapping("/update/{id}")
-    public ResponseEntity<Boolean> doUpdate(@PathVariable(name="id") DiaChi diaChi,
+    public ResponseEntity<Boolean> doUpdate(@PathVariable(name="id") DiaChiNoMap diaChi,
                                             @RequestBody @Valid DiaChiUpdate newDiaChi,
                                             BindingResult rs){
         if(rs.hasErrors()){
@@ -49,7 +52,7 @@ public class DiaChiController {
             diaChi.setIdTinhThanh(newDiaChi.getIdTinhThanh());
             diaChi.setTrangThai(Integer.valueOf(newDiaChi.getTrangThai()));
             diaChi.setNgayTao(Date.valueOf(newDiaChi.getNgayTao()));
-            diaChiRepo.save(diaChi);
+            diaChiNoMap.save(diaChi);
             return ResponseEntity.ok(true);
         }
     }
@@ -77,7 +80,7 @@ public class DiaChiController {
             System.out.println("temp error: "+result);
             return ResponseEntity.ok(false);
         } else {
-            DiaChi diaChi = new DiaChi();
+            DiaChiNoMap diaChi = new DiaChiNoMap();
             diaChi.setId(newDiaChi.getId());
             diaChi.setIdKH(newDiaChi.getIdKH());
             diaChi.setIdPhuongXa(newDiaChi.getIdPhuongXa());
@@ -85,7 +88,7 @@ public class DiaChiController {
             diaChi.setIdTinhThanh(newDiaChi.getIdTinhThanh());
             diaChi.setTrangThai(Integer.valueOf(newDiaChi.getTrangThai()));
             diaChi.setNgayTao(Date.valueOf(newDiaChi.getNgayTao()));
-            diaChiRepo.save(diaChi);
+            diaChiNoMap.save(diaChi);
             return ResponseEntity.ok(true);
         }
     }

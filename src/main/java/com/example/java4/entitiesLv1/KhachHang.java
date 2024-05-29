@@ -1,4 +1,4 @@
-package com.example.java4.entities;
+package com.example.java4.entitiesLv1;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,12 +21,8 @@ public class KhachHang {
     private String id;
     @Column(name = "Ma")
     private String ma;
-    @Column(name="Ten")
-    private String ten;
-    @Column(name="TenDem")
-    private String tenDem;
-    @Column(name="Ho")
-    private String ho;
+    @Column(name="HoTen")
+    private String hoTen;
     @Column(name="NgaySinh")
     private String ngaySinh;
     @Column(name="Sdt")

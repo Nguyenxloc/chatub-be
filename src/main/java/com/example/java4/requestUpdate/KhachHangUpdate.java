@@ -11,11 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class KhachHangUpdate {
     @NotEmpty
-    private String ten;
-    @NotEmpty
-    private String tenDem;
-    @NotEmpty
-    private String ho;
+    private String hoTen;
     @NotEmpty
     private String ngaySinh;
     @NotEmpty

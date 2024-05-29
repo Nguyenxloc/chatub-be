@@ -1,6 +1,6 @@
 package com.example.java4.RestControllers;
 import com.example.java4.requestStore.HDCTStore;
-import com.example.java4.entities.HDCT;
+import com.example.java4.entitiesLv2.HDCT;
 import com.example.java4.entitiesNoMap.HDCTNoMap;
 import com.example.java4.repositories.*;
 import com.example.java4.repositoriesNoMap.HDCTRepoNoMap;

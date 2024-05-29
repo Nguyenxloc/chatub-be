@@ -1,6 +1,6 @@
 package com.example.java4.RestControllers;
 import com.example.java4.requestStore.HoaDonStore;
-import com.example.java4.entities.HoaDon;
+import com.example.java4.entitiesLv2.HoaDon;
 import com.example.java4.entitiesNoMap.HoaDonNoMap;
 import com.example.java4.repositories.*;
 import com.example.java4.repositoriesNoMap.HoaDonRepoNoMap;

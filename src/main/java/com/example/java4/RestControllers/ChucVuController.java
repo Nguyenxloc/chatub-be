@@ -1,6 +1,6 @@
 package com.example.java4.RestControllers;
 import com.example.java4.requestStore.ChucVuStore;
-import com.example.java4.entities.*;
+import com.example.java4.entitiesLv1.*;
 import com.example.java4.repositories.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,13 +1,15 @@
-package com.example.java4.entities;
+package com.example.java4.entitiesLv2;
 
 
+import com.example.java4.entitiesLv1.PhuongXa;
+import com.example.java4.entitiesLv1.QuanHuyen;
+import com.example.java4.entitiesLv1.TinhThanh;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.awt.*;
 import java.sql.Date;
 
 @Getter

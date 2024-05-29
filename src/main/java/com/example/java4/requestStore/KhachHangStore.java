@@ -13,11 +13,7 @@ public class KhachHangStore {
     private String id;
     private String ma;
     @NotEmpty
-    private String ten;
-    @NotEmpty
-    private String tenDem;
-    @NotEmpty
-    private String ho;
+    private String hoTen;
     @NotEmpty
     private String ngaySinh;
     @NotEmpty

@@ -1,70 +1,68 @@
 package com.example.java4.RestControllers;
-import com.example.java4.requestStore.MauSacStore;
-import com.example.java4.entitiesLv1.MauSac;
-import com.example.java4.repositories.MauSacRepository;
-import com.example.java4.requestUpdate.MauSacUpdate;
+import com.example.java4.entitiesLv1.ChatLieu;
+import com.example.java4.repositories.ChatLieuRepository;
+import com.example.java4.requestStore.ChatLieuStore;
+import com.example.java4.requestUpdate.ChatLieuUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import java.sql.Date;
 import java.util.List;
-
 @Controller
-@RequestMapping("mau-sac")
-public class MauSacController {
+@RequestMapping("chat-lieu")
+public class ChatLieuController {
     @Autowired
-    private MauSacRepository msRepo;
-    public MauSacController() {
+    private ChatLieuRepository chatLieuRepo;
+    public ChatLieuController() {
     }
     @CrossOrigin
     @GetMapping("index")
-    public ResponseEntity<List<MauSac>> index() {
-        return ResponseEntity.ok(msRepo.findAll());
+    public ResponseEntity<List<ChatLieu>> index() {
+        return ResponseEntity.ok(chatLieuRepo.findAll());
     }
 
     @CrossOrigin
     @GetMapping("/detail/{id}")
-    public ResponseEntity<MauSac> getDetail(@PathVariable("id") MauSac mauSac){
-        return ResponseEntity.ok(mauSac);
+    public ResponseEntity<ChatLieu> getDetail(@PathVariable("id") ChatLieu chatLieu){
+        return ResponseEntity.ok(chatLieu);
     }
     @PostMapping("update/{id}")
     public ResponseEntity<Boolean> doUpdate(
-            @RequestBody @Valid MauSacUpdate newMauSac,
-            BindingResult result, @PathVariable(value = "id") MauSac ms
+            @RequestBody @Valid ChatLieuUpdate newChatLieu,
+            BindingResult result, @PathVariable(value = "id") ChatLieu cl
     ) {
         if (result.hasErrors()){
             System.out.println("Error temp: " + result);
             return ResponseEntity.ok(false);
         }
         else{
-            ms.setTen(newMauSac.getTen());
-            ms.setTrangThai(Integer.valueOf(newMauSac.getTrangThai()));
-            ms.setNgayTao(Date.valueOf(newMauSac.getNgayTao()));
-            msRepo.save(ms);
+            cl.setTen(newChatLieu.getTen());
+            cl.setTrangThai(Integer.valueOf(newChatLieu.getTrangThai()));
+            cl.setNgayTao(Date.valueOf(newChatLieu.getNgayTao()));
+            chatLieuRepo.save(cl);
             return  ResponseEntity.ok(true);
         }
     }
     @CrossOrigin
     @PostMapping("/enable-status/{id}")
     public ResponseEntity<Integer> enableStatus(@PathVariable(value = "id") String id) {
-        return ResponseEntity.ok(msRepo.enableStt(id));
+        return ResponseEntity.ok(chatLieuRepo.enableStt(id));
     }
 
 
     @CrossOrigin
     @PostMapping("/disable-status/{id}")
     public ResponseEntity<Integer> disableStatus(@PathVariable(value = "id") String id) {
-        return ResponseEntity.ok(msRepo.enableStt(id));
+        return ResponseEntity.ok(chatLieuRepo.enableStt(id));
     }
 
     @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
-            @RequestBody @Valid MauSacStore newMauSac,
+            @RequestBody @Valid ChatLieuStore newChatLieu,
             BindingResult result
     ) {
         if (result.hasErrors()){
@@ -72,13 +70,13 @@ public class MauSacController {
             return ResponseEntity.ok(false);
         }
         else{
-            MauSac ms = new MauSac();
+            ChatLieu cl = new ChatLieu();
             //conduct ma
-            ms.setMa(newMauSac.getMa());
-            ms.setTen(newMauSac.getTen());
-            ms.setTrangThai(Integer.valueOf(newMauSac.getTrangThai()));
-            ms.setNgayTao(Date.valueOf(newMauSac.getNgayTao()));
-            msRepo.save(ms);
+            cl.setMa(newChatLieu.getMa());
+            cl.setTen(newChatLieu.getTen());
+            cl.setTrangThai(Integer.valueOf(newChatLieu.getTrangThai()));
+            cl.setNgayTao(Date.valueOf(newChatLieu.getNgayTao()));
+            chatLieuRepo.save(cl);
             return ResponseEntity.ok(true);
         }
     }

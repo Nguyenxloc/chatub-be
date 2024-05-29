@@ -1,4 +1,5 @@
-package com.example.java4.entities;
+package com.example.java4.entitiesLv2;
+import com.example.java4.entitiesLv1.ChucVu;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

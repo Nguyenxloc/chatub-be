@@ -1,6 +1,6 @@
 package com.example.java4.RestControllers;
 import com.example.java4.requestStore.KhachHangStore;
-import com.example.java4.entities.KhachHang;
+import com.example.java4.entitiesLv1.KhachHang;
 import com.example.java4.repositories.KhachHangRepository;
 import com.example.java4.requestUpdate.KhachHangUpdate;
 import jakarta.validation.Valid;
@@ -42,9 +42,7 @@ public class KhachHangController {
             System.out.println("temp error: "+result);
             return ResponseEntity.ok(false);
         } else {
-            kh.setTen(newKH.getTen());
-            kh.setTenDem(newKH.getTenDem());
-            kh.setHo(newKH.getHo());
+            kh.setHoTen(newKH.getHoTen());
             kh.setNgaySinh(newKH.getNgaySinh());
             kh.setSdt(newKH.getSdt());
             kh.setMatKhau(newKH.getMatKhau());
@@ -60,7 +58,6 @@ public class KhachHangController {
     public ResponseEntity<Integer> enableStatus(@PathVariable(value = "id") String id) {
         return ResponseEntity.ok(khRepo.enableStt(id));
     }
-
 
     @CrossOrigin
     @PostMapping("/disable-status/{id}")
@@ -81,9 +78,7 @@ public class KhachHangController {
             //conduct ma
             KhachHang kh = new KhachHang();
             kh.setMa(newKH.getMa());
-            kh.setTen(newKH.getTen());
-            kh.setTenDem(newKH.getTenDem());
-            kh.setHo(newKH.getHo());
+            kh.setHoTen(newKH.getHoTen());
             kh.setNgaySinh(newKH.getNgaySinh());
             kh.setSdt(newKH.getSdt());
             kh.setMatKhau(newKH.getMatKhau());

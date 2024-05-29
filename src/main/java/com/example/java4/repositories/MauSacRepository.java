@@ -1,5 +1,5 @@
 package com.example.java4.repositories;
-import com.example.java4.entities.MauSac;
+import com.example.java4.entitiesLv1.MauSac;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

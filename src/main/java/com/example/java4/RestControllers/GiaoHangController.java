@@ -1,9 +1,9 @@
 package com.example.java4.RestControllers;
 
+import com.example.java4.entitiesLv2.GiaoHang;
 import com.example.java4.entitiesNoMap.GiaoHangNoMap;
 import com.example.java4.repositoriesNoMap.GiaoHangRepoNoMap;
 import com.example.java4.requestStore.GiaoHangStore;
-import com.example.java4.entities.*;
 import com.example.java4.repositories.*;
 import com.example.java4.requestUpdate.GiaoHangUpdate;
 import jakarta.validation.Valid;

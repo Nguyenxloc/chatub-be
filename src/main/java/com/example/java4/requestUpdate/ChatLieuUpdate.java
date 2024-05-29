@@ -17,8 +17,8 @@ import java.sql.Date;
 public class ChatLieuUpdate {
     @NotEmpty
     private String ten;
-    @Positive
+    @NotEmpty
     private String trangThai;
-    @Past
-    private Date ngayTao;
+    @NotEmpty
+    private String ngayTao;
 }

@@ -1,5 +1,5 @@
 package com.example.java4.repositories;
-import com.example.java4.entities.KichThuoc;
+import com.example.java4.entitiesLv1.KichThuoc;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -1,6 +1,6 @@
 package com.example.java4.RestControllers;
 import com.example.java4.requestStore.HinhAnhStore;
-import com.example.java4.entities.HinhAnh;
+import com.example.java4.entitiesLv2.HinhAnh;
 import com.example.java4.entitiesNoMap.HinhAnhNoMap;
 import com.example.java4.repositories.HinhAnhRepository;
 import com.example.java4.repositoriesNoMap.HinhAnhRepoNoMap;

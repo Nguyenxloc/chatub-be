@@ -1,7 +1,7 @@
 package com.example.java4.RestControllers;
 
 import com.example.java4.requestStore.ChiTietStore;
-import com.example.java4.entities.ChiTietSP;
+import com.example.java4.entitiesLv2.ChiTietSP;
 import com.example.java4.entitiesNoMap.ChiTietSPNoMap;
 import com.example.java4.repositories.*;
 import com.example.java4.repositoriesNoMap.ChiTietSPRepoNoMap;

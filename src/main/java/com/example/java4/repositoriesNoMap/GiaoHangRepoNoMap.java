@@ -1,12 +1,10 @@
 package com.example.java4.repositoriesNoMap;
 
-import com.example.java4.entities.GiaoHang;
+import com.example.java4.entitiesLv2.GiaoHang;
 import com.example.java4.entitiesNoMap.GiaoHangNoMap;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository

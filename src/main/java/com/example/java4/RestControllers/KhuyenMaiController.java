@@ -1,6 +1,6 @@
 package com.example.java4.RestControllers;
 import com.example.java4.requestStore.KhuyenMaiStore;
-import com.example.java4.entities.KhuyenMai;
+import com.example.java4.entitiesLv2.KhuyenMai;
 import com.example.java4.entitiesNoMap.KhuyenMaiNoMap;
 import com.example.java4.repositories.KhuyenMaiRepository;
 import com.example.java4.repositoriesNoMap.KhuyenMaiRepoNoMap;

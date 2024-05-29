@@ -19,8 +19,8 @@ public class ChatLieuStore {
     private String ma;
     @NotEmpty
     private String ten;
-    @Positive
+    @NotEmpty
     private String trangThai;
-    @Past
-    private Date ngayTao;
+    @NotEmpty
+    private String ngayTao;
 }
