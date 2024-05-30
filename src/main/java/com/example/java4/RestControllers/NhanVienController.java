@@ -46,12 +46,9 @@ public class NhanVienController {
             return ResponseEntity.ok(false);
         }
         else{
-            nv.setTen(newNhanVien.getTen());
-            nv.setTenDem(newNhanVien.getTenDem());
-            nv.setHo(newNhanVien.getHo());
+            nv.setHoTen(newNhanVien.getHoTen());
             nv.setGioiTinh(newNhanVien.getGioiTinh());
             nv.setNgaySinh(Date.valueOf(newNhanVien.getNgaySinh()));
-            nv.setDiaChi(newNhanVien.getDiaChi());
             nv.setSdt(newNhanVien.getSdt());
             nv.setMatKhau(newNhanVien.getMatKhau());
             nv.setIdChucVu(newNhanVien.getIdCV());
@@ -88,12 +85,9 @@ public class NhanVienController {
         else{
             NhanVienNoMap nv = new NhanVienNoMap();
             nv.setMa(newNhanVien.getMa());
-            nv.setTen(newNhanVien.getTen());
-            nv.setTenDem(newNhanVien.getTenDem());
-            nv.setHo(newNhanVien.getHo());
+            nv.setHoTen(newNhanVien.getHoTen());
             nv.setGioiTinh(newNhanVien.getGioiTinh());
             nv.setNgaySinh(Date.valueOf(newNhanVien.getNgaySinh()));
-            nv.setDiaChi(newNhanVien.getDiaChi());
             nv.setSdt(newNhanVien.getSdt());
             nv.setMatKhau(newNhanVien.getMatKhau());
             nv.setIdChucVu(newNhanVien.getIdCV());

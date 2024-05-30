@@ -12,7 +12,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="HoaDon")
+@Table(name="hoadon")
 public class HoaDon {
     @Id
     @Column(name="Id")
@@ -31,9 +31,6 @@ public class HoaDon {
     @ManyToOne
     @JoinColumn(name="IdKH", referencedColumnName = "Id")
     private KhachHang khachHang;
-    @ManyToOne
-    @JoinColumn(name="IdShip",referencedColumnName ="Id")
-    private GiaoHang giaoHang;
     @Column(name="NgayTao")
     private Date ngayTao;
     @Column(name="NgayThanhToan")

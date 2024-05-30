@@ -47,7 +47,6 @@ public class HoaDonController {
             hd.setIdKhuyenMai(newHoaDon.getIdKhuyenMai());
             hd.setIdNhanVien(newHoaDon.getIdNhanVien());
             hd.setIdKhachHang(newHoaDon.getIdKhachHang());
-            hd.setIdGiaoHang(newHoaDon.getIdGiaoHang());
             hd.setNgayTao(Date.valueOf(newHoaDon.getNgayTao()));
             hd.setNgayThanhToan(Date.valueOf(newHoaDon.getNgayThanhToan()));
             hd.setTrangThai(Integer.valueOf(newHoaDon.getTrangThai()));
@@ -85,7 +84,6 @@ public class HoaDonController {
             hd.setIdKhuyenMai(newHoaDon.getIdKhuyenMai());
             hd.setIdNhanVien(newHoaDon.getIdNhanVien());
             hd.setIdKhachHang(newHoaDon.getIdKhachHang());
-            hd.setIdGiaoHang(newHoaDon.getIdGiaoHang());
             hd.setNgayTao(Date.valueOf(newHoaDon.getNgayTao()));
             hd.setNgayThanhToan(Date.valueOf(newHoaDon.getNgayThanhToan()));
             hd.setTrangThai(Integer.valueOf(newHoaDon.getTrangThai()));

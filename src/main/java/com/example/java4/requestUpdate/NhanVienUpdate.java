@@ -10,22 +10,15 @@ import lombok.Setter;
 @AllArgsConstructor
 public class NhanVienUpdate {
     @NotEmpty
-    private String ten;
-    @NotEmpty
-    private String tenDem;
-    @NotEmpty
-    private String ho;
+    private String hoTen;
     @NotEmpty
     private String gioiTinh;
     @NotEmpty
     private String ngaySinh;
     @NotEmpty
-    private String diaChi;
-    @NotEmpty
     private String sdt;
     @NotEmpty
     private String matKhau;
-    @NotEmpty
     private String idCV;
     @NotEmpty
     private String trangThai;

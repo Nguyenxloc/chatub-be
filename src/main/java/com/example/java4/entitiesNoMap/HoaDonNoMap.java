@@ -27,8 +27,6 @@ public class HoaDonNoMap {
     private String idNhanVien;
     @Column(name="IdKH")
     private String idKhachHang;
-    @Column(name="IdShip")
-    private String idGiaoHang;
     @Column(name="NgayTao")
     private Date ngayTao;
     @Column(name="NgayThanhToan")

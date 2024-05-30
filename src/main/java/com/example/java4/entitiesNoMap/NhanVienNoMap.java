@@ -20,18 +20,12 @@ public class NhanVienNoMap {
     private String id;
     @Column(name ="Ma")
     private String ma;
-    @Column(name ="Ten")
-    private String ten;
-    @Column(name ="TenDem")
-    private String tenDem;
-    @Column(name="Ho")
-    private String ho;
+    @Column(name ="HoTen")
+    private String hoTen;
     @Column(name="GioiTinh")
     private String gioiTinh;
     @Column(name="NgaySinh")
     private Date ngaySinh;
-    @Column(name="DiaChi")
-    private String diaChi;
     @Column(name="Sdt")
     private String sdt;
     @Column(name="MatKhau")
@@ -42,6 +36,4 @@ public class NhanVienNoMap {
     private Integer trangThai;
     @Column(name="NgayTao")
     private  Date ngayTao;
-    @Column(name="indx")
-    private Integer indx;
 }
