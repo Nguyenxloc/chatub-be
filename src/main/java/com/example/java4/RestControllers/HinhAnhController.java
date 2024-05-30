@@ -34,7 +34,7 @@ public class HinhAnhController {
     public ResponseEntity<HinhAnh> getDetail(@PathVariable(value = "id") HinhAnh hinhAnh){
             return ResponseEntity.ok(hinhAnh);
     }
-
+    @CrossOrigin
     @PostMapping ("/update/{id}")
     public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid HinhAnhUpdate newHinhAnh, BindingResult result,
                                             @PathVariable(value ="id") HinhAnhNoMap hinhAnh){

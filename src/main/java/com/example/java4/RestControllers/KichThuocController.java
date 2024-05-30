@@ -32,7 +32,7 @@ public class KichThuocController {
     public ResponseEntity<KichThuoc> getDetail(@PathVariable(value = "id") KichThuoc kichThuoc){
          return  ResponseEntity.ok(kichThuoc);
     }
-
+    @CrossOrigin
     @PostMapping("/update/{id}")
     public ResponseEntity<Boolean> doUpdate(@Valid @RequestBody KichThuocUpdate newKichThuoc, BindingResult rs,
                                             @PathVariable(value = "id") KichThuoc kt) {
@@ -60,7 +60,7 @@ public class KichThuocController {
     public ResponseEntity<Integer> disableStatus(@PathVariable(value = "id") String id) {
         return ResponseEntity.ok(ktRepo.enableStt(id));
     }
-
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> store(
             @RequestBody @Valid KichThuocStore newKichThuoc,

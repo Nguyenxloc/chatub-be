@@ -29,6 +29,7 @@ public class ChatLieuController {
     public ResponseEntity<ChatLieu> getDetail(@PathVariable("id") ChatLieu chatLieu){
         return ResponseEntity.ok(chatLieu);
     }
+    @CrossOrigin
     @PostMapping("update/{id}")
     public ResponseEntity<Boolean> doUpdate(
             @RequestBody @Valid ChatLieuUpdate newChatLieu,

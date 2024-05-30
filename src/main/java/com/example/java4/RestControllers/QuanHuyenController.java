@@ -32,6 +32,7 @@ public class QuanHuyenController {
     public ResponseEntity<QuanHuyen> getDetail(@PathVariable("id") QuanHuyen quanHuyen){
         return ResponseEntity.ok(quanHuyen);
     }
+    @CrossOrigin
     @PostMapping("update/{id}")
     public ResponseEntity<Boolean> doUpdate(
             @RequestBody @Valid QuanHuyenUpdate newQuanHuyen,

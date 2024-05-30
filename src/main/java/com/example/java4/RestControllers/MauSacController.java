@@ -31,6 +31,7 @@ public class MauSacController {
     public ResponseEntity<MauSac> getDetail(@PathVariable("id") MauSac mauSac){
         return ResponseEntity.ok(mauSac);
     }
+    @CrossOrigin
     @PostMapping("update/{id}")
     public ResponseEntity<Boolean> doUpdate(
             @RequestBody @Valid MauSacUpdate newMauSac,

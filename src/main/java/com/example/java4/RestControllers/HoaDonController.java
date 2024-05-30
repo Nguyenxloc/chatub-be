@@ -33,6 +33,7 @@ public class HoaDonController {
     public ResponseEntity<HoaDon> getDetail(@PathVariable(value = "id") HoaDon hoaDon){
              return ResponseEntity.ok(hoaDon);
     }
+    @CrossOrigin
     @PostMapping("update/{id}")
     public ResponseEntity<Boolean> doUpdate(
             @RequestBody  @Valid HoaDonUpdate newHoaDon,
@@ -66,7 +67,7 @@ public class HoaDonController {
     public ResponseEntity<Integer> disableStatus(@PathVariable(value = "id") String id) {
         return ResponseEntity.ok(hdRepo.enableStt(id));
     }
-
+    @CrossOrigin
     @PostMapping("save")
     public ResponseEntity<Boolean> save(
             @RequestBody @Valid HoaDonStore newHoaDon,
