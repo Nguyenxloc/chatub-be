@@ -15,7 +15,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "ChiTietSP")
+@Table(name = "chitietsp")
 public class ChiTietSP {
     @Id
     @Column(name="Id")
