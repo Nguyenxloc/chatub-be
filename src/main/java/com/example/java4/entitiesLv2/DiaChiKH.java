@@ -34,6 +34,6 @@ public class DiaChiKH {
     @Column(name="IdTinhThanh")
     private String idTinhThanh;
     @ManyToOne
-    @JoinColumn(name="IdKhachHang", referencedColumnName = "Id")
+    @JoinColumn(name="IdKH", referencedColumnName = "Id")
     private KhachHang khachHang;
 }
