@@ -24,7 +24,7 @@ public class DiaChiKH {
     @Column(name="DiaChi")
     private String diaChi;
     @Column(name ="TrangThai")
-    private String trangThai;
+    private Integer trangThai;
     @Column(name ="NgayTao")
     private Date ngayTao;
     @Column(name = "IdPhuongXa")

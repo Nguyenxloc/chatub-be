@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
 @Controller
-@RequestMapping("dia-chi")
+@RequestMapping("dia-chi-kh")
 public class DiaChiKHController {
     //    @RequestMapping(name="login", method = RequestMethod.POST)
     @Autowired

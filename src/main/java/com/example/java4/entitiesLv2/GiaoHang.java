@@ -26,15 +26,6 @@ public class GiaoHang {
     private String sdt;
     @Column(name = "diachi")
     private String diaChi;
-    @ManyToOne
-    @JoinColumn(name="IdPhuongXa",referencedColumnName = "id")
-    private PhuongXa phuongXa;
-    @ManyToOne
-    @JoinColumn(name="IdQuanHuyen", referencedColumnName = "id")
-    private QuanHuyen quanHuyen;
-    @ManyToOne
-    @JoinColumn(name="IdTinhThanh",referencedColumnName = "Id")
-    private TinhThanh tinhThanh;
     @Column(name="TrangThai")
     private Integer trangThai;
     @Column(name="NgayTao")
