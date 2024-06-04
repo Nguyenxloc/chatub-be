@@ -1,17 +1,27 @@
-package com.example.java4.requestUpdate;
+package com.example.java4.requestStore;
+
+import com.example.java4.entitiesLv2.NhanVien;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class DiaChiUpdate {
+@NoArgsConstructor
+public class DiaChiNVStore {
+    private String id;
     @NotEmpty
     private String diaChi;
+    @NotEmpty
+    private String trangThai;
+    @NotEmpty
+    private String  ngayTao;
     @NotEmpty
     private String idPhuongXa;
     @NotEmpty
@@ -19,7 +29,5 @@ public class DiaChiUpdate {
     @NotEmpty
     private String idTinhThanh;
     @NotEmpty
-    private String trangThai;
-    @NotEmpty
-    private String NgayTao;
+    private String idNV;
 }

@@ -1,5 +1,4 @@
-package com.example.java4.entitiesNoMap;
-
+package com.example.java4.entitiesLv2;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,24 +13,25 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "diaChi")
-public class DiaChiNoMap {
+@Table(name = "diachigiaohang")
+public class DiaChiGiaoHang {
     @Id
     @Column(name="Id")
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    @Column(name="IdKH")
-    private String idKH;
     @Column(name="DiaChi")
     private String diaChi;
-    @Column(name="IdPhuongXa")
+    @Column(name ="TrangThai")
+    private String trangThai;
+    @Column(name ="NgayTao")
+    private Date ngayTao;
+    @Column(name = "IdPhuongXa")
     private String idPhuongXa;
     @Column(name="IdQuanHuyen")
     private String idQuanHuyen;
     @Column(name="IdTinhThanh")
     private String idTinhThanh;
-    @Column(name="TrangThai")
-    private Integer trangThai;
-    @Column(name="NgayTao")
-    private Date NgayTao;
+    @ManyToOne
+    @JoinColumn(name="IdGiaoHang", referencedColumnName = "Id")
+    private GiaoHang giaoHang;
 }
