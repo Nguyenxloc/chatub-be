@@ -12,7 +12,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "diachiKH")
+@Table(name = "diachiNV")
 public class DiaChiNVNoMap {
     @Id
     @Column(name="Id")
