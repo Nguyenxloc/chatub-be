@@ -17,4 +17,6 @@ public class SanPhaStore {
     private String trangThai;
     @NotEmpty
     private String ngayTao;
+    @NotEmpty
+    private String hinhAnh;
 }

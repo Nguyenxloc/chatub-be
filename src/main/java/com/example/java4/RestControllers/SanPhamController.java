@@ -19,6 +19,7 @@ public class SanPhamController {
     SanPhamRepository spRepo;
     public SanPhamController() {
     }
+
     @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<SanPham>> index(){
@@ -30,6 +31,7 @@ public class SanPhamController {
     public ResponseEntity<SanPham> getDetail(@PathVariable(value = "id") SanPham sanPham){
          return ResponseEntity.ok(sanPham);
     }
+
     @CrossOrigin
     @PostMapping ("/update/{id}")
     public ResponseEntity<Boolean> doUpdate(@RequestBody @Valid SanPhaUpdate newSanPham, BindingResult result,
@@ -42,6 +44,7 @@ public class SanPhamController {
             sp.setTen(newSanPham.getTen());
             sp.setTrangThai(Integer.valueOf(newSanPham.getTrangThai()));
             sp.setNgayTao(Date.valueOf(newSanPham.getNgayTao()));
+            sp.setHinhAnh(newSanPham.getHinhAnh());
             spRepo.save(sp);
             return ResponseEntity.ok(true);
         }
@@ -75,6 +78,7 @@ public class SanPhamController {
             sp.setMa(newSanPham.getMa());
             sp.setTrangThai(Integer.valueOf(newSanPham.getTrangThai()));
             sp.setNgayTao(Date.valueOf(newSanPham.getNgayTao()));
+            sp.setHinhAnh(newSanPham.getHinhAnh());
             spRepo.save(sp);
             return ResponseEntity.ok(true);
         }

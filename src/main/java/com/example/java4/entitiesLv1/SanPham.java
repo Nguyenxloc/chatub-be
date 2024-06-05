@@ -27,4 +27,6 @@ public class SanPham {
     private Integer trangThai;
     @Column(name="NgayTao")
     private Date ngayTao;
+    @Column(name="hinhAnh")
+    private String hinhAnh;
 }
