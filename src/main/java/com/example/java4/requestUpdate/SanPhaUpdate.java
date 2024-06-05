@@ -17,4 +17,6 @@ public class SanPhaUpdate {
     private String ngayTao;
     @NotEmpty
     private String hinhAnh;
+    @NotEmpty
+    private String giaBan;
 }

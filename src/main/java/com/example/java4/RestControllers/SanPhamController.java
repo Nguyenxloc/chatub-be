@@ -45,6 +45,7 @@ public class SanPhamController {
             sp.setTrangThai(Integer.valueOf(newSanPham.getTrangThai()));
             sp.setNgayTao(Date.valueOf(newSanPham.getNgayTao()));
             sp.setHinhAnh(newSanPham.getHinhAnh());
+            sp.setGiaBan(newSanPham.getGiaBan());
             spRepo.save(sp);
             return ResponseEntity.ok(true);
         }
@@ -79,6 +80,7 @@ public class SanPhamController {
             sp.setTrangThai(Integer.valueOf(newSanPham.getTrangThai()));
             sp.setNgayTao(Date.valueOf(newSanPham.getNgayTao()));
             sp.setHinhAnh(newSanPham.getHinhAnh());
+            sp.setGiaBan(newSanPham.getGiaBan());
             spRepo.save(sp);
             return ResponseEntity.ok(true);
         }

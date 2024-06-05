@@ -19,4 +19,6 @@ public class SanPhaStore {
     private String ngayTao;
     @NotEmpty
     private String hinhAnh;
+    @NotEmpty
+    private String giaBan;
 }
