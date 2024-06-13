@@ -12,7 +12,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class KhachHangStore {
     private String id;
-    private String ma;
     @NotEmpty
     private String hoTen;
     @NotEmpty

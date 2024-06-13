@@ -77,8 +77,9 @@ public class KhuyenMaiController {
             return ResponseEntity.ok(false);
         }
         else{
+            String ma = "KM"+(khuyenMaiRepo.getCount()+1);
             KhuyenMaiNoMap khuyenMai = new KhuyenMaiNoMap();
-            khuyenMai.setMa(newKhuyenMai.getMa());
+            khuyenMai.setMa(ma);
             khuyenMai.setTen(newKhuyenMai.getTen());
             khuyenMai.setNgayBatDau(Date.valueOf(newKhuyenMai.getNgayBatDau()));
             khuyenMai.setNgayKetThuc(Date.valueOf(newKhuyenMai.getNgayKetThuc()));

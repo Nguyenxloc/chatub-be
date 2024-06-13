@@ -22,8 +22,6 @@ public class HDCTController {
     @Autowired
     HoaDonRepository hdRepo;
     @Autowired
-    ChiTietSPfullRepository spctFullRepository;
-    @Autowired
     ChiTietSPRepository spctRepository;
     @Autowired
     HDCTRepository hdctRepository;

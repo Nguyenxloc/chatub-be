@@ -89,8 +89,9 @@ public class NhanVienController {
             return ResponseEntity.ok(false);
         }
         else{
+            String ma = "NV"+(nvRepo.getCount()+1);
             NhanVienNoMap nv = new NhanVienNoMap();
-            nv.setMa(newNhanVien.getMa());
+            nv.setMa(ma);
             nv.setHoTen(newNhanVien.getHoTen());
             nv.setGioiTinh(newNhanVien.getGioiTinh());
             nv.setNgaySinh(Date.valueOf(newNhanVien.getNgaySinh()));

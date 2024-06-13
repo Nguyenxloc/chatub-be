@@ -16,7 +16,6 @@ import java.sql.Date;
 @NoArgsConstructor
 public class ChatLieuStore {
     private String id;
-    private String ma;
     @NotEmpty
     private String ten;
     @NotEmpty

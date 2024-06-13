@@ -69,8 +69,9 @@ public class ChucVuController {
             System.out.println("chuc vu accused failed: "+result);
             return ResponseEntity.ok(false);
         } else {
+            String ma = "CV"+(chucVuRepo.getCount()+1);
             ChucVu chucVu = new ChucVu();
-            chucVu.setMa(newChucVu.getMa());
+            chucVu.setMa(ma);
             chucVu.setTen(newChucVu.getTen());
             chucVu.setTrangThai(Integer.valueOf(newChucVu.getTrangThai()));
             chucVu.setNgayTao(Date.valueOf(newChucVu.getNgayTao()));

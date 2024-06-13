@@ -11,8 +11,6 @@ import lombok.Setter;
 public class MauSacStore {
     private String id;
     @NotEmpty
-    private String ma;
-    @NotEmpty
     private String ten;
     @NotEmpty
     private String trangThai;

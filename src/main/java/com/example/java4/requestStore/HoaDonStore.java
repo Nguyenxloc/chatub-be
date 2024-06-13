@@ -10,7 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class HoaDonStore {
     private String id;
-    private String ma;
     @NotEmpty
     private String  pttt;
     private String idKhuyenMai;

@@ -74,9 +74,10 @@ public class SanPhamController {
             return ResponseEntity.ok(false);
         }
         else{
+            String ma = "SP"+(spRepo.getCount()+1);
             SanPham sp = new SanPham();
             sp.setTen(newSanPham.getTen());
-            sp.setMa(newSanPham.getMa());
+            sp.setMa(ma);
             sp.setTrangThai(Integer.valueOf(newSanPham.getTrangThai()));
             sp.setNgayTao(Date.valueOf(newSanPham.getNgayTao()));
             sp.setHinhAnh(newSanPham.getHinhAnh());

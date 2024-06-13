@@ -10,7 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class SanPhaStore {
     private String id;
-    private String ma;
     @NotEmpty
     private String ten;
     @NotEmpty

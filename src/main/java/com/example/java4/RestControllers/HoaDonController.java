@@ -79,8 +79,9 @@ public class HoaDonController {
         }
         else{
             //conduct ma by select count
+            String ma = "HD"+(hdRepo.getCount()+1);
             HoaDonNoMap hd = new HoaDonNoMap();
-            hd.setMa(newHoaDon.getMa());
+            hd.setMa(ma);
             hd.setPttt(newHoaDon.getPttt());
             hd.setIdKhuyenMai(newHoaDon.getIdKhuyenMai());
             hd.setIdNhanVien(newHoaDon.getIdNhanVien());

@@ -83,8 +83,9 @@ public class KhachHangController {
             return ResponseEntity.ok(false);
         } else {
             //conduct ma
+            String ma = "KH"+(khRepo.getCount()+1);
             KhachHang kh = new KhachHang();
-            kh.setMa(newKH.getMa());
+            kh.setMa(ma);
             kh.setHoTen(newKH.getHoTen());
             kh.setNgaySinh(newKH.getNgaySinh());
             kh.setSdt(newKH.getSdt());

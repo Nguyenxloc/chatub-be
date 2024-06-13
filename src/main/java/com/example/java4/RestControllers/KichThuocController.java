@@ -70,8 +70,9 @@ public class KichThuocController {
             System.out.println("error temp: " + result);
             return ResponseEntity.ok(false);
         } else {
+            String ma = "KT"+(ktRepo.getCount()+1);
             KichThuoc kt = new KichThuoc();
-            kt.setMa(newKichThuoc.getMa());
+            kt.setMa(ma);
             kt.setTen(newKichThuoc.getTen());
             kt.setTrangThai(Integer.valueOf(newKichThuoc.getTrangThai()));
             kt.setNgayTao(Date.valueOf(newKichThuoc.getNgayTao()));

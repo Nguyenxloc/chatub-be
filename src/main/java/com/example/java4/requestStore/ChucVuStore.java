@@ -8,7 +8,6 @@ import lombok.Setter;
 @Setter
 public class ChucVuStore {
     private String id;
-    private String ma;
     @NotEmpty
     private String ten;
     @NotEmpty

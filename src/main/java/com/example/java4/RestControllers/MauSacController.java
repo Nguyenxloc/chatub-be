@@ -73,9 +73,10 @@ public class MauSacController {
             return ResponseEntity.ok(false);
         }
         else{
+            String ma = "MS"+(msRepo.getCount()+1);
             MauSac ms = new MauSac();
             //conduct ma
-            ms.setMa(newMauSac.getMa());
+            ms.setMa(ma);
             ms.setTen(newMauSac.getTen());
             ms.setTrangThai(Integer.valueOf(newMauSac.getTrangThai()));
             ms.setNgayTao(Date.valueOf(newMauSac.getNgayTao()));
