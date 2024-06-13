@@ -1,4 +1,5 @@
 package com.example.java4.requestStore;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -31,4 +32,11 @@ public class ChiTietStore {
     private String ngayTao;
     @NotEmpty
     private String  trangThai;
+    @NotEmpty
+    private String hinhAnh1;
+    @NotEmpty
+    private String hinhAnh2;
+    @NotEmpty
+    private String hinhAnh3;
+
 }

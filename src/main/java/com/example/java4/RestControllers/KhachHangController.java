@@ -49,6 +49,12 @@ public class KhachHangController {
             kh.setMatKhau(newKH.getMatKhau());
             kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
             kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));
+            kh.setIdPhuongXa(newKH.getIdPhuongXa());
+            kh.setIdQuanHuyen(newKH.getIdQuanHuyen());
+            kh.setIdTinhThanh(newKH.getIdTinhThanh());
+            kh.setPhuongXa(newKH.getPhuongXa());
+            kh.setQuanHuyen(newKH.getQuanHuyen());
+            kh.setTinhThanh(newKH.getTinhThanh());
             khRepo.save(kh);
             return ResponseEntity.ok(true);
         }
@@ -85,6 +91,12 @@ public class KhachHangController {
             kh.setMatKhau(newKH.getMatKhau());
             kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
             kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));
+            kh.setIdPhuongXa(newKH.getIdPhuongXa());
+            kh.setIdQuanHuyen(newKH.getIdQuanHuyen());
+            kh.setIdTinhThanh(newKH.getIdTinhThanh());
+            kh.setPhuongXa(newKH.getPhuongXa());
+            kh.setQuanHuyen(newKH.getQuanHuyen());
+            kh.setTinhThanh(newKH.getTinhThanh());
             khRepo.save(kh);
             return ResponseEntity.ok(true);
         }

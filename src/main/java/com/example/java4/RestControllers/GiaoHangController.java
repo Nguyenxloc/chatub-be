@@ -52,6 +52,9 @@ public class GiaoHangController {
             giaoHang.setIdPhuongXa(newGiaoHang.getPhuongXa());
             giaoHang.setIdQuanHuyen(newGiaoHang.getQuanHuyen());
             giaoHang.setIdTinhThanh(newGiaoHang.getTinhThanh());
+            giaoHang.setPhuongXa(newGiaoHang.getPhuongXa());
+            giaoHang.setQuanHuyen(newGiaoHang.getQuanHuyen());
+            giaoHang.setTinhThanh(newGiaoHang.getTinhThanh());
             giaoHang.setTrangThai(Integer.valueOf(newGiaoHang.getTrangThai()));
             giaoHang.setNgayTao(Date.valueOf(newGiaoHang.getNgayTao()));
             giaoHangRepoNoMap.save(giaoHang);
@@ -89,6 +92,9 @@ public class GiaoHangController {
             giaoHang.setIdPhuongXa(newGiaoHangStore.getPhuongXa());
             giaoHang.setIdQuanHuyen(newGiaoHangStore.getQuanHuyen());
             giaoHang.setIdTinhThanh(newGiaoHangStore.getTinhThanh());
+            giaoHang.setPhuongXa(newGiaoHangStore.getPhuongXa());
+            giaoHang.setQuanHuyen(newGiaoHangStore.getQuanHuyen());
+            giaoHang.setTinhThanh(newGiaoHangStore.getTinhThanh());
             giaoHang.setTrangThai(Integer.valueOf(newGiaoHangStore.getTrangThai()));
             giaoHang.setNgayTao(Date.valueOf(newGiaoHangStore.getNgayTao()));
             giaoHangRepoNoMap.save(giaoHang);

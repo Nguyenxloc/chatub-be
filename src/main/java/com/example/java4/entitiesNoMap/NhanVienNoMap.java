@@ -36,4 +36,16 @@ public class NhanVienNoMap {
     private Integer trangThai;
     @Column(name="NgayTao")
     private  Date ngayTao;
+    @Column(name="IdPhuongXa")
+    private String idPhuongXa;
+    @Column(name="IdQuanHuyen")
+    private String idQuanHuyen;
+    @Column(name="IdTinhThanh")
+    private String idTinhThanh;
+    @Column(name="phuongXa")
+    private String phuongXa;
+    @Column(name="quanHuyen")
+    private String quanHuyen;
+    @Column(name="tinhThanh")
+    private String tinhThanh;
 }

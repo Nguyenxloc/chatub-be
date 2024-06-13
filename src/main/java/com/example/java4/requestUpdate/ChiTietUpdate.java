@@ -28,4 +28,10 @@ public class ChiTietUpdate {
     private String ngayTao;
     @NotEmpty
     private String  trangThai;
+    @NotEmpty
+    private String hinhAnh1;
+    @NotEmpty
+    private String hinhAnh2;
+    @NotEmpty
+    private String hinhAnh3;
 }

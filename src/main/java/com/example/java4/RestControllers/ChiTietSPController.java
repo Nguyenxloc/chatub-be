@@ -62,6 +62,9 @@ public class ChiTietSPController {
               chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaBan()));
               chiTietSP.setNgayTao(Date.valueOf(newChiTietSP.getNgayTao()));
               chiTietSP.setTrangThai(Integer.valueOf(newChiTietSP.getTrangThai()));
+              chiTietSP.setHinhAnh1(newChiTietSP.getHinhAnh1());
+              chiTietSP.setHinhAnh2(newChiTietSP.getHinhAnh2());
+              chiTietSP.setHinhAnh3(newChiTietSP.getHinhAnh3());
               chiTietSPRepoNoMap.save(chiTietSP);
               return  ResponseEntity.ok(true);
           }
@@ -103,6 +106,9 @@ public class ChiTietSPController {
             chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaBan()));
             chiTietSP.setNgayTao(Date.valueOf(newChiTietSP.getNgayTao()));
             chiTietSP.setTrangThai(Integer.valueOf(newChiTietSP.getTrangThai()));
+            chiTietSP.setHinhAnh1(newChiTietSP.getHinhAnh1());
+            chiTietSP.setHinhAnh2(newChiTietSP.getHinhAnh2());
+            chiTietSP.setHinhAnh3(newChiTietSP.getHinhAnh3());
             chiTietSPRepoNoMap.save(chiTietSP);
             return ResponseEntity.ok(true);
         }

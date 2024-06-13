@@ -26,4 +26,16 @@ public class NhanVienStore {
     private String trangThai;
     @NotEmpty
     private String  ngayTao;
+    @NotEmpty
+    private String idPhuongXa;
+    @NotEmpty
+    private String idQuanHuyen;
+    @NotEmpty
+    private String idTinhThanh;
+    @NotEmpty
+    private String phuongXa;
+    @NotEmpty
+    private String quanHuyen;
+    @NotEmpty
+    private String tinhThanh;
 }

@@ -44,4 +44,10 @@ public class ChiTietSP {
     private Date ngayTao;
     @Column(name="TrangThai")
     private Integer trangThai;
+    @Column(name="HinhAnh1")
+    private String hinhAnh1;
+    @Column(name="HinhAnh2")
+    private String hinhAnh2;
+    @Column(name="HinhAnh3")
+    private String hinhAnh3;
 }
