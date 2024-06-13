@@ -20,4 +20,6 @@ public interface HDCTRepository
       int enableStt(@Param("id")String id);
       @Query("UPDATE HDCT hdct SET hdct.trangThai = 0 WHERE hdct.id=:id")
       int disableStt(@Param("id")String id);
+      @Query(value = "SELECT COUNT(*) FROM hoadonchitiet",nativeQuery = true)
+      Integer getCount();
 };

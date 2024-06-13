@@ -18,8 +18,6 @@ public class KhuyenMaiStore {
     @NotEmpty
     private String ngayKetThuc;
     @NotEmpty
-    private String idHinhThucKM;
-    @NotEmpty
     private String giaTriGiam;
     @NotEmpty
     private String trangThai;

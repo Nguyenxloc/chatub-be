@@ -24,4 +24,6 @@ public interface NhanVienRepository
     int enableStt(@Param("id")String id);
     @Query("UPDATE NhanVien nv SET nv.trangThai = 0 WHERE nv.id=:id")
     int disableStt(@Param("id")String id);
+    @Query(value = "SELECT COUNT(*) FROM nhanvien",nativeQuery = true)
+    Integer getCount();
 };

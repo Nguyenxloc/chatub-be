@@ -26,4 +26,6 @@ public interface HoaDonRepository
     int enableStt(@Param("id")String id);
     @Query("UPDATE HoaDon hoaDon SET hoaDon.trangThai = 0 WHERE hoaDon.id=:id")
     int disableStt(@Param("id")String id);
+    @Query(value = "SELECT COUNT(*) FROM hoadon",nativeQuery = true)
+    Integer getCount();
 };

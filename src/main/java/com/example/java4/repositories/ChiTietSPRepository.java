@@ -22,4 +22,6 @@ public interface ChiTietSPRepository
     int enableStt(@Param("id")String id);
     @Query("UPDATE ChiTietSP ctsp SET ctsp.trangThai = 0 WHERE ctsp.id=:id")
     int disableStt(@Param("id")String id);
+    @Query(value = "SELECT COUNT(*) FROM chitietsp",nativeQuery = true)
+    Integer getCount();
 };

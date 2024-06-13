@@ -19,4 +19,6 @@ public interface KhuyenMaiRepository extends JpaRepository<KhuyenMai,String> {
     int enableStt(@Param("id")String id);
     @Query("UPDATE KhuyenMai km SET km.trangThai = 0 WHERE km.id=:id")
     int disableStt(@Param("id")String id);
+    @Query(value = "SELECT COUNT(*) FROM khuyenmai",nativeQuery = true)
+    Integer getCount();
 }

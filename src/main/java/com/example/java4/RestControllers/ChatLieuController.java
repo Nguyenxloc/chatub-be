@@ -71,9 +71,9 @@ public class ChatLieuController {
             return ResponseEntity.ok(false);
         }
         else{
+            String ma = "CHL"+(chatLieuRepo.getCount()+1);
             ChatLieu cl = new ChatLieu();
-            //conduct ma
-            cl.setMa(newChatLieu.getMa());
+            cl.setMa(ma);
             cl.setTen(newChatLieu.getTen());
             cl.setTrangThai(Integer.valueOf(newChatLieu.getTrangThai()));
             cl.setNgayTao(Date.valueOf(newChatLieu.getNgayTao()));

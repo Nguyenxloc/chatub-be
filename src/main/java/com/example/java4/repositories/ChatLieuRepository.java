@@ -17,4 +17,6 @@ public interface ChatLieuRepository extends JpaRepository<ChatLieu,String> {
     int enableStt(@Param("id")String id);
     @Query("UPDATE ChatLieu cl SET cl.trangThai = 0 WHERE cl.id=:id")
     int disableStt(@Param("id")String id);
+    @Query(value = "SELECT COUNT(*) FROM chatlieu",nativeQuery = true)
+    Integer getCount();
 }

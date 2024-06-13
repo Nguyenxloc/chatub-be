@@ -27,8 +27,6 @@ public class KhuyenMaiNoMap {
     private Date ngayBatDau;
     @Column(name="NgayKetThuc")
     private Date ngayKetThuc;
-    @Column(name="IdHinhThucKM")
-    private String idHinhThucKM;
     @Column(name="GiaTriGiam")
     private Float giaTriGiam;
     @Column(name="TrangThai")

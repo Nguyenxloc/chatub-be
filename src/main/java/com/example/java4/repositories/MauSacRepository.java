@@ -21,4 +21,6 @@ public interface MauSacRepository
     int enableStt(@Param("id")String id);
     @Query("UPDATE MauSac ms SET ms.trangThai = 0 WHERE ms.id=:id")
     int disableStt(@Param("id")String id);
+    @Query(value = "SELECT COUNT(*) FROM mausac",nativeQuery = true)
+    Integer getCount();
 } ;

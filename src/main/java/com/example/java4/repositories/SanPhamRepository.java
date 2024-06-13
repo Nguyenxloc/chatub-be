@@ -21,4 +21,6 @@ public interface SanPhamRepository
     int enableStt(@Param("id")String id);
     @Query("UPDATE SanPham sp SET sp.trangThai = 0 WHERE sp.id=:id")
     int disableStt(@Param("id")String id);
+    @Query(value = "SELECT COUNT(*) FROM sanpham",nativeQuery = true)
+    Integer getCount();
 };

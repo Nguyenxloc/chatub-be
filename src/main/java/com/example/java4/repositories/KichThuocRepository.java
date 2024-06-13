@@ -21,4 +21,6 @@ public interface KichThuocRepository
     int enableStt(@Param("id")String id);
     @Query("UPDATE KichThuoc kt SET kt.trangThai = 0 WHERE kt.id=:id")
     int disableStt(@Param("id")String id);
+    @Query(value = "SELECT COUNT(*) FROM kichthuoc",nativeQuery = true)
+    Integer getCount();
 };

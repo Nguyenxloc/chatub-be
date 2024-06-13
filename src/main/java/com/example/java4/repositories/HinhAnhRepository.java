@@ -17,4 +17,6 @@ public interface HinhAnhRepository extends JpaRepository<HinhAnh,String> {
     int enableStt(@Param("id")String id);
     @Query("UPDATE HinhAnh hinhAnh SET hinhAnh.trangThai = 0 WHERE hinhAnh.id=:id")
     int disableStt(@Param("id")String id);
+    @Query(value = "SELECT COUNT(*) FROM hinhanh",nativeQuery = true)
+    Integer getCount();
 }

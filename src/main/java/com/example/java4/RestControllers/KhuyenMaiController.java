@@ -46,7 +46,6 @@ public class KhuyenMaiController {
             khuyenMai.setTen(newKhuyenMai.getTen());
             khuyenMai.setNgayBatDau(Date.valueOf(newKhuyenMai.getNgayBatDau()));
             khuyenMai.setNgayKetThuc(Date.valueOf(newKhuyenMai.getNgayKetThuc()));
-            khuyenMai.setIdHinhThucKM(newKhuyenMai.getIdHinhThucKM());
             khuyenMai.setGiaTriGiam(Float.valueOf(newKhuyenMai.getGiaTriGiam()));
             khuyenMai.setTrangThai(Integer.valueOf(newKhuyenMai.getTrangThai()));
             khuyenMaiRepoNoMap.save(khuyenMai);
@@ -83,7 +82,6 @@ public class KhuyenMaiController {
             khuyenMai.setTen(newKhuyenMai.getTen());
             khuyenMai.setNgayBatDau(Date.valueOf(newKhuyenMai.getNgayBatDau()));
             khuyenMai.setNgayKetThuc(Date.valueOf(newKhuyenMai.getNgayKetThuc()));
-            khuyenMai.setIdHinhThucKM(newKhuyenMai.getIdHinhThucKM());
             khuyenMai.setGiaTriGiam(Float.valueOf(newKhuyenMai.getGiaTriGiam()));
             khuyenMai.setTrangThai(Integer.valueOf(newKhuyenMai.getTrangThai()));
             khuyenMaiRepoNoMap.save(khuyenMai);

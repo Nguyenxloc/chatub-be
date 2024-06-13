@@ -24,4 +24,6 @@ public interface KhachHangRepository
     int enableStt(@Param("id")String id);
     @Query("UPDATE KhachHang kh SET kh.trangThai = 0 WHERE kh.id=:id")
     int disableStt(@Param("id")String id);
+    @Query(value = "SELECT COUNT(*) FROM khachhang",nativeQuery = true)
+    Integer getCount();
 };

@@ -1,6 +1,5 @@
 package com.example.java4.entitiesLv2;
 
-import com.example.java4.entitiesLv1.HinhThucKM;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,9 +27,6 @@ public class KhuyenMai {
     private Date ngayBatDau;
     @Column(name="NgayKetThuc")
     private Date ngayKetThuc;
-    @ManyToOne
-    @JoinColumn(name="IdHinhThucKM",referencedColumnName = "Id")
-    private HinhThucKM hinhThucKM;
     @Column(name="GiaTriGiam")
     private Float giaTriGiam;
     @Column(name="TrangThai")

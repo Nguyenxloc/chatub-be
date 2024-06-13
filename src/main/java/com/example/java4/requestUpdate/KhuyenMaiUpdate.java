@@ -16,8 +16,6 @@ public class KhuyenMaiUpdate {
     @NotEmpty
     private String ngayKetThuc;
     @NotEmpty
-    private String idHinhThucKM;
-    @NotEmpty
     private String giaTriGiam;
     @NotEmpty
     private String trangThai;
