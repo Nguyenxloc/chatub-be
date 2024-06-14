@@ -1,5 +1,6 @@
 package com.example.java4.repositories;
 
+import com.example.java4.entitiesLv1.ChatLieu;
 import com.example.java4.entitiesLv1.ChucVu;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,9 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public interface ChucVuRepository extends JpaRepository<ChucVu,String> {
-    public static final int ACTIVE  = 1;
-    public static final int INACTIVE =0;
-    public Page<ChucVu> findByTrangThai(int trangThai, Pageable pageable);
+    int ACTIVE  = 1;
+    int INACTIVE =0;
+    Page<ChucVu> findByTrangThai(int trangThai, Pageable pageable);
+    @Query(value = "select *from chucvu",nativeQuery = true)
+    Page<ChucVu> findAllByPage(Pageable pageable);
     @Query("UPDATE ChucVu cv SET cv.trangThai = 1 WHERE cv.id=:id")
     int enableStt(@Param("id")String id);
     @Query("UPDATE ChucVu cv SET cv.trangThai = 0 WHERE cv.id=:id")

@@ -4,12 +4,15 @@ import com.example.java4.entitiesLv1.*;
 import com.example.java4.repositories.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("chuc-vu")
@@ -21,8 +24,17 @@ public class ChucVuController {
     }
     @CrossOrigin
     @GetMapping("/index")
-    public ResponseEntity<List<ChucVu>> index() {
-        return ResponseEntity.ok(chucVuRepo.findAll());
+    public ResponseEntity<List<ChucVu>> index(@RequestParam("page")Optional<Integer> pageParam) {
+        int page = pageParam.orElse(0);
+        Pageable pageable = PageRequest.of(page,20);
+        return ResponseEntity.ok(chucVuRepo.findByTrangThai(1, pageable).getContent());
+    }
+    @CrossOrigin
+    @GetMapping("/get-all")
+    public ResponseEntity<List<ChucVu>> getAll(@RequestParam("page")Optional<Integer> pageParam) {
+        int page = pageParam.orElse(0);
+        Pageable pageable = PageRequest.of(page,20);
+        return ResponseEntity.ok(chucVuRepo.findAllByPage(pageable).getContent());
     }
     @CrossOrigin
     @GetMapping("/detail/{id}")

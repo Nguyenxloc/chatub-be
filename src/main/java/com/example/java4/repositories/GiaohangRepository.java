@@ -1,4 +1,5 @@
 package com.example.java4.repositories;
+import com.example.java4.entitiesLv1.ChatLieu;
 import com.example.java4.entitiesLv2.GiaoHang;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,9 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public interface GiaohangRepository extends JpaRepository<GiaoHang,String> {
-    public static final int ACTIVE  = 1;
-    public static final int INACTIVE =0;
-    public Page<GiaoHang> findByTrangThai(int trangThai, Pageable pageable);
+    int ACTIVE  = 1;
+    int INACTIVE =0;
+    Page<GiaoHang> findByTrangThai(int trangThai, Pageable pageable);
+    @Query(value = "select *from giaohang",nativeQuery = true)
+    Page<GiaoHang> findAllByPage(Pageable pageable);
     @Query("UPDATE GiaoHang giaoHang SET giaoHang.trangThai = 1 WHERE giaoHang.id=:id")
     int enableStt(@Param("id")String id);
     @Query("UPDATE GiaoHang giaoHang SET giaoHang.trangThai = 0 WHERE giaoHang.id=:id")

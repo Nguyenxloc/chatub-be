@@ -7,12 +7,16 @@ import com.example.java4.repositoriesNoMap.HoaDonRepoNoMap;
 import com.example.java4.requestUpdate.HoaDonUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
+
 @Controller
 @RequestMapping("hoa-don")
 public class HoaDonController {
@@ -24,8 +28,17 @@ public class HoaDonController {
     }
     @CrossOrigin
     @GetMapping("index")
-    public ResponseEntity<List<HoaDon>> index() {
-        return ResponseEntity.ok(hdRepo.findAll());
+    public ResponseEntity<List<HoaDon>> index(@RequestParam("page")Optional<Integer> pageParam) {
+        int page = pageParam.orElse(0);
+        Pageable pageable = PageRequest.of(page, 20);
+        return ResponseEntity.ok(hdRepo.findByTrangThai(1, pageable ).getContent());
+    }
+    @CrossOrigin
+    @GetMapping("get-all")
+    public ResponseEntity<List<HoaDon>> getAll(@RequestParam("page")Optional<Integer> pageParam) {
+        int page = pageParam.orElse(0);
+        Pageable pageable = PageRequest.of(page, 20);
+        return ResponseEntity.ok(hdRepo.findAllByPage(pageable ).getContent());
     }
 
     @CrossOrigin

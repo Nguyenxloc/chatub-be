@@ -12,8 +12,8 @@ import java.util.Optional;
 public interface KhachHangRepoNoMap
         extends JpaRepository<KhachHangNoMap,String>
 {
-    public static final int ACTIVE  = 1;
-    public static final int INACTIVE =0;
-    public Page<KhachHangNoMap> findByTrangThai(int trangThai, Pageable pageable);
-    public Optional<KhachHangNoMap> findById(String id);
+    int ACTIVE  = 1;
+    int INACTIVE =0;
+    Page<KhachHangNoMap> findByTrangThai(int trangThai, Pageable pageable);
+    Optional<KhachHangNoMap> findById(String id);
 };

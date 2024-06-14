@@ -8,12 +8,16 @@ import com.example.java4.repositories.*;
 import com.example.java4.requestUpdate.GiaoHangUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
+
 @Controller
 @RequestMapping("giao-hang")
 public class GiaoHangController {
@@ -26,10 +30,18 @@ public class GiaoHangController {
     }
     @CrossOrigin
     @GetMapping("/index")
-    public ResponseEntity<List<GiaoHang>> index() {
-        return ResponseEntity.ok(giaoHangRepo.findAll());
+    public ResponseEntity<List<GiaoHang>> index(@RequestParam("page") Optional<Integer> pageParam) {
+        int page = pageParam.orElse(0);
+        Pageable pageable = PageRequest.of(page,20);
+        return ResponseEntity.ok(giaoHangRepo.findByTrangThai(1,pageable).getContent());
     }
-
+    @CrossOrigin
+    @GetMapping("/get-all")
+    public ResponseEntity<List<GiaoHang>> getAll(@RequestParam("page") Optional<Integer> pageParam) {
+        int page = pageParam.orElse(0);
+        Pageable pageable = PageRequest.of(page,20);
+        return ResponseEntity.ok(giaoHangRepo.findAllByPage(pageable).getContent());
+    }
     @CrossOrigin
     @GetMapping("/detail/{id}")
     public ResponseEntity<GiaoHang> getDetail(@PathVariable(name="id") GiaoHang giaoHang){

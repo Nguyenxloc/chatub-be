@@ -1,4 +1,6 @@
 package com.example.java4.repositories;
+import com.example.java4.entitiesLv1.ChatLieu;
+import com.example.java4.entitiesLv1.ChucVu;
 import com.example.java4.entitiesLv2.ChiTietSP;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,9 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ChiTietSPRepository
         extends JpaRepository<ChiTietSP,String>
 {
-    public static final int ACTIVE  = 1;
-    public static final int INACTIVE =0;
+    int ACTIVE  = 1;
+    int INACTIVE =0;
     Page<ChiTietSP> findByTrangThai(int trangThai, Pageable pageable);
+    @Query(value = "select *from chucvu",nativeQuery = true)
+    Page<ChiTietSP> findAllByPage(Pageable pageable);
     @Modifying(clearAutomatically = true)
     @Query("UPDATE ChiTietSP ctsp SET ctsp.trangThai = 1 WHERE ctsp.id=:id")
     int enableStt(@Param("id")String id);

@@ -1,4 +1,5 @@
 package com.example.java4.repositories;
+import com.example.java4.entitiesLv1.ChatLieu;
 import com.example.java4.entitiesLv1.KichThuoc;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,9 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 public interface KichThuocRepository
         extends JpaRepository<KichThuoc,String>
 {
-    public static final int ACTIVE  = 1;
-    public static final int INACTIVE =0;
-    public Page<KichThuoc> findByTrangThai(int trangThai, Pageable pageable);
+    int ACTIVE  = 1;
+    int INACTIVE =0;
+    Page<KichThuoc> findByTrangThai(int trangThai, Pageable pageable);
+    @Query(value = "select *from kichthuoc",nativeQuery = true)
+    Page<KichThuoc> findAllByPage(Pageable pageable);
     @Query("UPDATE KichThuoc kt SET kt.trangThai = 1 WHERE kt.id=:id")
     int enableStt(@Param("id")String id);
     @Query("UPDATE KichThuoc kt SET kt.trangThai = 0 WHERE kt.id=:id")

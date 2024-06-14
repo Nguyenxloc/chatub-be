@@ -7,6 +7,8 @@ import com.example.java4.repositoriesNoMap.KhuyenMaiRepoNoMap;
 import com.example.java4.requestUpdate.KhuyenMaiUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
+
 @Controller
 @RequestMapping("khuyen-mai")
 public class KhuyenMaiController {
@@ -25,8 +29,18 @@ public class KhuyenMaiController {
     }
     @CrossOrigin
     @GetMapping("/index")
-    public ResponseEntity<List<KhuyenMai>> index(){
-        return ResponseEntity.ok(khuyenMaiRepo.findAll());
+    public ResponseEntity<List<KhuyenMai>> index(@RequestParam("page")Optional<Integer> pageParam){
+        int page = pageParam.orElse(0);
+        Pageable pageable = PageRequest.of(page, 20);
+        return ResponseEntity.ok(khuyenMaiRepo.findByTrangThai(1,pageable).getContent());
+    }
+
+    @CrossOrigin
+    @GetMapping("/get-all")
+    public ResponseEntity<List<KhuyenMai>> getAll(@RequestParam("page")Optional<Integer> pageParam){
+        int page = pageParam.orElse(0);
+        Pageable pageable = PageRequest.of(page, 20);
+        return ResponseEntity.ok(khuyenMaiRepo.findAllByPage(pageable).getContent());
     }
 
     @CrossOrigin

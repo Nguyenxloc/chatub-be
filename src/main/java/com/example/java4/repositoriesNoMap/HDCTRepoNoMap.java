@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface HDCTRepoNoMap
         extends JpaRepository<HDCTNoMap,String>
 {
-      public static final int ACTIVE  = 1;
-      public static final int INACTIVE =0;
-      public Page<HDCTNoMap> findByTrangThai(int trangThai, Pageable pageable);
+      int ACTIVE  = 1;
+      int INACTIVE =0;
+      Page<HDCTNoMap> findByTrangThai(int trangThai, Pageable pageable);
 };

@@ -13,8 +13,8 @@ import java.util.Optional;
 public interface ChiTietSPRepoNoMap
         extends JpaRepository<ChiTietSPNoMap,String>
 {
-    public static final int ACTIVE  = 1;
-    public static final int INACTIVE =0;
-    public Page<ChiTietSP> findByTrangThai(int trangThai, Pageable pageable);
-    public Optional<ChiTietSPNoMap> findById(String id);
+    int ACTIVE  = 1;
+    int INACTIVE =0;
+    Page<ChiTietSP> findByTrangThai(int trangThai, Pageable pageable);
+    Optional<ChiTietSPNoMap> findById(String id);
 };

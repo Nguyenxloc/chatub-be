@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface KhuyenMaiRepoNoMap extends JpaRepository<KhuyenMaiNoMap,String> {
-    public static final int ACTIVE  = 1;
-    public static final int INACTIVE =0;
-    public Page<KhuyenMaiNoMap> findByTrangThai(int trangThai, Pageable pageable);
+    int ACTIVE  = 1;
+    int INACTIVE =0;
+    Page<KhuyenMaiNoMap> findByTrangThai(int trangThai, Pageable pageable);
 }

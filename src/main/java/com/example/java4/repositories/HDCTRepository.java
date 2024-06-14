@@ -1,4 +1,5 @@
 package com.example.java4.repositories;
+import com.example.java4.entitiesLv1.ChatLieu;
 import com.example.java4.entitiesLv2.HDCT;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,9 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 public interface HDCTRepository
         extends JpaRepository<HDCT,String>
 {
-      public static final int ACTIVE  = 1;
-      public static final int INACTIVE =0;
-      public Page<HDCT> findByTrangThai(int trangThai, Pageable pageable);
+      int ACTIVE  = 1;
+      int INACTIVE =0;
+      Page<HDCT> findByTrangThai(int trangThai, Pageable pageable);
+      @Query(value = "select *from hoadonchitiet",nativeQuery = true)
+      Page<HDCT> findAllByPage(Pageable pageable);
       @Query("UPDATE HDCT hdct SET hdct.trangThai = 1 WHERE hdct.id=:id")
       int enableStt(@Param("id")String id);
       @Query("UPDATE HDCT hdct SET hdct.trangThai = 0 WHERE hdct.id=:id")

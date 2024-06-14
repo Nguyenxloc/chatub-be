@@ -14,10 +14,10 @@ import java.util.List;
 public interface HoaDonRepoNoMap
         extends JpaRepository<HoaDonNoMap,String>
 {
-    public static final int ACTIVE  = 1;
-    public static final int INACTIVE =0;
-    public Page<HoaDon> findByTrangThai(int trangThai, Pageable pageable);
+    int ACTIVE  = 1;
+    int INACTIVE =0;
+    Page<HoaDon> findByTrangThai(int trangThai, Pageable pageable);
     @Query(value = "SELECT TOP 5 * FROM HoaDonChiTiet ORDER BY ID DESC",
            nativeQuery = true)
-    public List<HoaDonNoMap> findByTrangThai(int trangThai);
+    List<HoaDonNoMap> findByTrangThai(int trangThai);
 };

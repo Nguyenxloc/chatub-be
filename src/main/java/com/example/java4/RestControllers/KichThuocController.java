@@ -5,6 +5,8 @@ import com.example.java4.repositories.KichThuocRepository;
 import com.example.java4.requestUpdate.KichThuocUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
+
 @Controller
 @RequestMapping("kich-thuoc")
 public class KichThuocController {
@@ -23,8 +27,17 @@ public class KichThuocController {
     }
     @CrossOrigin
     @GetMapping("/index")
-    public ResponseEntity<List<KichThuoc>> getIndexPage(Model model) {
-        return ResponseEntity.ok(ktRepo.findAll());
+    public ResponseEntity<List<KichThuoc>> getIndexPage(@RequestParam("page") Optional<Integer> pageParam) {
+        int page =  pageParam.orElse(0);
+        Pageable pageable = PageRequest.of(page,20);
+        return ResponseEntity.ok(ktRepo.findByTrangThai(1, pageable).getContent());
+    }
+    @CrossOrigin
+    @GetMapping("/get-all")
+    public ResponseEntity<List<KichThuoc>> getAll(@RequestParam("page") Optional<Integer> pageParam) {
+        int page =  pageParam.orElse(0);
+        Pageable pageable = PageRequest.of(page,20);
+        return ResponseEntity.ok(ktRepo.findAllByPage(pageable).getContent());
     }
 
     @CrossOrigin

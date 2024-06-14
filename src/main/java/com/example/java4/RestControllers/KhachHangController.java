@@ -5,6 +5,8 @@ import com.example.java4.repositories.KhachHangRepository;
 import com.example.java4.requestUpdate.KhachHangUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("khach-hang")
@@ -25,10 +28,19 @@ public class KhachHangController {
     }
     @CrossOrigin
     @GetMapping("/index")
-    public ResponseEntity<List<KhachHang>> index(Model model) {
-        return ResponseEntity.ok(khRepo.findAll()) ;
+    public ResponseEntity<List<KhachHang>> index(@RequestParam("page")Optional<Integer> pageParam) {
+        int page = pageParam.orElse(0);
+        Pageable pageable = PageRequest.of(page,20);
+        return ResponseEntity.ok(khRepo.findByTrangThai(1,pageable).getContent()) ;
     }
 
+    @CrossOrigin
+    @GetMapping("/get-all")
+    public ResponseEntity<List<KhachHang>> getAll(@RequestParam("page")Optional<Integer> pageParam) {
+        int page = pageParam.orElse(0);
+        Pageable pageable = PageRequest.of(page,20);
+        return ResponseEntity.ok(khRepo.findAllByPage(pageable).getContent()) ;
+    }
 
     @CrossOrigin
     @GetMapping("/detail/{id}")

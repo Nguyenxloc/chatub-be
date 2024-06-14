@@ -14,9 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 public interface SanPhamRepository
         extends JpaRepository<SanPham,String>
 {
-    public static final int ACTIVE  = 1;
-    public static final int INACTIVE =0;
-    public Page<SanPham> findByTrangThai(int trangThai, Pageable pageable);
+    int ACTIVE  = 1;
+    int INACTIVE =0;
+    Page<SanPham> findByTrangThai(int trangThai, Pageable pageable);
+    @Query(value = "select *from sanpham",nativeQuery = true)
+    Page<SanPham> findAllByPage(Pageable pageable);
     @Query("UPDATE SanPham sp SET sp.trangThai = 1 WHERE sp.id=:id")
     int enableStt(@Param("id")String id);
     @Query("UPDATE SanPham sp SET sp.trangThai = 0 WHERE sp.id=:id")

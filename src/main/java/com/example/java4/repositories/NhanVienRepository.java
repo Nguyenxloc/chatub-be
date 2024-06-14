@@ -1,4 +1,5 @@
 package com.example.java4.repositories;
+import com.example.java4.entitiesLv1.ChatLieu;
 import com.example.java4.entitiesLv2.NhanVien;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,10 +17,12 @@ import java.util.Optional;
 public interface NhanVienRepository
         extends JpaRepository<NhanVien,String>
 {
-    public static final int ACTIVE  = 1;
-    public static final int INACTIVE =0;
-    public Page<NhanVien> findByTrangThai(int trangThai, Pageable pageable);
-    public Optional<NhanVien> findById(String id);
+    int ACTIVE  = 1;
+    int INACTIVE =0;
+    Page<NhanVien> findByTrangThai(int trangThai, Pageable pageable);
+    @Query(value = "select *from nhanvien",nativeQuery = true)
+    Page<NhanVien> findAllByPage(Pageable pageable);
+    Optional<NhanVien> findById(String id);
     @Query("UPDATE NhanVien nv SET nv.trangThai = 1 WHERE nv.id=:id")
     int enableStt(@Param("id")String id);
     @Query("UPDATE NhanVien nv SET nv.trangThai = 0 WHERE nv.id=:id")

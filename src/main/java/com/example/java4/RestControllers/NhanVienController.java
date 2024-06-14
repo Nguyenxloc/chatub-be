@@ -7,6 +7,8 @@ import com.example.java4.repositoriesNoMap.NhanVienRepoNoMap;
 import com.example.java4.requestUpdate.NhanVienUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("nhan-vien")
@@ -26,8 +29,18 @@ public class NhanVienController {
     }
     @CrossOrigin
     @GetMapping("/index")
-    public ResponseEntity<List<NhanVien>> index() {
-        return ResponseEntity.ok(nvRepo.findAll());
+    public ResponseEntity<List<NhanVien>> index(@RequestParam("page") Optional<Integer> pageParam) {
+        int page = pageParam.orElse(0);
+        Pageable pageale = PageRequest.of(page, 20);
+        return ResponseEntity.ok(nvRepo.findByTrangThai(1,pageale).getContent());
+    }
+
+    @CrossOrigin
+    @GetMapping("/get-all")
+    public ResponseEntity<List<NhanVien>> getAll(@RequestParam("page") Optional<Integer> pageParam) {
+        int page = pageParam.orElse(0);
+        Pageable pageale = PageRequest.of(page, 20);
+        return ResponseEntity.ok(nvRepo.findAllByPage(pageale).getContent());
     }
 
     @CrossOrigin

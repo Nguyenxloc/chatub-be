@@ -6,7 +6,10 @@ import com.example.java4.repositories.*;
 import com.example.java4.repositoriesNoMap.HDCTRepoNoMap;
 import com.example.java4.requestUpdate.HDCTUpdate;
 import jakarta.validation.Valid;
+import org.aspectj.apache.bcel.classfile.Module;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,6 +19,8 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Optional;
+
 @Controller
 @RequestMapping("hdct")
 public class HDCTController {
@@ -57,8 +62,18 @@ public class HDCTController {
 
     @CrossOrigin()
     @GetMapping("/index")
-    public ResponseEntity<List<HDCT>> getIndex() {
-        return ResponseEntity.ok(hdctRepository.findAll());
+    public ResponseEntity<List<HDCT>> getIndex(@RequestParam("page")Optional<Integer> pageParams) {
+        int page = pageParams.orElse(0);
+        Pageable pageable = PageRequest.of(page,20);
+        return ResponseEntity.ok(hdctRepository.findByTrangThai(1,pageable).getContent());
+    }
+
+    @CrossOrigin()
+    @GetMapping("/get-all")
+    public ResponseEntity<List<HDCT>> getAll(@RequestParam("page")Optional<Integer> pageParams) {
+        int page = pageParams.orElse(0);
+        Pageable pageable = PageRequest.of(page,20);
+        return ResponseEntity.ok(hdctRepository.findAllByPage(pageable).getContent());
     }
 
     @CrossOrigin

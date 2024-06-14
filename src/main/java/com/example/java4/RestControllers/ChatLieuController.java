@@ -5,12 +5,17 @@ import com.example.java4.requestStore.ChatLieuStore;
 import com.example.java4.requestUpdate.ChatLieuUpdate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
+
 @Controller
 @RequestMapping("chat-lieu")
 public class ChatLieuController {
@@ -20,8 +25,17 @@ public class ChatLieuController {
     }
     @CrossOrigin
     @GetMapping("index")
-    public ResponseEntity<List<ChatLieu>> index() {
-        return ResponseEntity.ok(chatLieuRepo.findAll());
+    public ResponseEntity<List<ChatLieu>> index(@RequestParam("page")Optional<Integer> pageParam) {
+        int page = pageParam.orElse(0);
+        Pageable pageAble = PageRequest.of(page,20);
+        return ResponseEntity.ok(chatLieuRepo.findByTrangThai(1,pageAble).getContent());
+    }
+    @CrossOrigin
+    @GetMapping("get-all")
+    public ResponseEntity<List<ChatLieu>> getAll(@RequestParam("page")Optional<Integer> pageParam) {
+        int page = pageParam.orElse(0);
+        Pageable pageAble = PageRequest.of(page,20);
+        return ResponseEntity.ok(chatLieuRepo.findAllByPage(pageAble).getContent());
     }
 
     @CrossOrigin

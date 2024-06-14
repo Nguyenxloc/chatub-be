@@ -10,9 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public interface ChatLieuRepository extends JpaRepository<ChatLieu,String> {
-    public static final int ACTIVE  = 1;
-    public static final int INACTIVE =0;
-    public Page<ChatLieu> findByTrangThai(int trangThai, Pageable pageable);
+    int ACTIVE  = 1;
+    int INACTIVE =0;
+    Page<ChatLieu> findByTrangThai(int trangThai, Pageable pageable);
+    @Query(value = "select *from chatlieu",nativeQuery = true)
+    Page<ChatLieu> findAllByPage(Pageable pageable);
     @Query("UPDATE ChatLieu cl SET cl.trangThai = 1 WHERE cl.id=:id")
     int enableStt(@Param("id")String id);
     @Query("UPDATE ChatLieu cl SET cl.trangThai = 0 WHERE cl.id=:id")

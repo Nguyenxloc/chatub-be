@@ -1,4 +1,5 @@
 package com.example.java4.repositories;
+import com.example.java4.entitiesLv1.ChatLieu;
 import com.example.java4.entitiesLv2.HoaDon;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,9 +17,11 @@ import java.util.List;
 public interface HoaDonRepository
         extends JpaRepository<HoaDon,String>
 {
-    public static final int ACTIVE  = 1;
-    public static final int INACTIVE =0;
-    public Page<HoaDon> findByTrangThai(int trangThai, Pageable pageable);
+    int ACTIVE  = 1;
+    int INACTIVE =0;
+    Page<HoaDon> findByTrangThai(int trangThai, Pageable pageable);
+    @Query(value = "select *from hoadon",nativeQuery = true)
+    Page<HoaDon> findAllByPage(Pageable pageable);
     @Query(value = "SELECT TOP 5 * FROM HoaDonChiTiet ORDER BY ID DESC",
            nativeQuery = true)
     public List<HoaDon> findByTrangThai(int trangThai);
