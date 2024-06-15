@@ -26,18 +26,32 @@ public class ChatLieuController {
     @CrossOrigin
     @GetMapping("index")
     public ResponseEntity<List<ChatLieu>> index(@RequestParam("page")Optional<Integer> pageParam) {
-        int page = pageParam.orElse(0);
-        Pageable pageAble = PageRequest.of(page,20);
+        int page = pageParam.orElse(1);
+        Pageable pageAble = PageRequest.of(page-1,20);
         return ResponseEntity.ok(chatLieuRepo.findByTrangThai(1,pageAble).getContent());
     }
     @CrossOrigin
     @GetMapping("get-all")
     public ResponseEntity<List<ChatLieu>> getAll(@RequestParam("page")Optional<Integer> pageParam) {
-        int page = pageParam.orElse(0);
-        Pageable pageAble = PageRequest.of(page,20);
+        int page = pageParam.orElse(1);
+        Pageable pageAble = PageRequest.of(page-1,20);
         return ResponseEntity.ok(chatLieuRepo.findAllByPage(pageAble).getContent());
     }
-
+    @CrossOrigin
+    @GetMapping("count")
+    public ResponseEntity<Integer> getCount() {
+        return ResponseEntity.ok(chatLieuRepo.getCount());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt1")
+    public ResponseEntity<Integer> getCountstt1() {
+        return ResponseEntity.ok(chatLieuRepo.getCountStt1());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt0")
+    public ResponseEntity<Integer> getCountstt0() {
+        return ResponseEntity.ok(chatLieuRepo.getCountStt1());
+    }
     @CrossOrigin
     @GetMapping("/detail/{id}")
     public ResponseEntity<ChatLieu> getDetail(@PathVariable("id") ChatLieu chatLieu){

@@ -28,18 +28,32 @@ public class KichThuocController {
     @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<KichThuoc>> getIndexPage(@RequestParam("page") Optional<Integer> pageParam) {
-        int page =  pageParam.orElse(0);
-        Pageable pageable = PageRequest.of(page,20);
+        int page =  pageParam.orElse(1);
+        Pageable pageable = PageRequest.of(page-1,20);
         return ResponseEntity.ok(ktRepo.findByTrangThai(1, pageable).getContent());
     }
     @CrossOrigin
     @GetMapping("/get-all")
     public ResponseEntity<List<KichThuoc>> getAll(@RequestParam("page") Optional<Integer> pageParam) {
-        int page =  pageParam.orElse(0);
-        Pageable pageable = PageRequest.of(page,20);
+        int page =  pageParam.orElse(1);
+        Pageable pageable = PageRequest.of(page-1,20);
         return ResponseEntity.ok(ktRepo.findAllByPage(pageable).getContent());
     }
-
+    @CrossOrigin
+    @GetMapping("count")
+    public ResponseEntity<Integer> getCount() {
+        return ResponseEntity.ok(ktRepo.getCount());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt1")
+    public ResponseEntity<Integer> getCountstt1() {
+        return ResponseEntity.ok(ktRepo.getCountStt1());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt0")
+    public ResponseEntity<Integer> getCountstt0() {
+        return ResponseEntity.ok(ktRepo.getCountStt0());
+    }
     @CrossOrigin
     @GetMapping("detail/{id}")
     public ResponseEntity<KichThuoc> getDetail(@PathVariable(value = "id") KichThuoc kichThuoc){

@@ -31,17 +31,33 @@ public class GiaoHangController {
     @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<GiaoHang>> index(@RequestParam("page") Optional<Integer> pageParam) {
-        int page = pageParam.orElse(0);
-        Pageable pageable = PageRequest.of(page,20);
+        int page = pageParam.orElse(1);
+        Pageable pageable = PageRequest.of(page-1,20);
         return ResponseEntity.ok(giaoHangRepo.findByTrangThai(1,pageable).getContent());
     }
     @CrossOrigin
     @GetMapping("/get-all")
     public ResponseEntity<List<GiaoHang>> getAll(@RequestParam("page") Optional<Integer> pageParam) {
-        int page = pageParam.orElse(0);
-        Pageable pageable = PageRequest.of(page,20);
+        int page = pageParam.orElse(1);
+        Pageable pageable = PageRequest.of(page-1,20);
         return ResponseEntity.ok(giaoHangRepo.findAllByPage(pageable).getContent());
     }
+    @CrossOrigin
+    @GetMapping("count")
+    public ResponseEntity<Integer> getCount() {
+        return ResponseEntity.ok(giaoHangRepo.getCount());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt1")
+    public ResponseEntity<Integer> getCountStt1() {
+        return ResponseEntity.ok(giaoHangRepo.getCountStt1());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt0")
+    public ResponseEntity<Integer> getCountstt0() {
+        return ResponseEntity.ok(giaoHangRepo.getCountStt0());
+    }
+
     @CrossOrigin
     @GetMapping("/detail/{id}")
     public ResponseEntity<GiaoHang> getDetail(@PathVariable(name="id") GiaoHang giaoHang){

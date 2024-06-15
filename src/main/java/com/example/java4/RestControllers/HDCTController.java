@@ -63,17 +63,32 @@ public class HDCTController {
     @CrossOrigin()
     @GetMapping("/index")
     public ResponseEntity<List<HDCT>> getIndex(@RequestParam("page")Optional<Integer> pageParams) {
-        int page = pageParams.orElse(0);
-        Pageable pageable = PageRequest.of(page,20);
+        int page = pageParams.orElse(1);
+        Pageable pageable = PageRequest.of(page-1,20);
         return ResponseEntity.ok(hdctRepository.findByTrangThai(1,pageable).getContent());
     }
 
     @CrossOrigin()
     @GetMapping("/get-all")
     public ResponseEntity<List<HDCT>> getAll(@RequestParam("page")Optional<Integer> pageParams) {
-        int page = pageParams.orElse(0);
-        Pageable pageable = PageRequest.of(page,20);
+        int page = pageParams.orElse(1);
+        Pageable pageable = PageRequest.of(page-1,20);
         return ResponseEntity.ok(hdctRepository.findAllByPage(pageable).getContent());
+    }
+    @CrossOrigin
+    @GetMapping("count")
+    public ResponseEntity<Integer> getCount() {
+        return ResponseEntity.ok(hdctRepository.getCount());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt1")
+    public ResponseEntity<Integer> getCountstt1() {
+        return ResponseEntity.ok(hdctRepository.getCountStt1());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt0")
+    public ResponseEntity<Integer> getCountstt0() {
+        return ResponseEntity.ok(hdctRepository.getCountStt0());
     }
 
     @CrossOrigin

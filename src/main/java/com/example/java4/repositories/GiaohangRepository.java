@@ -22,4 +22,8 @@ public interface GiaohangRepository extends JpaRepository<GiaoHang,String> {
     int disableStt(@Param("id")String id);
     @Query(value = "SELECT COUNT(*) FROM giaohang",nativeQuery = true)
     Integer getCount();
+    @Query(value = "SELECT COUNT(*) FROM giaohang where trangThai = 1",nativeQuery = true)
+    Integer getCountStt1();
+    @Query(value = "SELECT COUNT(*) FROM giaohang where trangThai= 0",nativeQuery = true)
+    Integer getCountStt0();
 }

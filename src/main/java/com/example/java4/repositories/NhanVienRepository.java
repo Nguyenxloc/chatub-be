@@ -29,4 +29,8 @@ public interface NhanVienRepository
     int disableStt(@Param("id")String id);
     @Query(value = "SELECT COUNT(*) FROM nhanvien",nativeQuery = true)
     Integer getCount();
+    @Query(value = "SELECT COUNT(*) FROM nhanvien",nativeQuery = true)
+    Integer getCountStt1();
+    @Query(value = "SELECT COUNT(*) FROM nhanvien",nativeQuery = true)
+    Integer getCountStt0();
 };

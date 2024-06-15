@@ -27,19 +27,33 @@ public class SanPhamController {
     @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<SanPham>> index(@RequestParam("page") Optional<Integer> pageParam){
-        int page = pageParam.orElse(0);
-        Pageable pageale = PageRequest.of(page, 20);
+        int page = pageParam.orElse(1);
+        Pageable pageale = PageRequest.of(page-1, 20);
         return ResponseEntity.ok(spRepo.findByTrangThai(1,pageale).getContent());
     }
 
     @CrossOrigin
     @GetMapping("/get-all")
     public ResponseEntity<List<SanPham>> getAll(@RequestParam("page") Optional<Integer> pageParam){
-        int page = pageParam.orElse(0);
-        Pageable pageale = PageRequest.of(page, 20);
+        int page = pageParam.orElse(1);
+        Pageable pageale = PageRequest.of(page-1, 20);
         return ResponseEntity.ok(spRepo.findAllByPage(pageale).getContent());
     }
-
+    @CrossOrigin
+    @GetMapping("count")
+    public ResponseEntity<Integer> getCount() {
+        return ResponseEntity.ok(spRepo.getCount());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt1")
+    public ResponseEntity<Integer> getCountstt1() {
+        return ResponseEntity.ok(spRepo.getCountStt1());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt0")
+    public ResponseEntity<Integer> getCountstt0() {
+        return ResponseEntity.ok(spRepo.getCountStt0());
+    }
     @CrossOrigin
     @GetMapping("/detail/{id}")
     public ResponseEntity<SanPham> getDetail(@PathVariable(value = "id") SanPham sanPham){

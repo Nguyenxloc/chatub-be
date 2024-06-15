@@ -30,17 +30,32 @@ public class KhuyenMaiController {
     @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<KhuyenMai>> index(@RequestParam("page")Optional<Integer> pageParam){
-        int page = pageParam.orElse(0);
-        Pageable pageable = PageRequest.of(page, 20);
+        int page = pageParam.orElse(1);
+        Pageable pageable = PageRequest.of(page-1, 20);
         return ResponseEntity.ok(khuyenMaiRepo.findByTrangThai(1,pageable).getContent());
     }
 
     @CrossOrigin
     @GetMapping("/get-all")
     public ResponseEntity<List<KhuyenMai>> getAll(@RequestParam("page")Optional<Integer> pageParam){
-        int page = pageParam.orElse(0);
-        Pageable pageable = PageRequest.of(page, 20);
+        int page = pageParam.orElse(1);
+        Pageable pageable = PageRequest.of(page-1, 20);
         return ResponseEntity.ok(khuyenMaiRepo.findAllByPage(pageable).getContent());
+    }
+    @CrossOrigin
+    @GetMapping("count")
+    public ResponseEntity<Integer> getCount() {
+        return ResponseEntity.ok(khuyenMaiRepo.getCount());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt1")
+    public ResponseEntity<Integer> getCountstt1() {
+        return ResponseEntity.ok(khuyenMaiRepo.getCountStt1());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt0")
+    public ResponseEntity<Integer> getCountstt0() {
+        return ResponseEntity.ok(khuyenMaiRepo.getCountStt0());
     }
 
     @CrossOrigin

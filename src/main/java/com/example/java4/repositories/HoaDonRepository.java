@@ -31,4 +31,8 @@ public interface HoaDonRepository
     int disableStt(@Param("id")String id);
     @Query(value = "SELECT COUNT(*) FROM hoadon",nativeQuery = true)
     Integer getCount();
+    @Query(value = "SELECT COUNT(*) FROM hoadon where trangThai=1",nativeQuery = true)
+    Integer getCountStt1();
+    @Query(value = "SELECT COUNT(*) FROM hoadon where trangThai=0",nativeQuery = true)
+    Integer getCountStt0();
 };

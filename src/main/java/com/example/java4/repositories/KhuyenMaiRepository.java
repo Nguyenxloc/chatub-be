@@ -24,4 +24,8 @@ public interface KhuyenMaiRepository extends JpaRepository<KhuyenMai,String> {
     int disableStt(@Param("id")String id);
     @Query(value = "SELECT COUNT(*) FROM khuyenmai",nativeQuery = true)
     Integer getCount();
+    @Query(value = "SELECT COUNT(*) FROM khuyenmai where trangThai=1",nativeQuery = true)
+    Integer getCountStt1();
+    @Query(value = "SELECT COUNT(*) FROM khuyenmai where trangThai=0",nativeQuery = true)
+    Integer getCountStt0();
 }

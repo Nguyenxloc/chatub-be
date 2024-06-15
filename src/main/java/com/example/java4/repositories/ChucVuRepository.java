@@ -24,4 +24,8 @@ public interface ChucVuRepository extends JpaRepository<ChucVu,String> {
     int disableStt(@Param("id")String id);
     @Query(value = "SELECT COUNT(*) FROM chucvu",nativeQuery = true)
     Integer getCount();
+    @Query(value = "SELECT COUNT(*) FROM chucvu where trangThai=1",nativeQuery = true)
+    Integer getCountStt1();
+    @Query(value = "SELECT COUNT(*) FROM chucvu where trangThai=0",nativeQuery = true)
+    Integer getCountStt0();
 }

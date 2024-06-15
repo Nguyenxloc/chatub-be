@@ -28,4 +28,8 @@ public interface ChiTietSPRepository
     int disableStt(@Param("id")String id);
     @Query(value = "SELECT COUNT(*) FROM chitietsp",nativeQuery = true)
     Integer getCount();
+    @Query(value = "SELECT COUNT(*) FROM chitietsp where trangThai=1",nativeQuery = true)
+    Integer getCountStt1();
+    @Query(value = "SELECT COUNT(*) FROM chitietsp where trangThai=0",nativeQuery = true)
+    Integer getCountStt0();
 };

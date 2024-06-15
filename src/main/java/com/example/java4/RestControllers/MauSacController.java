@@ -26,19 +26,33 @@ public class MauSacController {
     @CrossOrigin
     @GetMapping("index")
     public ResponseEntity<List<MauSac>> index(@RequestParam("page")Optional<Integer> pageParam) {
-        int page = pageParam.orElse(0);
-        Pageable pageale = PageRequest.of(page, 20);
+        int page = pageParam.orElse(1);
+        Pageable pageale = PageRequest.of(page-1, 20);
         return ResponseEntity.ok(msRepo.findByTrangThai(1,pageale).getContent());
     }
 
     @CrossOrigin
     @GetMapping("get-all")
     public ResponseEntity<List<MauSac>> getAll(@RequestParam("page")Optional<Integer> pageParam) {
-        int page = pageParam.orElse(0);
-        Pageable pageale = PageRequest.of(page, 20);
+        int page = pageParam.orElse(1);
+        Pageable pageale = PageRequest.of(page-1, 20);
         return ResponseEntity.ok(msRepo.findAllByPage(pageale).getContent());
     }
-
+    @CrossOrigin
+    @GetMapping("count")
+    public ResponseEntity<Integer> getCount() {
+        return ResponseEntity.ok(msRepo.getCount());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt1")
+    public ResponseEntity<Integer> getCountstt1() {
+        return ResponseEntity.ok(msRepo.getCountStt1());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt0")
+    public ResponseEntity<Integer> getCountstt0() {
+        return ResponseEntity.ok(msRepo.getCountStt0());
+    }
     @CrossOrigin
     @GetMapping("/detail/{id}")
     public ResponseEntity<MauSac> getDetail(@PathVariable("id") MauSac mauSac){

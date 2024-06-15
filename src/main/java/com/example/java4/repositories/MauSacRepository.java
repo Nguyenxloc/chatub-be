@@ -26,4 +26,8 @@ public interface MauSacRepository
     int disableStt(@Param("id")String id);
     @Query(value = "SELECT COUNT(*) FROM mausac",nativeQuery = true)
     Integer getCount();
+    @Query(value = "SELECT COUNT(*) FROM mausac where trangThai=1",nativeQuery = true)
+    Integer getCountStt1();
+    @Query(value = "SELECT COUNT(*) FROM mausac where trangThai=0",nativeQuery = true)
+    Integer getCountStt0();
 } ;

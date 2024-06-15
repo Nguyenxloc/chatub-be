@@ -29,19 +29,33 @@ public class KhachHangController {
     @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<KhachHang>> index(@RequestParam("page")Optional<Integer> pageParam) {
-        int page = pageParam.orElse(0);
-        Pageable pageable = PageRequest.of(page,20);
+        int page = pageParam.orElse(1);
+        Pageable pageable = PageRequest.of(page-1,20);
         return ResponseEntity.ok(khRepo.findByTrangThai(1,pageable).getContent()) ;
     }
 
     @CrossOrigin
     @GetMapping("/get-all")
     public ResponseEntity<List<KhachHang>> getAll(@RequestParam("page")Optional<Integer> pageParam) {
-        int page = pageParam.orElse(0);
-        Pageable pageable = PageRequest.of(page,20);
+        int page = pageParam.orElse(1);
+        Pageable pageable = PageRequest.of(page-1,20);
         return ResponseEntity.ok(khRepo.findAllByPage(pageable).getContent()) ;
     }
-
+    @CrossOrigin
+    @GetMapping("count")
+    public ResponseEntity<Integer> getCount() {
+        return ResponseEntity.ok(khRepo.getCount());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt1")
+    public ResponseEntity<Integer> getCountstt1() {
+        return ResponseEntity.ok(khRepo.getCountStt1());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt0")
+    public ResponseEntity<Integer> getCountStt0() {
+        return ResponseEntity.ok(khRepo.getCountStt0());
+    }
     @CrossOrigin
     @GetMapping("/detail/{id}")
     public ResponseEntity<KhachHang> getDetail(@PathVariable(value = "id") KhachHang khachHang){

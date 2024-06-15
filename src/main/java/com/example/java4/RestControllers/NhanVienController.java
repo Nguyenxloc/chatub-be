@@ -30,19 +30,33 @@ public class NhanVienController {
     @CrossOrigin
     @GetMapping("/index")
     public ResponseEntity<List<NhanVien>> index(@RequestParam("page") Optional<Integer> pageParam) {
-        int page = pageParam.orElse(0);
-        Pageable pageale = PageRequest.of(page, 20);
+        int page = pageParam.orElse(1);
+        Pageable pageale = PageRequest.of(page-1, 20);
         return ResponseEntity.ok(nvRepo.findByTrangThai(1,pageale).getContent());
     }
 
     @CrossOrigin
     @GetMapping("/get-all")
     public ResponseEntity<List<NhanVien>> getAll(@RequestParam("page") Optional<Integer> pageParam) {
-        int page = pageParam.orElse(0);
-        Pageable pageale = PageRequest.of(page, 20);
+        int page = pageParam.orElse(1);
+        Pageable pageale = PageRequest.of(page-1, 20);
         return ResponseEntity.ok(nvRepo.findAllByPage(pageale).getContent());
     }
-
+    @CrossOrigin
+    @GetMapping("count")
+    public ResponseEntity<Integer> getCount() {
+        return ResponseEntity.ok(nvRepo.getCount());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt1")
+    public ResponseEntity<Integer> getCountStt1() {
+        return ResponseEntity.ok(nvRepo.getCountStt1());
+    }
+    @CrossOrigin
+    @GetMapping("count-stt0")
+    public ResponseEntity<Integer> getCountStt0() {
+        return ResponseEntity.ok(nvRepo.getCountStt0());
+    }
     @CrossOrigin
     @GetMapping("/detail/{id}")
     public ResponseEntity<NhanVien> getDetail(@PathVariable("id") NhanVien nhanVien){
