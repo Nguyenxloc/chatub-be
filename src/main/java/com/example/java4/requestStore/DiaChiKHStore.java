@@ -27,4 +27,6 @@ public class DiaChiKHStore {
     private String quanHuyen;
     @NotEmpty
     private String tinhThanh;
+    @NotEmpty
+    private String trangThai;
 }

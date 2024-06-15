@@ -20,12 +20,12 @@ public interface DiaChiKHRepository extends JpaRepository<DiaChiKH,String> {
     Page<DiaChiKH> findAllByPage(Pageable pageable);
     @Query("UPDATE DiaChiKH dckh SET dckh.trangThai = 1 WHERE dckh.id=:id")
     int enableStt(@Param("id")String id);
-    @Query("UPDATE ChucVu cv SET cv.trangThai = 0 WHERE cv.id=:id")
+    @Query("UPDATE DiaChiKH dckh SET dckh.trangThai = 0 WHERE dckh.id=:id")
     int disableStt(@Param("id")String id);
-    @Query(value = "SELECT COUNT(*) FROM chucvu",nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM diachikh",nativeQuery = true)
     Integer getCount();
-    @Query(value = "SELECT COUNT(*) FROM chucvu where trangThai=1",nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM diachikh where trangThai=1",nativeQuery = true)
     Integer getCountStt1();
-    @Query(value = "SELECT COUNT(*) FROM chucvu where trangThai=0",nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM diachikh where trangThai=0",nativeQuery = true)
     Integer getCountStt0();
 }

@@ -1,6 +1,4 @@
 package com.example.java4.requestUpdate;
-
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,4 +22,6 @@ public class DiaChiKHUpdate {
     private String quanHuyen;
     @NotEmpty
     private String tinhThanh;
+    @NotEmpty
+    private String trangThai;
 }

@@ -32,4 +32,6 @@ public class DiaChiNVNoMap {
     private String quanHuyen;
     @Column(name ="TinhThanh")
     private String tinhThanh;
+    @Column(name="TrangThai")
+    private Integer trangThai;
 }
