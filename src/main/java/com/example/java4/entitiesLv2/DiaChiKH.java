@@ -1,4 +1,4 @@
-package com.example.java4.entitiesNoMap;
+package com.example.java4.entitiesLv2;
 
 import com.example.java4.entitiesLv1.KhachHang;
 import jakarta.persistence.*;
@@ -7,19 +7,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "diachikh")
-public class DiaChiKHNoMap {
+public class DiaChiKH {
     @Id
     @Column(name="Id")
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    @Column(name="IdKH")
-    private String idKH;
+    @ManyToOne
+    @JoinColumn(name="IdKH", referencedColumnName = "Id")
+    private KhachHang kh;
     @Column(name="IdPhuongXa")
     private String idPhuongXa;
     @Column(name="IdQuanHuyen")

@@ -81,12 +81,6 @@ public class NhanVienController {
             nv.setIdChucVu(newNhanVien.getIdCV());
             nv.setTrangThai(Integer.valueOf(newNhanVien.getTrangThai()));
             nv.setNgayTao(Date.valueOf(newNhanVien.getNgayTao()));
-            nv.setIdPhuongXa(newNhanVien.getIdPhuongXa());
-            nv.setIdQuanHuyen(newNhanVien.getIdQuanHuyen());
-            nv.setIdTinhThanh(newNhanVien.getIdTinhThanh());
-            nv.setPhuongXa(newNhanVien.getPhuongXa());
-            nv.setQuanHuyen(newNhanVien.getQuanHuyen());
-            nv.setTinhThanh(newNhanVien.getTinhThanh());
             nhanVienRepoNoMap.save(nv);
             return ResponseEntity.ok(true);
         }
@@ -127,12 +121,6 @@ public class NhanVienController {
             nv.setIdChucVu(newNhanVien.getIdCV());
             nv.setTrangThai(Integer.valueOf(newNhanVien.getTrangThai()));
             nv.setNgayTao(Date.valueOf(newNhanVien.getNgayTao()));
-            nv.setIdPhuongXa(newNhanVien.getIdPhuongXa());
-            nv.setIdQuanHuyen(newNhanVien.getIdQuanHuyen());
-            nv.setIdTinhThanh(newNhanVien.getIdTinhThanh());
-            nv.setPhuongXa(newNhanVien.getPhuongXa());
-            nv.setQuanHuyen(newNhanVien.getQuanHuyen());
-            nv.setTinhThanh(newNhanVien.getTinhThanh());
             nhanVienRepoNoMap.save(nv);
             return ResponseEntity.ok(true);
         }

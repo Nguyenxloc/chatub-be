@@ -1,28 +1,30 @@
 package com.example.java4.requestStore;
+
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class NhanVienStore {
+@NoArgsConstructor
+public class DiaChiNVStore {
     private String id;
     @NotEmpty
-    private String hoTen;
+    private String idNV;
     @NotEmpty
-    private String gioiTinh;
+    private String idPhuongXa;
     @NotEmpty
-    private String ngaySinh;
+    private String idQuanHuyen;
     @NotEmpty
-    private String sdt;
+    private String IdTinhThanh;
     @NotEmpty
-    private String matKhau;
-    private String idCV;
+    private String phuongXa;
     @NotEmpty
-    private String trangThai;
+    private String quanHuyen;
     @NotEmpty
-    private String  ngayTao;
+    private String tinhThanh;
 }

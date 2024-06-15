@@ -1,4 +1,4 @@
-package com.example.java4.entitiesNoMap;
+package com.example.java4.entitiesLv2;
 
 import com.example.java4.entitiesLv1.KhachHang;
 import jakarta.persistence.*;
@@ -12,14 +12,15 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "diachikh")
-public class DiaChiKHNoMap {
+@Table(name = "diachinv")
+public class DiaChiNV {
     @Id
     @Column(name="Id")
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    @Column(name="IdKH")
-    private String idKH;
+    @ManyToOne
+    @JoinColumn(name="IdNV", referencedColumnName = "Id")
+    private NhanVien nv;
     @Column(name="IdPhuongXa")
     private String idPhuongXa;
     @Column(name="IdQuanHuyen")
