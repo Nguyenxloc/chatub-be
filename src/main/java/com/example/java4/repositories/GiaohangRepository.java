@@ -1,5 +1,4 @@
 package com.example.java4.repositories;
-import com.example.java4.entitiesLv1.ChatLieu;
 import com.example.java4.entitiesLv2.GiaoHang;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
