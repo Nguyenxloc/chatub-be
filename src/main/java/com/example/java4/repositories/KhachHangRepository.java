@@ -19,9 +19,9 @@ public interface KhachHangRepository
 {
     int ACTIVE  = 1;
     int INACTIVE =0;
-    @Query(value = "select *from khachhang ORDER BY ngayTao asc",nativeQuery = true)
+    @Query(value = "select kh from KhachHang kh  ORDER BY kh.ngayTao asc")
     Page<KhachHang> findByTrangThai(int trangThai, Pageable pageable);
-    @Query(value = "select *from khachhang order by ngayTao asc",nativeQuery = true)
+    @Query(value = "select kh from KhachHang kh  ORDER BY kh.ngayTao asc")
     Page<KhachHang> findAllByPage(Pageable pageable);
     Optional<KhachHang> findById(String id);
     @Query("UPDATE KhachHang kh SET kh.trangThai = 1 WHERE kh.id=:id")

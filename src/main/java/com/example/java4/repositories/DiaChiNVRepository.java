@@ -14,9 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 public interface DiaChiNVRepository extends JpaRepository<DiaChiNV,String> {
     int ACTIVE  = 1;
     int INACTIVE =0;
-    @Query(value = "select *from diachinv ORDER BY ngayTao desc",nativeQuery = true)
+    @Query(value = "select dcnv from DiaChiNV dcnv ORDER BY dcnv.ngayTao desc")
     Page<DiaChiNV> findByTrangThai(int trangThai, Pageable pageable);
-    @Query(value = "select *from diachinv order by ngayTao desc",nativeQuery = true)
+    @Query(value = "select dcnv from DiaChiNV dcnv ORDER BY dcnv.ngayTao desc")
     Page<DiaChiNV> findAllByPage(Pageable pageable);
     @Query("UPDATE DiaChiNV dcnv SET dcnv.trangThai = 1 WHERE dcnv.id=:id")
     int enableStt(@Param("id")String id);

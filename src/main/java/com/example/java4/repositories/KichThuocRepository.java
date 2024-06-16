@@ -17,9 +17,9 @@ public interface KichThuocRepository
 {
     int ACTIVE  = 1;
     int INACTIVE =0;
-    @Query(value = "select *from kichthuoc ORDER BY ngayTao asc",nativeQuery = true)
+    @Query(value = "select kt from KichThuoc kt ORDER BY kt.ngayTao asc")
     Page<KichThuoc> findByTrangThai(int trangThai, Pageable pageable);
-    @Query(value = "select *from kichthuoc order by ngayTao asc",nativeQuery = true)
+    @Query(value = "select kt from KichThuoc kt ORDER BY kt.ngayTao asc")
     Page<KichThuoc> findAllByPage(Pageable pageable);
     @Query("UPDATE KichThuoc kt SET kt.trangThai = 1 WHERE kt.id=:id")
     int enableStt(@Param("id")String id);

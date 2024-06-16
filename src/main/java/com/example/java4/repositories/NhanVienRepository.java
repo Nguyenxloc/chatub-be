@@ -19,9 +19,9 @@ public interface NhanVienRepository
 {
     int ACTIVE  = 1;
     int INACTIVE =0;
-    @Query(value = "select *from nhanvien ORDER BY ngayTao asc",nativeQuery = true)
+    @Query(value = "select nv from NhanVien nv  ORDER BY nv.ngayTao asc")
     Page<NhanVien> findByTrangThai(int trangThai, Pageable pageable);
-    @Query(value = "select *from nhanvien order by ngayTao asc",nativeQuery = true)
+    @Query(value = "select nv from NhanVien nv  ORDER BY nv.ngayTao asc")
     Page<NhanVien> findAllByPage(Pageable pageable);
     Optional<NhanVien> findById(String id);
     @Query("UPDATE NhanVien nv SET nv.trangThai = 1 WHERE nv.id=:id")

@@ -17,9 +17,9 @@ public interface MauSacRepository
 {
     int ACTIVE  = 1;
     int INACTIVE =0;
-    @Query(value = "select *from mauSac ORDER BY ngayTao asc",nativeQuery = true)
+    @Query(value = "select ms from MauSac ms ORDER BY ms.ngayTao asc")
     Page<MauSac> findByTrangThai(int trangThai, Pageable pageable);
-    @Query(value = "select *from mausac order by ngayTao asc",nativeQuery = true)
+    @Query(value = "select ms from MauSac ms ORDER BY ms.ngayTao asc")
     Page<MauSac> findAllByPage(Pageable pageable);
     @Query("UPDATE MauSac ms SET ms.trangThai = 1 WHERE ms.id=:id")
     int enableStt(@Param("id")String id);
