@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -108,7 +109,6 @@ public class HDCTController {
         else{
             hdct.setIdChiTietSP(newHDCT.getIdChiTietSP());
             hdct.setTrangThai(Integer.valueOf(newHDCT.getTrangThai()));
-            hdct.setNgayTao(Date.valueOf(newHDCT.getNgayTao()));
             hdct.setSoLuong(Integer.valueOf(newHDCT.getSoLuong()));
             hdctRepoNoMap.save(hdct);
             return ResponseEntity.ok(true);
@@ -136,12 +136,13 @@ public class HDCTController {
             System.out.println("temp error: " + result);
             return ResponseEntity.ok(false);
         } else {
+            LocalDateTime localNow = LocalDateTime.now();
             HDCTNoMap hdct = new HDCTNoMap();
             hdct.setIdHoaDon(newHDCT.getIdHoaDon());
             hdct.setIdChiTietSP(newHDCT.getIdChiTietSP());
             hdct.setTrangThai(Integer.valueOf(newHDCT.getTrangThai()));
-            hdct.setNgayTao(Date.valueOf(newHDCT.getNgayTao()));
             hdct.setSoLuong(Integer.valueOf(newHDCT.getSoLuong()));
+            hdct.setNgayTao(localNow);
             hdctRepoNoMap.save(hdct);
             return ResponseEntity.ok(true);
         }

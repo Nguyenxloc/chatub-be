@@ -15,8 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ChucVuRepository extends JpaRepository<ChucVu,String> {
     int ACTIVE  = 1;
     int INACTIVE =0;
+    @Query(value = "select *from chucvu ORDER BY ngayTao asc",nativeQuery = true)
     Page<ChucVu> findByTrangThai(int trangThai, Pageable pageable);
-    @Query(value = "select *from chucvu",nativeQuery = true)
+    @Query(value = "select *from chucvu order by  ngayTao asc",nativeQuery = true)
     Page<ChucVu> findAllByPage(Pageable pageable);
     @Query("UPDATE ChucVu cv SET cv.trangThai = 1 WHERE cv.id=:id")
     int enableStt(@Param("id")String id);

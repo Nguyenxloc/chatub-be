@@ -29,8 +29,6 @@ public class ChiTietStore {
     @Positive
     private String giaBan;
     @NotEmpty
-    private String ngayTao;
-    @NotEmpty
     private String  trangThai;
     @NotEmpty
     private String hinhAnh1;

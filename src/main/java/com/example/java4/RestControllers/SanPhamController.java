@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,7 +72,6 @@ public class SanPhamController {
         else{
             sp.setTen(newSanPham.getTen());
             sp.setTrangThai(Integer.valueOf(newSanPham.getTrangThai()));
-            sp.setNgayTao(Date.valueOf(newSanPham.getNgayTao()));
             sp.setHinhAnh(newSanPham.getHinhAnh());
             sp.setGiaBan(newSanPham.getGiaBan());
             spRepo.save(sp);
@@ -102,12 +102,13 @@ public class SanPhamController {
             return ResponseEntity.ok(false);
         }
         else{
+            LocalDateTime localNow = LocalDateTime.now();
             String ma = "SP"+(spRepo.getCount()+1);
             SanPham sp = new SanPham();
             sp.setTen(newSanPham.getTen());
             sp.setMa(ma);
             sp.setTrangThai(Integer.valueOf(newSanPham.getTrangThai()));
-            sp.setNgayTao(Date.valueOf(newSanPham.getNgayTao()));
+            sp.setNgayTao(localNow);
             sp.setHinhAnh(newSanPham.getHinhAnh());
             sp.setGiaBan(newSanPham.getGiaBan());
             spRepo.save(sp);

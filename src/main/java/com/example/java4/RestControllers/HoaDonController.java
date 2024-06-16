@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -76,7 +77,6 @@ public class HoaDonController {
             hd.setIdKhuyenMai(newHoaDon.getIdKhuyenMai());
             hd.setIdNhanVien(newHoaDon.getIdNhanVien());
             hd.setIdKhachHang(newHoaDon.getIdKhachHang());
-            hd.setNgayTao(Date.valueOf(newHoaDon.getNgayTao()));
             hd.setNgayThanhToan(Date.valueOf(newHoaDon.getNgayThanhToan()));
             hd.setTrangThai(Integer.valueOf(newHoaDon.getTrangThai()));
             hoaDonRepoNoMap.save(hd);
@@ -107,6 +107,7 @@ public class HoaDonController {
         }
         else{
             //conduct ma by select count
+            LocalDateTime localNow = LocalDateTime.now();
             String ma = "HD"+(hdRepo.getCount()+1);
             HoaDonNoMap hd = new HoaDonNoMap();
             hd.setMa(ma);
@@ -114,9 +115,9 @@ public class HoaDonController {
             hd.setIdKhuyenMai(newHoaDon.getIdKhuyenMai());
             hd.setIdNhanVien(newHoaDon.getIdNhanVien());
             hd.setIdKhachHang(newHoaDon.getIdKhachHang());
-            hd.setNgayTao(Date.valueOf(newHoaDon.getNgayTao()));
             hd.setNgayThanhToan(Date.valueOf(newHoaDon.getNgayThanhToan()));
             hd.setTrangThai(Integer.valueOf(newHoaDon.getTrangThai()));
+            hd.setNgayTao(localNow);
             hoaDonRepoNoMap.save(hd);
             return ResponseEntity.ok(true);
         }

@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,7 +73,6 @@ public class KhachHangController {
             kh.setNgaySinh(newKH.getNgaySinh());
             kh.setSdt(newKH.getSdt());
             kh.setMatKhau(newKH.getMatKhau());
-            kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
             kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));
             khRepo.save(kh);
             return ResponseEntity.ok(true);
@@ -102,6 +102,7 @@ public class KhachHangController {
             return ResponseEntity.ok(false);
         } else {
             //conduct ma
+            LocalDateTime localNow = LocalDateTime.now();
             String ma = "KH"+(khRepo.getCount()+1);
             KhachHang kh = new KhachHang();
             kh.setMa(ma);
@@ -109,8 +110,8 @@ public class KhachHangController {
             kh.setNgaySinh(newKH.getNgaySinh());
             kh.setSdt(newKH.getSdt());
             kh.setMatKhau(newKH.getMatKhau());
-            kh.setNgayTao(Date.valueOf(newKH.getNgayTao()));
             kh.setTrangThai(Integer.valueOf(newKH.getTrangThai()));
+            kh.setNgayTao(localNow);
             khRepo.save(kh);
             return ResponseEntity.ok(true);
         }

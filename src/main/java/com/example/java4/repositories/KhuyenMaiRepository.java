@@ -15,8 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 public interface KhuyenMaiRepository extends JpaRepository<KhuyenMai,String> {
     int ACTIVE  = 1;
     int INACTIVE =0;
+    @Query(value = "select *from khuyenmai ORDER BY ngayTao asc",nativeQuery = true)
     Page<KhuyenMai> findByTrangThai(int trangThai, Pageable pageable);
-    @Query(value = "select *from khuyenmai",nativeQuery = true)
+    @Query(value = "select *from khuyenmai order by ngayTao asc",nativeQuery = true)
     Page<KhuyenMai> findAllByPage(Pageable pageable);
     @Query("UPDATE KhuyenMai km SET km.trangThai = 1 WHERE km.id=:id")
     int enableStt(@Param("id")String id);

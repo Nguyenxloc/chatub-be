@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,7 +69,6 @@ public class KichThuocController {
         } else {
             kt.setTen(newKichThuoc.getTen());
             kt.setTrangThai(Integer.valueOf(newKichThuoc.getTrangThai()));
-            kt.setNgayTao(Date.valueOf(newKichThuoc.getNgayTao()));
             ktRepo.save(kt);
             return  ResponseEntity.ok(true);
         }
@@ -96,12 +96,13 @@ public class KichThuocController {
             System.out.println("error temp: " + result);
             return ResponseEntity.ok(false);
         } else {
+            LocalDateTime localNow = LocalDateTime.now();
             String ma = "KT"+(ktRepo.getCount()+1);
             KichThuoc kt = new KichThuoc();
             kt.setMa(ma);
             kt.setTen(newKichThuoc.getTen());
             kt.setTrangThai(Integer.valueOf(newKichThuoc.getTrangThai()));
-            kt.setNgayTao(Date.valueOf(newKichThuoc.getNgayTao()));
+            kt.setNgayTao(localNow);
             ktRepo.save(kt);
             return ResponseEntity.ok(true);
         }

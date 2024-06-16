@@ -16,8 +16,9 @@ public interface HDCTRepository
 {
       int ACTIVE  = 1;
       int INACTIVE =0;
+      @Query(value = "select *from hoadonchitiet ORDER BY ngayTao asc",nativeQuery = true)
       Page<HDCT> findByTrangThai(int trangThai, Pageable pageable);
-      @Query(value = "select *from hoadonchitiet",nativeQuery = true)
+      @Query(value = "select *from hoadonchitiet order by ngayTao asc",nativeQuery = true)
       Page<HDCT> findAllByPage(Pageable pageable);
       @Query("UPDATE HDCT hdct SET hdct.trangThai = 1 WHERE hdct.id=:id")
       int enableStt(@Param("id")String id);

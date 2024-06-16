@@ -16,6 +16,4 @@ public class ChucVuStore {
     private String ten;
     @NotEmpty
     private String trangThai;
-    @NotEmpty
-    private String ngayTao;
 }

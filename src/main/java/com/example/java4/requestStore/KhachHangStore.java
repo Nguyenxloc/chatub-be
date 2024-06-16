@@ -21,8 +21,6 @@ public class KhachHangStore {
     @NotEmpty
     private String matKhau;
     @NotEmpty
-    private String ngayTao;
-    @NotEmpty
     private String trangThai;
     @NotEmpty
     private String idPhuongXa;

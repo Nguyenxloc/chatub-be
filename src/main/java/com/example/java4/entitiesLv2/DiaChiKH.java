@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -37,4 +38,6 @@ public class DiaChiKH {
     private String tinhThanh;
     @Column(name="TrangThai")
     private Integer trangThai;
+    @Column(name="NgayTao")
+    private LocalDateTime ngayTao;
 }

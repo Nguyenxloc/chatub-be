@@ -21,8 +21,6 @@ public class GiaoHangStore {
     @NotEmpty
     private String trangThai;
     @NotEmpty
-    private String ngayTao;
-    @NotEmpty
     private String idPhuongXa;
     @NotEmpty
     private String idQuanHuyen;

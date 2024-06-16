@@ -23,6 +23,4 @@ public class NhanVienStore {
     private String idCV;
     @NotEmpty
     private String trangThai;
-    @NotEmpty
-    private String  ngayTao;
 }

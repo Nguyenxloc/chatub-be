@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -84,7 +85,6 @@ public class GiaoHangController {
             giaoHang.setQuanHuyen(newGiaoHang.getQuanHuyen());
             giaoHang.setTinhThanh(newGiaoHang.getTinhThanh());
             giaoHang.setTrangThai(Integer.valueOf(newGiaoHang.getTrangThai()));
-            giaoHang.setNgayTao(Date.valueOf(newGiaoHang.getNgayTao()));
             giaoHangRepoNoMap.save(giaoHang);
             return ResponseEntity.ok(true);
         }
@@ -112,6 +112,7 @@ public class GiaoHangController {
             System.out.println("temp error at giaoHang: "+result);
             return ResponseEntity.ok(false);
         } else {
+            LocalDateTime localNow = LocalDateTime.now();
             GiaoHangNoMap giaoHang= new GiaoHangNoMap();
             giaoHang.setId(newGiaoHangStore.getId());
             giaoHang.setHoTen(newGiaoHangStore.getHoTen());
@@ -124,7 +125,7 @@ public class GiaoHangController {
             giaoHang.setQuanHuyen(newGiaoHangStore.getQuanHuyen());
             giaoHang.setTinhThanh(newGiaoHangStore.getTinhThanh());
             giaoHang.setTrangThai(Integer.valueOf(newGiaoHangStore.getTrangThai()));
-            giaoHang.setNgayTao(Date.valueOf(newGiaoHangStore.getNgayTao()));
+            giaoHang.setNgayTao(localNow);
             giaoHangRepoNoMap.save(giaoHang);
             return ResponseEntity.ok(true);
         }

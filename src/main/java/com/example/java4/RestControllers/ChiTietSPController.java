@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -86,7 +87,6 @@ public class ChiTietSPController {
               chiTietSP.setSoLuongTon(Integer.valueOf(newChiTietSP.getSoLuongTon()));
               chiTietSP.setGiaNhap(Long.valueOf(newChiTietSP.getGiaNhap()));
               chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaBan()));
-              chiTietSP.setNgayTao(Date.valueOf(newChiTietSP.getNgayTao()));
               chiTietSP.setTrangThai(Integer.valueOf(newChiTietSP.getTrangThai()));
               chiTietSP.setHinhAnh1(newChiTietSP.getHinhAnh1());
               chiTietSP.setHinhAnh2(newChiTietSP.getHinhAnh2());
@@ -121,6 +121,7 @@ public class ChiTietSPController {
             System.out.println("temp error: " + result);
             return ResponseEntity.ok(false);
         } else {
+            LocalDateTime localNow = LocalDateTime.now();
             ChiTietSPNoMap chiTietSP = new ChiTietSPNoMap();
             chiTietSP.setIdSp(newChiTietSP.getIdSp());
             chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
@@ -130,11 +131,11 @@ public class ChiTietSPController {
             chiTietSP.setSoLuongTon(Integer.valueOf(newChiTietSP.getSoLuongTon()));
             chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaNhap()));
             chiTietSP.setGiaBan(Long.valueOf(newChiTietSP.getGiaBan()));
-            chiTietSP.setNgayTao(Date.valueOf(newChiTietSP.getNgayTao()));
             chiTietSP.setTrangThai(Integer.valueOf(newChiTietSP.getTrangThai()));
             chiTietSP.setHinhAnh1(newChiTietSP.getHinhAnh1());
             chiTietSP.setHinhAnh2(newChiTietSP.getHinhAnh2());
             chiTietSP.setHinhAnh3(newChiTietSP.getHinhAnh3());
+            chiTietSP.setNgayTao(localNow);
             chiTietSPRepoNoMap.save(chiTietSP);
             return ResponseEntity.ok(true);
         }

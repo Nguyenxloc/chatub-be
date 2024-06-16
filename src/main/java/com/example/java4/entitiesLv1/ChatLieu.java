@@ -5,8 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.cglib.proxy.Mixin;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -26,5 +28,5 @@ public class ChatLieu {
     @Column(name ="TrangThai")
     private Integer trangThai;
     @Column(name="NgayTao")
-    private Date ngayTao;
+    private LocalDateTime ngayTao;
 }

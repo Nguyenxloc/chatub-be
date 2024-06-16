@@ -19,8 +19,9 @@ public interface HoaDonRepository
 {
     int ACTIVE  = 1;
     int INACTIVE =0;
+    @Query(value = "select *from hoaDon ORDER BY ngayTao asc",nativeQuery = true)
     Page<HoaDon> findByTrangThai(int trangThai, Pageable pageable);
-    @Query(value = "select *from hoadon",nativeQuery = true)
+    @Query(value = "select *from hoadon order by ngayTao asc",nativeQuery = true)
     Page<HoaDon> findAllByPage(Pageable pageable);
     @Query(value = "SELECT TOP 5 * FROM HoaDonChiTiet ORDER BY ID DESC",
            nativeQuery = true)

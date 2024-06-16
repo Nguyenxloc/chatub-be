@@ -15,8 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 public interface DiaChiKHRepository extends JpaRepository<DiaChiKH,String> {
     int ACTIVE  = 1;
     int INACTIVE =0;
+    @Query(value = "select *from diachikh ORDER BY ngayTao desc",nativeQuery = true)
     Page<DiaChiKH> findByTrangThai(int trangThai, Pageable pageable);
-    @Query(value = "select *from diachikh",nativeQuery = true)
+    @Query(value = "select *from diachikh order by ngayTao desc",nativeQuery = true)
     Page<DiaChiKH> findAllByPage(Pageable pageable);
     @Query("UPDATE DiaChiKH dckh SET dckh.trangThai = 1 WHERE dckh.id=:id")
     int enableStt(@Param("id")String id);

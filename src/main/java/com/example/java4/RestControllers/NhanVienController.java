@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -80,7 +81,6 @@ public class NhanVienController {
             nv.setMatKhau(newNhanVien.getMatKhau());
             nv.setIdChucVu(newNhanVien.getIdCV());
             nv.setTrangThai(Integer.valueOf(newNhanVien.getTrangThai()));
-            nv.setNgayTao(Date.valueOf(newNhanVien.getNgayTao()));
             nhanVienRepoNoMap.save(nv);
             return ResponseEntity.ok(true);
         }
@@ -110,6 +110,7 @@ public class NhanVienController {
             return ResponseEntity.ok(false);
         }
         else{
+            LocalDateTime localNow = LocalDateTime.now();
             String ma = "NV"+(nvRepo.getCount()+1);
             NhanVienNoMap nv = new NhanVienNoMap();
             nv.setMa(ma);
@@ -120,7 +121,7 @@ public class NhanVienController {
             nv.setMatKhau(newNhanVien.getMatKhau());
             nv.setIdChucVu(newNhanVien.getIdCV());
             nv.setTrangThai(Integer.valueOf(newNhanVien.getTrangThai()));
-            nv.setNgayTao(Date.valueOf(newNhanVien.getNgayTao()));
+            nv.setNgayTao(localNow);
             nhanVienRepoNoMap.save(nv);
             return ResponseEntity.ok(true);
         }

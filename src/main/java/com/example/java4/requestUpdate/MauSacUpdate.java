@@ -13,6 +13,4 @@ public class MauSacUpdate {
     private String ten;
     @NotEmpty
     private String trangThai;
-    @NotEmpty
-    private String ngayTao;
 }

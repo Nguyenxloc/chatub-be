@@ -18,8 +18,9 @@ public interface ChiTietSPRepository
 {
     int ACTIVE  = 1;
     int INACTIVE =0;
+    @Query(value = "select *from chitietsp ORDER BY ngayTao asc",nativeQuery = true)
     Page<ChiTietSP> findByTrangThai(int trangThai, Pageable pageable);
-    @Query(value = "select *from chucvu",nativeQuery = true)
+    @Query(value = "select *from chitietsp order by ngayTao asc",nativeQuery = true)
     Page<ChiTietSP> findAllByPage(Pageable pageable);
     @Modifying(clearAutomatically = true)
     @Query("UPDATE ChiTietSP ctsp SET ctsp.trangThai = 1 WHERE ctsp.id=:id")

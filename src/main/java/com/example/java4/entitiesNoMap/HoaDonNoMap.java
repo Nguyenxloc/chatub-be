@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -28,7 +30,7 @@ public class HoaDonNoMap {
     @Column(name="IdKH")
     private String idKhachHang;
     @Column(name="NgayTao")
-    private Date ngayTao;
+    private LocalDateTime ngayTao;
     @Column(name="NgayThanhToan")
     private Date ngayThanhToan;
     @Column(name="TrangThai")

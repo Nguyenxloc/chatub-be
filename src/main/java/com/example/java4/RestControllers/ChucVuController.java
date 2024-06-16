@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,7 +69,6 @@ public class ChucVuController {
                else{
                    chucVu.setTen(newChucVu.getTen());
                    chucVu.setTrangThai(Integer.valueOf(newChucVu.getTrangThai()));
-                   chucVu.setNgayTao(Date.valueOf(newChucVu.getNgayTao()));
                    chucVuRepo.save(chucVu);
                    return ResponseEntity.ok(true);
                }
@@ -96,12 +96,13 @@ public class ChucVuController {
             System.out.println("chuc vu accused failed: "+result);
             return ResponseEntity.ok(false);
         } else {
+            LocalDateTime localNow = LocalDateTime.now();
             String ma = "CV"+(chucVuRepo.getCount()+1);
             ChucVu chucVu = new ChucVu();
             chucVu.setMa(ma);
             chucVu.setTen(newChucVu.getTen());
             chucVu.setTrangThai(Integer.valueOf(newChucVu.getTrangThai()));
-            chucVu.setNgayTao(Date.valueOf(newChucVu.getNgayTao()));
+            chucVu.setNgayTao(localNow);
             chucVuRepo.save(chucVu);
             return ResponseEntity.ok(true);
         }

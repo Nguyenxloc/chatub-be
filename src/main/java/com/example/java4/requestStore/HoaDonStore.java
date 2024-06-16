@@ -16,8 +16,6 @@ public class HoaDonStore {
     private String idNhanVien;
     private String idKhachHang;
     @NotEmpty
-    private String ngayTao;
-    @NotEmpty
     private String ngayThanhToan;
     @NotEmpty
     private String trangThai;

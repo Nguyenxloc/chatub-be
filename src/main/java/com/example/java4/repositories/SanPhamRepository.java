@@ -16,8 +16,9 @@ public interface SanPhamRepository
 {
     int ACTIVE  = 1;
     int INACTIVE =0;
+    @Query(value = "select *from sanpham order by ngayTao asc",nativeQuery = true)
     Page<SanPham> findByTrangThai(int trangThai, Pageable pageable);
-    @Query(value = "select *from sanpham",nativeQuery = true)
+    @Query(value = "select *from sanpham order by ngayTao asc",nativeQuery = true)
     Page<SanPham> findAllByPage(Pageable pageable);
     @Query("UPDATE SanPham sp SET sp.trangThai = 1 WHERE sp.id=:id")
     int enableStt(@Param("id")String id);

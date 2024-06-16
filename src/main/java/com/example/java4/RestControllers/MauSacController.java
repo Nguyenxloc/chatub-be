@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,7 +72,6 @@ public class MauSacController {
         else{
             ms.setTen(newMauSac.getTen());
             ms.setTrangThai(Integer.valueOf(newMauSac.getTrangThai()));
-            ms.setNgayTao(Date.valueOf(newMauSac.getNgayTao()));
             msRepo.save(ms);
             return  ResponseEntity.ok(true);
         }
@@ -100,13 +100,14 @@ public class MauSacController {
             return ResponseEntity.ok(false);
         }
         else{
+            LocalDateTime localNow = LocalDateTime.now();
             String ma = "MS"+(msRepo.getCount()+1);
             MauSac ms = new MauSac();
             //conduct ma
             ms.setMa(ma);
             ms.setTen(newMauSac.getTen());
             ms.setTrangThai(Integer.valueOf(newMauSac.getTrangThai()));
-            ms.setNgayTao(Date.valueOf(newMauSac.getNgayTao()));
+            ms.setNgayTao(localNow);
             msRepo.save(ms);
             return ResponseEntity.ok(true);
         }

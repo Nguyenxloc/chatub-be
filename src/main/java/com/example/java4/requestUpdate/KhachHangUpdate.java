@@ -19,7 +19,5 @@ public class KhachHangUpdate {
     @NotEmpty
     private String matKhau;
     @NotEmpty
-    private String ngayTao;
-    @NotEmpty
     private String trangThai;
 }

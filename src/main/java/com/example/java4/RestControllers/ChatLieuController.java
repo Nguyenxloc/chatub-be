@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,7 +70,6 @@ public class ChatLieuController {
         else{
             cl.setTen(newChatLieu.getTen());
             cl.setTrangThai(Integer.valueOf(newChatLieu.getTrangThai()));
-            cl.setNgayTao(Date.valueOf(newChatLieu.getNgayTao()));
             chatLieuRepo.save(cl);
             return  ResponseEntity.ok(true);
         }
@@ -98,12 +98,13 @@ public class ChatLieuController {
             return ResponseEntity.ok(false);
         }
         else{
+            LocalDateTime localNow = LocalDateTime.now();
             String ma = "CHL"+(chatLieuRepo.getCount()+1);
             ChatLieu cl = new ChatLieu();
             cl.setMa(ma);
             cl.setTen(newChatLieu.getTen());
             cl.setTrangThai(Integer.valueOf(newChatLieu.getTrangThai()));
-            cl.setNgayTao(Date.valueOf(newChatLieu.getNgayTao()));
+            cl.setNgayTao(localNow);
             chatLieuRepo.save(cl);
             return ResponseEntity.ok(true);
         }

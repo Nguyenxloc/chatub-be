@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -34,4 +36,6 @@ public class DiaChiNVNoMap {
     private String tinhThanh;
     @Column(name="TrangThai")
     private Integer trangThai;
+    @Column(name ="NgayTao")
+    private LocalDateTime ngayTao;
 }

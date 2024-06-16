@@ -19,7 +19,5 @@ public class HDCTStore {
     @NotEmpty
     private String trangThai;
     @NotEmpty
-    private String ngayTao;
-    @NotEmpty
     private String soLuong;
 }

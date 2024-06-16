@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -106,6 +107,7 @@ public class KhuyenMaiController {
             return ResponseEntity.ok(false);
         }
         else{
+            LocalDateTime localNow = LocalDateTime.now();
             String ma = "KM"+(khuyenMaiRepo.getCount()+1);
             KhuyenMaiNoMap khuyenMai = new KhuyenMaiNoMap();
             khuyenMai.setMa(ma);
@@ -114,6 +116,7 @@ public class KhuyenMaiController {
             khuyenMai.setNgayKetThuc(Date.valueOf(newKhuyenMai.getNgayKetThuc()));
             khuyenMai.setGiaTriGiam(Float.valueOf(newKhuyenMai.getGiaTriGiam()));
             khuyenMai.setTrangThai(Integer.valueOf(newKhuyenMai.getTrangThai()));
+            khuyenMai.setNgayTao(localNow);
             khuyenMaiRepoNoMap.save(khuyenMai);
             //call procedure
             return ResponseEntity.ok(true);

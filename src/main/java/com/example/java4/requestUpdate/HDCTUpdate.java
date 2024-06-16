@@ -16,7 +16,5 @@ public class HDCTUpdate {
     @NotEmpty
     private String trangThai;
     @NotEmpty
-    private String ngayTao;
-    @NotEmpty
     private String soLuong;
 }

@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -107,6 +109,7 @@ public class DiaChiNVController {
             System.out.println("temp error: "+result);
             return ResponseEntity.ok(false);
         } else {
+            LocalDateTime localNow = LocalDateTime.now();
             DiaChiNVNoMap diaChiNV = new DiaChiNVNoMap();
             diaChiNV.setId(newDiaChiNV.getId());
             diaChiNV.setIdNV(newDiaChiNV.getIdNV());
@@ -114,6 +117,7 @@ public class DiaChiNVController {
             diaChiNV.setIdQuanHuyen(newDiaChiNV.getIdQuanHuyen());
             diaChiNV.setIdTinhThanh(newDiaChiNV.getIdTinhThanh());
             diaChiNV.setTrangThai(Integer.valueOf(newDiaChiNV.getTrangThai()));
+            diaChiNV.setNgayTao(localNow);
             diaChiNVNoMapRepo.save(diaChiNV);
             return ResponseEntity.ok(true);
         }
