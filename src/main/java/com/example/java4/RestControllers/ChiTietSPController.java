@@ -42,6 +42,15 @@ public class ChiTietSPController {
         Pageable pageable = PageRequest.of(page-1,20);
         return ResponseEntity.ok(chiTietSPRepository.findByTrangThai(1,pageable).getContent());
     }
+
+    @CrossOrigin
+    @GetMapping("/detail/{idSP}")
+    public ResponseEntity<List<ChiTietSP>> GetIndexByIdSP(@PathVariable(value = "idSP") String idSP,@RequestParam("page")Optional<Integer> pageParam) {
+        int page = pageParam.orElse(1);
+        Pageable pageable = PageRequest.of(page-1,20);
+        return ResponseEntity.ok(chiTietSPRepository.findByIdSP(1,idSP,pageable).getContent());
+    }
+
     @CrossOrigin
     @GetMapping("/get-all")
     public ResponseEntity<List<ChiTietSP>> getAll(@RequestParam("page")Optional<Integer> pageParam) {

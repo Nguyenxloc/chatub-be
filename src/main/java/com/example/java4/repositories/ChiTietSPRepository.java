@@ -18,10 +18,12 @@ public interface ChiTietSPRepository
 {
     int ACTIVE  = 1;
     int INACTIVE =0;
-    @Query(value = "SELECT ctsp FROM ChiTietSP ctsp ORDER BY ctsp.ngayTao asc")
+    @Query(value = "SELECT ctsp FROM ChiTietSP ctsp where ctsp.trangThai=:trangThai ORDER BY ctsp.ngayTao asc")
     Page<ChiTietSP> findByTrangThai(int trangThai, Pageable pageable);
-    @Query(value = "SELECT ctsp FROM ChiTietSP ctsp ORDER BY ctsp.ngayTao asc")
+    @Query(value = "SELECT ctsp FROM ChiTietSP ctsp where ctsp.trangThai=1 ORDER BY ctsp.ngayTao asc")
     Page<ChiTietSP> findAllByPage(Pageable pageable);
+    @Query(value = "SELECT ctsp FROM ChiTietSP ctsp where ctsp.trangThai=:trangThai and ctsp.sp.id=:idSP ORDER BY ctsp.ngayTao asc")
+    Page<ChiTietSP> findByIdSP(int trangThai,String idSP,Pageable pageAble);
     @Modifying(clearAutomatically = true)
     @Query("UPDATE ChiTietSP ctsp SET ctsp.trangThai = 1 WHERE ctsp.id=:id")
     int enableStt(@Param("id")String id);
