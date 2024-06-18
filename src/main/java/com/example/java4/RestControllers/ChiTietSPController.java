@@ -44,7 +44,7 @@ public class ChiTietSPController {
     }
 
     @CrossOrigin
-    @GetMapping("/detail/{idSP}")
+    @GetMapping("/detail-byidsp/{idSP}")
     public ResponseEntity<List<ChiTietSP>> GetIndexByIdSP(@PathVariable(value = "idSP") String idSP,@RequestParam("page")Optional<Integer> pageParam) {
         int page = pageParam.orElse(1);
         Pageable pageable = PageRequest.of(page-1,20);
