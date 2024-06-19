@@ -73,13 +73,26 @@ public class ChiTietSPController {
     public ResponseEntity<Integer> getCountstt0() {
         return ResponseEntity.ok(chiTietSPRepository.getCountStt0());
     }
-
+    @CrossOrigin
+    @GetMapping("count-byidsp/{idsp}")
+    public ResponseEntity<Integer> getCountByidsp(@PathVariable("idsp") String idSP) {
+        return ResponseEntity.ok(chiTietSPRepository.getCountByidsp(idSP));
+    }
+    @CrossOrigin
+    @GetMapping("count-stt1-byidsp/{idsp}")
+    public ResponseEntity<Integer> getCountstt1ByIdsp(@PathVariable("idsp") String idSP) {
+        return ResponseEntity.ok(chiTietSPRepository.getCountStt1Byidsp(idSP));
+    }
+    @CrossOrigin
+    @GetMapping("count-stt0-byidsp/{idsp}")
+    public ResponseEntity<Integer> getCountstt0ByIdsp(@PathVariable("idsp") String idSP) {
+        return ResponseEntity.ok(chiTietSPRepository.getCountStt0Byidsp(idSP));
+    }
     @CrossOrigin
     @GetMapping("/detail/{id}")
     public ResponseEntity<ChiTietSP> getDetail(@PathVariable(value = "id") ChiTietSP chiTietSP) {
         return ResponseEntity.ok(chiTietSP);
     }
-
     @CrossOrigin
     @PostMapping("/update/{id}")
     public ResponseEntity<Boolean> doUpdate(@PathVariable(value = "id") ChiTietSPNoMap chiTietSP,

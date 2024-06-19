@@ -35,4 +35,10 @@ public interface ChiTietSPRepository
     Integer getCountStt1();
     @Query(value = "SELECT COUNT(*) FROM chitietsp where trangThai=0",nativeQuery = true)
     Integer getCountStt0();
+    @Query(value = "SELECT COUNT(*) FROM chitietsp where IdSP=:idsp",nativeQuery = true)
+    Integer getCountByidsp(String idsp);
+    @Query(value = "SELECT COUNT(*) FROM chitietsp where trangThai=1 and IdSP=:idsp",nativeQuery = true)
+    Integer getCountStt1Byidsp(String idsp);
+    @Query(value = "SELECT COUNT(*) FROM chitietsp where trangThai=0 and IdSP=:idsp",nativeQuery = true)
+    Integer getCountStt0Byidsp(String idsp);
 };
