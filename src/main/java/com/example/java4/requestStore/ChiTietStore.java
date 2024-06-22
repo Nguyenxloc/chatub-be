@@ -18,6 +18,8 @@ public class ChiTietStore {
     private String idMauSac;
     @NotEmpty
     private String idKichThuoc;
+    @NotEmpty
+    private String idChatLieu;
     @Positive
     private String namBH;
     @NotEmpty

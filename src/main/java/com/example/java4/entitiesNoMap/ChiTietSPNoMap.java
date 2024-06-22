@@ -25,6 +25,8 @@ public class ChiTietSPNoMap {
     private String idMauSac;
     @Column(name="IdKichThuoc")
     private String idKichThuoc;
+    @Column(name="IdChatLieu")
+    private String idChatLieu;
     @Column(name="NamBH")
     private int namBH;
     @Column(name="MoTa")

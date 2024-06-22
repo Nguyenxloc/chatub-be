@@ -1,4 +1,5 @@
 package com.example.java4.entitiesLv2;
+import com.example.java4.entitiesLv1.ChatLieu;
 import com.example.java4.entitiesLv1.KichThuoc;
 import com.example.java4.entitiesLv1.MauSac;
 import com.example.java4.entitiesLv1.SanPham;
@@ -31,6 +32,9 @@ public class ChiTietSP {
     @ManyToOne
     @JoinColumn(name="IdKichThuoc",referencedColumnName = "Id")
     private KichThuoc kichThuoc;
+    @ManyToOne
+    @JoinColumn(name="IdChatLieu",referencedColumnName = "Id")
+    private ChatLieu chatLieu;
     @Column(name="NamBH")
     private int namBH;
     @Column(name="MoTa")
