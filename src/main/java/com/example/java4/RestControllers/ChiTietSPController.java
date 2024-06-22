@@ -104,7 +104,7 @@ public class ChiTietSPController {
           } else{
               chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
               chiTietSP.setIdKichThuoc(newChiTietSP.getIdKichThuoc());
-              chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
+              chiTietSP.setIdChatLieu(newChiTietSP.getIdChatLieu());
               chiTietSP.setNamBH(Integer.valueOf(newChiTietSP.getNamBH()));
               chiTietSP.setMoTa(newChiTietSP.getMoTa());
               chiTietSP.setSoLuongTon(Integer.valueOf(newChiTietSP.getSoLuongTon()));
@@ -149,7 +149,7 @@ public class ChiTietSPController {
             chiTietSP.setIdSp(newChiTietSP.getIdSp());
             chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
             chiTietSP.setIdKichThuoc(newChiTietSP.getIdKichThuoc());
-            chiTietSP.setIdMauSac(newChiTietSP.getIdMauSac());
+            chiTietSP.setIdChatLieu(newChiTietSP.getIdChatLieu());
             chiTietSP.setNamBH(Integer.valueOf(newChiTietSP.getNamBH()));
             chiTietSP.setMoTa(newChiTietSP.getMoTa());
             chiTietSP.setSoLuongTon(Integer.valueOf(newChiTietSP.getSoLuongTon()));
