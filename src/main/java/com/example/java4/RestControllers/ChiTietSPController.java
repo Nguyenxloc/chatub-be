@@ -119,7 +119,6 @@ public class ChiTietSPController {
           }
     }
 
-
     @CrossOrigin
     @PostMapping("/enable-status/{id}")
     public ResponseEntity<Integer> enableStatus(@PathVariable(value = "id") String id) {
