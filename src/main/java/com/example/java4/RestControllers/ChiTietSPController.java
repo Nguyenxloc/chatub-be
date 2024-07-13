@@ -6,6 +6,7 @@ import com.example.java4.entitiesNoMap.ChiTietSPNoMap;
 import com.example.java4.repositories.*;
 import com.example.java4.repositoriesNoMap.ChiTietSPRepoNoMap;
 import com.example.java4.requestUpdate.ChiTietUpdate;
+import com.example.java4.service.SearchSPCT;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -31,6 +33,8 @@ public class ChiTietSPController {
     ChiTietSPRepository chiTietSPRepository;
     @Autowired
     ChiTietSPRepoNoMap chiTietSPRepoNoMap;
+    @Autowired
+    SearchSPCT search;
 
     public ChiTietSPController() {
     }
@@ -162,5 +166,10 @@ public class ChiTietSPController {
             chiTietSPRepoNoMap.save(chiTietSP);
             return ResponseEntity.ok(true);
         }
+    }
+    @GetMapping("/search")
+    public ResponseEntity<List<ChiTietSP>> searchChiTietSanPham(@RequestParam Map<String, Object> params) {
+        List<ChiTietSP> chiTietSanPhams = search.searchChiTietSanPham(params);
+        return ResponseEntity.ok(chiTietSanPhams);
     }
 }
