@@ -4,7 +4,7 @@ import com.example.java4.entitiesLv1.KichThuoc;
 import com.example.java4.entitiesLv1.MauSac;
 import com.example.java4.entitiesLv1.SanPham;
 import com.example.java4.entitiesLv2.ChiTietSP;
-import com.example.java4.repositoriesNoMap.ChiTietSPRepoNoMap;
+import com.example.java4.repositories.ChiTietSPRepository;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.Map;
 @Service
 public class SearchSPCT {
     @Autowired
-    private ChiTietSPRepoNoMap chiTietSPRepo;
+    private ChiTietSPRepository chiTietSPRepo;
     public List<ChiTietSP> searchChiTietSanPham(Map<String, Object> params) {
         return chiTietSPRepo.findAll((root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
@@ -31,13 +31,13 @@ public class SearchSPCT {
                     } else if (value instanceof LocalDateTime) {
                         predicates.add(criteriaBuilder.equal(root.get(key), value));
                     } else if (value instanceof MauSac) {
-                        predicates.add(criteriaBuilder.equal(root.get("idMauSac").get("id"), ((MauSac) value).getId()));
+                        predicates.add(criteriaBuilder.equal(root.get("mauSac").get("id"), ((MauSac) value).getId()));
                     } else if (value instanceof KichThuoc) {
-                        predicates.add(criteriaBuilder.equal(root.get("idKichThuoc").get("id"), ((KichThuoc) value).getId()));
+                        predicates.add(criteriaBuilder.equal(root.get("kichThuoc").get("id"), ((KichThuoc) value).getId()));
                     } else if (value instanceof ChatLieu) {
-                        predicates.add(criteriaBuilder.equal(root.get("idChatLieu").get("id"), ((ChatLieu) value).getId()));
+                        predicates.add(criteriaBuilder.equal(root.get("chatLieu").get("id"), ((ChatLieu) value).getId()));
                     }  else if (value instanceof SanPham) {
-                        predicates.add(criteriaBuilder.equal(root.get("idSanPham").get("id"), ((SanPham) value).getId()));
+                        predicates.add(criteriaBuilder.equal(root.get("sp").get("id"), ((SanPham) value).getId()));
                     }
                 }
             });

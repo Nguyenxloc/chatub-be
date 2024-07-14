@@ -4,6 +4,7 @@ import com.example.java4.entitiesLv1.ChucVu;
 import com.example.java4.entitiesLv2.ChiTietSP;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public interface ChiTietSPRepository
-        extends JpaRepository<ChiTietSP,String>
+        extends JpaRepository<ChiTietSP,String>, JpaSpecificationExecutor<ChiTietSP>
 {
     int ACTIVE  = 1;
     int INACTIVE =0;
