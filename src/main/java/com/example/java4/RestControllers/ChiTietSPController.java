@@ -167,6 +167,7 @@ public class ChiTietSPController {
             return ResponseEntity.ok(true);
         }
     }
+    @CrossOrigin
     @GetMapping("/search")
     public ResponseEntity<List<ChiTietSP>> searchChiTietSanPham(@RequestParam Map<String, Object> params) {
         List<ChiTietSP> chiTietSanPhams = search.searchChiTietSanPham(params);
