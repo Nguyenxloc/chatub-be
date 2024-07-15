@@ -1,10 +1,6 @@
 package com.example.java4.RestControllers;
 
 import com.example.java4.requestStore.ChiTietStore;
-import com.example.java4.entitiesLv2.ChiTietSP;
-import com.example.java4.entitiesNoMap.ChiTietSPNoMap;
-import com.example.java4.repositories.*;
-import com.example.java4.repositoriesNoMap.ChiTietSPRepoNoMap;
 import com.example.java4.requestUpdate.ChiTietUpdate;
 import com.example.java4.service.SearchSPCT;
 import jakarta.validation.Valid;
@@ -15,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import java.sql.Date;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -167,9 +163,11 @@ public class ChiTietSPController {
             return ResponseEntity.ok(true);
         }
     }
+
     @CrossOrigin
     @GetMapping("/search")
     public ResponseEntity<List<ChiTietSP>> searchChiTietSanPham(@RequestParam Map<String, Object> params) {
+        System.out.println("test hash map: "+params);
         List<ChiTietSP> chiTietSanPhams = search.searchChiTietSanPham(params);
         return ResponseEntity.ok(chiTietSanPhams);
     }

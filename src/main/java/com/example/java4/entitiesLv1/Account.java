@@ -6,26 +6,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Entity
+@Table(name="account")
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name="mausac")
-public class MauSac {
+@Getter
+@Setter
+public class Account {
     @Id
-    @Column(name="Id")
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    @Column(name="Ma")
-    private String ma;
-    @Column(name="Ten")
-    private String ten;
-    @Column(name="TrangThai")
-    private Integer trangThai;
-    @Column(name="NgayTao")
-    private LocalDateTime ngayTao;
+    @Column(name="phone")
+    private String phone;
+    @Column(name="username")
+    private String userName;
+    @Column(name="password")
+    private String password;
 }

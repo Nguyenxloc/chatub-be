@@ -1,10 +1,4 @@
 package com.example.java4.service;
-import com.example.java4.entitiesLv1.ChatLieu;
-import com.example.java4.entitiesLv1.KichThuoc;
-import com.example.java4.entitiesLv1.MauSac;
-import com.example.java4.entitiesLv1.SanPham;
-import com.example.java4.entitiesLv2.ChiTietSP;
-import com.example.java4.repositories.ChiTietSPRepository;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,5 @@
 package com.example.java4.RestControllers;
 import com.example.java4.requestStore.NhanVienStore;
-import com.example.java4.entitiesLv2.NhanVien;
 import com.example.java4.entitiesNoMap.NhanVienNoMap;
 import com.example.java4.repositories.NhanVienRepository;
 import com.example.java4.repositoriesNoMap.NhanVienRepoNoMap;
